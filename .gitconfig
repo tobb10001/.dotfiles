@@ -1,0 +1,35 @@
+[pull]
+	rebase = true
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+[alias]
+    ammend = commit --amend --no-edit
+    broom = !git branch --merged | grep -Ev '(^\\*|main|master|dev)' | xargs --no-run-if-empty git branch -d
+    cam = commit -am
+	git = !git
+    last = log -1 HEAD
+	pullsh = !sh -c 'git pull && git push'
+    todo = grep -ni todo
+
+    statu = status
+	tree = !git ls-files | tree --fromfile .
+	pust = push
+[init]
+	defaultBranch = main
+[core]
+	excludesfile = ~/.gitignore
+	attributesFile = ~/.gitattributes
+[diff "jupyternotebook"]
+	command = git-nbdiffdriver diff
+[merge "jupyternotebook"]
+	driver = git-nbmergedriver merge %O %A %B %L %P
+	name = jupyter notebook merge driver
+
+[merge]
+	tool = vimdiff
+[mergetool]
+	keepBackup = false
+[mergetool "vimdiff"]
+	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'

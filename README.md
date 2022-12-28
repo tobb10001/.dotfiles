@@ -4,5 +4,5 @@ My Dotfiles
 ## Installation
 
 ```sh
-stow *
+./dirs | xargs stow *
 ```

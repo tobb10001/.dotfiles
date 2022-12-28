@@ -50,7 +50,7 @@ if ! which bat &>/dev/null; then
 fi
 
 alias clip="xclip -selection clipboard"
-alias conf="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias conf="git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME"
 alias gradlew="./gradlew"
 alias lslsls="echo Yeah, I don\'t know either..."
 alias open="xdg-open"

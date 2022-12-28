@@ -41,3 +41,7 @@ require('gitsigns').setup {
 
 -- Turn on lsp status information
 require('fidget').setup()
+
+-- Set colorcolumn
+vim.opt.colorcolumn = { '80', '88' }
+

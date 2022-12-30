@@ -5,6 +5,7 @@ require("plugins.main")
 require("plugins.nvim-cmp")
 
 require("keymaps")
+require("lsp")
 require("optics")
 
 -- The line beneath this is called `modeline`. See `:help modeline`

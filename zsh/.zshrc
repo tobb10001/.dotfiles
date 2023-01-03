@@ -59,6 +59,13 @@ alias tmux="systemd-run --scope --user tmux"
 alias view="$(which nvim) -R"
 alias watch="watch --color"
 
+jp () {
+    current=$(pwd)
+    autojump $0 > /dev/null
+    pwd
+    cd $current
+}
+
 ziptree () {
     if [ -z "$1" -o "$1" = "-h" -o "$1" = "--help" ]; then
         echo "usage: $0 archive[.zip]";

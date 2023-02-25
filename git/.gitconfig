@@ -5,15 +5,15 @@
 [merge]
 	tool = vimdiff
 [alias]
-    ammend = commit --amend --no-edit
-    broom = !git branch --merged | grep -Ev '(^\\*|main|master|dev)' | xargs --no-run-if-empty git branch -d
-    cam = commit -am
+	ammend = commit --amend --no-edit
+	broom = !git branch --merged | grep -Ev '(^\\*|main|master|dev)' | xargs --no-run-if-empty git branch -d
+	cam = commit -am
 	git = !git
-    last = log -1 HEAD
+	last = log -1 HEAD
 	pullsh = !sh -c 'git pull && git push'
-    todo = grep -ni todo
+	todo = grep -Eni '\\btodo\\b'
 
-    statu = status
+	statu = status
 	tree = !git ls-files | tree --fromfile .
 	pust = push
 [init]
@@ -33,3 +33,10 @@
 	keepBackup = false
 [mergetool "vimdiff"]
 	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
+[includeIf "gitdir:~/Documents/hs/**"]
+	path = ~/.gitconfig-hs
+[push]
+	autoSetupRemote = true
+[fetch]
+	prune = true

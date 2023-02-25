@@ -19,9 +19,11 @@ vim.keymap.set('n', '<C-d>', '<C-d>zz')
 
 -- Type german letters
 vim.keymap.set('i', 'aee', 'ä')
-vim.keymap.set('i', 'oee', 'o')
+vim.keymap.set('i', 'oee', 'ö')
 vim.keymap.set('i', 'uee', 'ü')
 vim.keymap.set('i', 'Aee', 'Ä')
 vim.keymap.set('i', 'Oee', 'Ö')
 vim.keymap.set('i', 'Uee', 'Ü')
 vim.keymap.set('i', 'sss', 'ß')
+
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')

@@ -5,7 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export PATH="$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/bin:/usr/local/bin:/home/tobi/.local/share/gem/ruby/3.0.0/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -54,7 +54,7 @@ alias conf="git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME"
 alias gradlew="./gradlew"
 alias lslsls="echo Yeah, I don\'t know either..."
 alias open="xdg-open"
-alias python="python3"
+alias pip="pip --require-virtualenv"
 alias tmux="systemd-run --scope --user tmux"
 alias view="$(which nvim) -R"
 alias watch="watch --color"

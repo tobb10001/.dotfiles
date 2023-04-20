@@ -195,6 +195,26 @@ vim.o.hlsearch = false
 
 -- Make line numbers default
 vim.wo.number = true
+vim.api.nvim_create_autocmd(
+  {"BufEnter", "FocusGained", "InsertLeave", "WinEnter"},
+  {
+    callback = function ()
+      if vim.wo.number and vim.fn.mode() ~= 'i' then
+        vim.wo.relativenumber = true
+      end
+    end
+  }
+)
+vim.api.nvim_create_autocmd(
+  {"BufLeave", "FocusLost", "InsertEnter", "WinLeave"},
+  {
+    callback = function ()
+      if vim.wo.number then
+        vim.wo.relativenumber = false
+      end
+    end
+  }
+)
 
 -- Enable mouse mode
 vim.o.mouse = 'a'

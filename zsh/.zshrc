@@ -55,7 +55,6 @@ alias gradlew="./gradlew"
 alias lslsls="echo Yeah, I don\'t know either..."
 alias open="xdg-open"
 alias pip="pip --require-virtualenv"
-alias tmux="systemd-run --scope --user tmux"
 alias view="$(which nvim) -R"
 alias watch="watch --color"
 

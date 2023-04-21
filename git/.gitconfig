@@ -9,6 +9,7 @@
 	broom = !git branch --merged | grep -Ev '(^\\*|main|master|dev)' | xargs --no-run-if-empty git branch -d
 	cam = commit -am
 	git = !git
+	gone = !git branch -av | grep -F "[gone]" | awk -F' ' '{ print $1 }' | xargs --no-run-if-empty git branch -D
 	last = log -1 HEAD
 	pullsh = !sh -c 'git pull && git push'
 	todo = grep -Eni '\\btodo\\b'

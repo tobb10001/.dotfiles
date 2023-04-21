@@ -5,7 +5,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export PATH="$HOME/.pyenv:$HOME/.local/bin:$HOME/bin:/usr/local/bin:/home/tobi/.local/share/gem/ruby/3.0.0/bin:$PATH"
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+
+export PATH="$GOBIN:$HOME/.pyenv:$HOME/.local/bin:$HOME/bin:/usr/local/bin:/home/tobi/.local/share/gem/ruby/3.0.0/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -98,5 +101,10 @@ export NVM_DIR="$HOME/.nvm"
 
 if command -v pyenv > /dev/null; then
     eval "$(pyenv init -)"
+fi
+
+LOCAL_ZSHRC="$HOME/.zshrc.local"
+if [ -f "$LOCAL_ZSHRC" ]; then
+    source $LOCAL_ZSHRC
 fi
 

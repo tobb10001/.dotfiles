@@ -443,7 +443,15 @@ end
 local servers = {
   -- clangd = {},
   -- gopls = {},
-  -- pyright = {},
+  pylsp = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          ignore = {"E501"},
+        },
+      },
+    },
+  },
   -- rust_analyzer = {},
   -- tsserver = {},
 

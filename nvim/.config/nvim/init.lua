@@ -453,7 +453,7 @@ local servers = {
     pylsp = {
       plugins = {
         pycodestyle = {
-          ignore = {"E501"},
+          ignore = {"E501", "W503"},
         },
       },
     },

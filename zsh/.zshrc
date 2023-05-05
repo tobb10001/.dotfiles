@@ -38,6 +38,9 @@ source $ZSH/oh-my-zsh.sh
 
 # ********************************* User Configuration *********************************
 
+# Find out wether we're in WSL.
+export WSL=$(test -n "$WSL_DISTRO_NAME")
+
 # Pager, Editor, ...
 if which bat &>/dev/null; then
     PAGER="bat --plain --pager 'less -F'"
@@ -52,8 +55,13 @@ if ! which bat &>/dev/null; then
     alias bat="batcat"
 fi
 
-alias clip="xclip -selection clipboard"
-alias conf="git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME"
+# WSL dependent
+if $WSL; then
+    alias clip="clip.exe"
+else
+    alias clip="xclip -selection clipboard"
+fi
+# Some don't work in WSL, but I don't bother too much...
 alias gradlew="./gradlew"
 alias lslsls="echo Yeah, I don\'t know either..."
 alias open="xdg-open"

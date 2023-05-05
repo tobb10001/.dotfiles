@@ -183,6 +183,16 @@ require('lazy').setup({
     ft = 'typst',
     lazy=false,
   },
+  {
+    'rest-nvim/rest.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+    opts = {
+      skip_ssl_verification = true,
+      encode_url = false,
+    }
+  },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
@@ -275,6 +285,11 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 -- Escape to escape from terminals.
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 
+-- Rest.Nvim
+vim.keymap.set('n', '<leader>rr', require('rest-nvim').run, { desc = "Run the request under the cursor." })
+vim.keymap.set('n', '<leader>rp', function() require('rest-nvim').run(true) end, { desc = "Preview the request cURL command." })
+vim.keymap.set('n', '<leader>rl', require('rest-nvim').last, { desc = "Re-run the last request."})
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -333,7 +348,7 @@ vim.keymap.set('i', 'sss', 'ß')
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'latex', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim' },
+  ensure_installed = { 'c', 'cpp', 'go', 'http', 'json', 'latex', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim' },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = true,

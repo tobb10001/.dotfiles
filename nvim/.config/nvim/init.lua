@@ -293,6 +293,10 @@ vim.keymap.set('n', '<leader>rr', require('rest-nvim').run, { desc = "Run the re
 vim.keymap.set('n', '<leader>rp', function() require('rest-nvim').run(true) end, { desc = "Preview the request cURL command." })
 vim.keymap.set('n', '<leader>rl', require('rest-nvim').last, { desc = "Re-run the last request."})
 
+-- Run a test file
+vim.keymap.set('n', '<leader>t', '<Plug>PlenaryTestFile')
+
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })

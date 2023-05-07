@@ -125,7 +125,10 @@ require('lazy').setup({
       vim.cmd.colorscheme 'onedark'
     end,
   },
-
+  {
+    'xiyaowong/transparent.nvim',
+    lazy = false,
+  },
   { -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`

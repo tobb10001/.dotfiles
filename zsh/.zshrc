@@ -56,7 +56,7 @@ if ! which bat &>/dev/null; then
 fi
 
 # WSL dependent
-if $WSL; then
+if [ -n "$WSL" ]; then
     alias clip="clip.exe"
 else
     alias clip="xclip -selection clipboard"

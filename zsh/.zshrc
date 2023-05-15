@@ -39,7 +39,7 @@ source $ZSH/oh-my-zsh.sh
 # ********************************* User Configuration *********************************
 
 # Find out wether we're in WSL.
-export WSL=$(test -n "$WSL_DISTRO_NAME")
+export WSL=$([ -n "$WSL_DISTRO_NAME" ] && echo "WSL")
 
 # Pager, Editor, ...
 if which bat &>/dev/null; then

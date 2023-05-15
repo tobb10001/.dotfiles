@@ -60,7 +60,7 @@ vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 
 -- ColorColumn
-vim.opt.colorcolumn = { '80', '88' }
+vim.opt.colorcolumn = '88'
 
 -- Statusline
 vim.o.laststatus = 3

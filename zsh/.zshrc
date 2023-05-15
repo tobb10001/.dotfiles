@@ -54,7 +54,6 @@ export EDITOR=$(which nvim)
 if ! which bat &>/dev/null; then
     alias bat="batcat"
 fi
-
 # WSL dependent
 if [ -n "$WSL" ]; then
     alias clip="clip.exe"
@@ -66,6 +65,9 @@ alias gradlew="./gradlew"
 alias lslsls="echo Yeah, I don\'t know either..."
 alias open="xdg-open"
 alias pip="pip --require-virtualenv"
+if [ ! command -v python 2>/dev/null ]; then
+    alias python=python3
+fi
 alias view="$(which nvim) -R"
 alias watch="watch --color"
 

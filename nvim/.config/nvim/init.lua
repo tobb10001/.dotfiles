@@ -487,6 +487,10 @@ local servers = {
         pycodestyle = {
           ignore = {"E501", "W503"},
         },
+        flake8 = {
+          enabled = true,
+          ignore = {"E501", "W503"}
+        },
       },
     },
   },

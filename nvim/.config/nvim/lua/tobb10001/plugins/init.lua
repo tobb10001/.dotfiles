@@ -3,7 +3,6 @@
 return {
   -- NOTE: First, some plugins that don't require any configuration
 
-  'tpope/vim-sleuth',
   {
     'folke/which-key.nvim',
     opts = {
@@ -35,4 +34,5 @@ return {
       encode_url = false,
     }
   },
+  'tpope/vim-sleuth',
 }

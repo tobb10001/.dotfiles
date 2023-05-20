@@ -18,7 +18,7 @@ vim.keymap.set('n', '<leader>rp', function() require('rest-nvim').run(true) end,
 vim.keymap.set('n', '<leader>rl', require('rest-nvim').last, { desc = "Re-run the last request." })
 
 -- Run a test file
-vim.keymap.set('n', '<leader>t', '<Plug>PlenaryTestFile')
+vim.keymap.set('n', '<leader>t', '<Plug>PlenaryTestFile { minimal_init = "tests/minimal_init.vim" }')
 
 -- Type german letters
 vim.keymap.set('i', 'aee', 'ä')

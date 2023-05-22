@@ -25,6 +25,11 @@ return {
     lazy = false,
   },
   {
+    'stevearc/oil.nvim',
+    opts = {},
+    setup = true,
+  },
+  {
     'rest-nvim/rest.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim',

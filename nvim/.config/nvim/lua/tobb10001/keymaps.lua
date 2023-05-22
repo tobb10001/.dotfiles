@@ -11,6 +11,11 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 -- Escape to escape from terminals.
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 
+-- [[ Plugins ]]
+
+-- Oil
+vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
+
 -- Rest.Nvim
 vim.keymap.set('n', '<leader>rr', require('rest-nvim').run, { desc = "Run the request under the cursor." })
 vim.keymap.set('n', '<leader>rp', function() require('rest-nvim').run(true) end,

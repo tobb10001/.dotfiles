@@ -2,6 +2,17 @@
 
 return {
   {
+    'dhruvmanila/browser-bookmarks.nvim',
+    version = '*',
+    opts = {
+      selected_browser = 'firefox',
+      url_open_command = 'xdg-open',
+    },
+    dependencies = {
+      'kkharji/sqlite.lua',
+    }
+  },
+  {
     'folke/which-key.nvim',
     opts = {
       triggers_blacklist = {

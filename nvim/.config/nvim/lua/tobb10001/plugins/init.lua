@@ -1,8 +1,6 @@
 -- Some miscellaneous plugins, most of them are distributed in adjacent files.
 
 return {
-  -- NOTE: First, some plugins that don't require any configuration
-
   {
     'folke/which-key.nvim',
     opts = {
@@ -12,6 +10,26 @@ return {
     }
   },
   { 'numToStr/Comment.nvim', opts = {} },
+  {
+    'nvim-neorg/neorg',
+    build = ':Neorg sync-parsers',
+    opts = {
+      load = {
+        ["core.completion"] = {
+          config = {
+            engine = "nvim-cmp",
+          },
+        },
+        ["core.concealer"] = {},
+        ["core.defaults"] = {},
+      },
+    },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-neorg/neorg-telescope',
+    },
+    lazy = false,
+  },
   {
     'nvim-treesitter/nvim-treesitter',
     dependencies = {

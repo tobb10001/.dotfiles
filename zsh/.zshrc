@@ -12,7 +12,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 
-export PATH="$GOBIN:$HOME/.pyenv:$HOME/.local/bin:$HOME/bin:/usr/local/bin:/home/tobi/.local/share/gem/ruby/3.0.0/bin:$PATH"
+export PATH="$GOBIN:$HOME/.pyenv:$HOME/.local/bin:/usr/local/bin:/home/tobi/.local/share/gem/ruby/3.0.0/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -109,10 +109,6 @@ eval "$(aactivator init)"
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 if command -v pyenv > /dev/null; then
     eval "$(pyenv init -)"
 fi
@@ -122,3 +118,7 @@ if [ -f "$LOCAL_ZSHRC" ]; then
     source $LOCAL_ZSHRC
 fi
 
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

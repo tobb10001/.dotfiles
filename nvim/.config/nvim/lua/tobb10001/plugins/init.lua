@@ -21,6 +21,10 @@ return {
     }
   },
   {
+    'kkoomen/vim-doge',
+    build = ':call doge#install()',
+  },
+  {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",

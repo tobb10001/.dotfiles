@@ -1,44 +1,28 @@
--- Set <space> as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+-- vim: ts=4 sts=4 sw=4 et
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Install package manager
---    https://github.com/folke/lazy.nvim
---    `:help lazy.nvim.txt` for more info
+-- Package Manager: folke/lazy.nvim
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system {
-    'git',
-    'clone',
-    '--filter=blob:none',
-    'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable', -- latest stable release
-    lazypath,
-  }
+    vim.fn.system {
+        'git',
+        'clone',
+        '--filter=blob:none',
+        'https://github.com/folke/lazy.nvim.git',
+        '--branch=stable',
+        lazypath,
+    }
 end
 vim.opt.rtp:prepend(lazypath)
 require('lazy').setup("tobb10001.plugins", {})
 
+-- General configuration
 require('tobb10001.options')
 require('tobb10001.keymaps')
 
--- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = '*',
-})
+-- Miscellaneous stuff.
+require('tobb10001.misc')
 
-require('tobb10001.telescope')
-require('tobb10001.treesitter')
-require('tobb10001.lsp')
-require('tobb10001.cmp')
-
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+-- Plugin configuration.

@@ -15,14 +15,22 @@ return {
         },
     },
     {
-        'jose-elias-alvarez/null-ls.nvim',
-        dependencies = { 'nvim-lua/plenary.nvim' },
+        'jay-babu/mason-null-ls.nvim',
+        event = { 'BufReadPre', 'BufNewFile' },
+        dependencies = {
+            'williamboman/mason.nvim',
+            {
+                'jose-elias-alvarez/null-ls.nvim',
+                dependencies = { 'nvim-lua/plenary.nvim' },
+            },
+        },
         init = function()
-            null_ls = require('null-ls')
-            null_ls.setup({
-                sources = {
-                    null_ls.builtins.formatting.black,
-                },
+            require('mason-null-ls').setup({
+                automatic_installation = false,
+                handlers = {},
+            })
+            require('null-ls').setup({
+                sources = {}
             })
         end
     },

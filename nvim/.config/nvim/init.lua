@@ -24,5 +24,3 @@ require('tobb10001.keymaps')
 
 -- Miscellaneous stuff.
 require('tobb10001.misc')
-
--- Plugin configuration.

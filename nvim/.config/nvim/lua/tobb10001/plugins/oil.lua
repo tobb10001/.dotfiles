@@ -1,7 +1,11 @@
 return {
 	{
         'stevearc/oil.nvim',
-        config = true,
+        opts = {
+            view_options = {
+                show_hidden = true,
+            },
+        },
         keys = {
             {
                 "-",

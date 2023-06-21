@@ -26,4 +26,31 @@ return {
         'lewis6991/gitsigns.nvim',
         config = true,
     },
+    -- Transparent
+    {
+        'xizawong/transparent.nvim',
+        lazy = false,
+    },
+    {
+        'lukas-reineke/indent-blankline.nvim',
+        opts = {
+            char = '┊',
+            show_trailing_blankline_indent = false,
+        },
+    },
+    -- Lualine
+    {
+        'nvim-lualine/lualine.nvim',
+        opts = {
+            options = {
+                icons_enabled = true,
+                theme = 'tokyonight',
+                component_separators = '|',
+                section_separators = '',
+            },
+            sections = {
+                lualine_c = { { 'filename', path = 1 } },
+            }
+        },
+    }
 }

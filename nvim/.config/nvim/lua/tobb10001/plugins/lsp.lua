@@ -70,4 +70,8 @@ return {
             })
         end
     },
+    {
+        'folke/neodev.nvim',
+        config = true,
+    },
 }

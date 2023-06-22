@@ -36,6 +36,14 @@ local keys = {
         desc = '[S]earch [D]iagnostics',
     },
     {
+        'sf',
+        function()
+            return require('telescope.builtin').find_files({ hidden = true })
+        end,
+        mode = 'n',
+        desc = '[S]earch [D]iagnostics',
+    },
+    {
         'sg',
         function()
             return require('telescope.builtin').live_grep()

@@ -13,7 +13,7 @@ local function init()
         mapping = cmp.mapping.preset.insert({
             ['<C-d>'] = cmp.mapping.scroll_docs(-4),
             ['<C-u>'] = cmp.mapping.scroll_docs(4),
-            ['<space><space>'] = cmp.mapping.complete({}),
+            -- ['<space><space>'] = cmp.mapping.complete({}),
             ['<CR>'] = cmp.mapping.confirm({
                 behavior = cmp.ConfirmBehavior.Insert,
                 select = false,

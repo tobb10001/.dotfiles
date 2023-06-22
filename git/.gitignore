@@ -1,3 +1,4 @@
 .activate.sh
 .deactivate.sh
 .dotfiles
+.git/

@@ -15,9 +15,7 @@ local function on_attach(_, bufnr)
     nmap('gt', vim.lsp.buf.type_definition, '[G]oto [T]ype definition')
 end
 
-local settings = {
-
-}
+local settings = require('tobb10001.lsp_settings')
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
@@ -28,7 +26,7 @@ local function init()
             require('lspconfig')[server_name].setup({
                 capabilities = capabilities,
                 on_attach = on_attach,
-                setttings = settings[server_name],
+                settings = settings[server_name],
             })
         end
     })

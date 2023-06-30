@@ -11,7 +11,7 @@ return {
     },
     -- Fidget for LSP Progress
     {
-        'j-huy/fidget.nvim',
+        'j-hui/fidget.nvim',
         opts = {
             text = {
                 spinner = "moon", -- animation shown when tasks are ongoing
@@ -28,7 +28,7 @@ return {
     },
     -- Transparent
     {
-        'xizawong/transparent.nvim',
+        'xiyaowong/transparent.nvim',
         lazy = false,
     },
     {

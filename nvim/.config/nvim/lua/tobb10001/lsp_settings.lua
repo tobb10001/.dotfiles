@@ -1,12 +1,22 @@
 return {
-    ltex = {
-        ltex = {
-            language = "en-GB",
+	ltex = {
+		ltex = {
 			additionalRules = {
 				enablePickyRules = true,
-				motherTongue = "de-DE",
 			},
 			completionEnabled = true,
-        },
-    },
+			disabledRules = {
+				["en-GB"] = {
+					"ELLIPSIS",
+				},
+			},
+			language = "en-GB",
+			latex = {
+				commands = {
+					["\\texttt{}"] = "ignore",
+					["\\includesvg{}"] = "ignore",
+				},
+			},
+		},
+	},
 }

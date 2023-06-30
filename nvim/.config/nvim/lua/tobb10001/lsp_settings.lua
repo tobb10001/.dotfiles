@@ -8,6 +8,7 @@ return {
 			disabledRules = {
 				["en-GB"] = {
 					"ELLIPSIS",
+					"DASH_RULE",
 				},
 			},
 			language = "en-GB",

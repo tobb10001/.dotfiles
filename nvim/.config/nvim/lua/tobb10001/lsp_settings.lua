@@ -14,7 +14,7 @@ return {
 			language = "en-GB",
 			latex = {
 				commands = {
-					["\\texttt{}"] = "ignore",
+					["\\code{}"] = "dummy",
 					["\\includesvg{}"] = "ignore",
 				},
 			},

@@ -20,4 +20,16 @@ return {
 			},
 		},
 	},
+	pylsp = {
+		pylsp = {
+			plugins = {
+				flake8 = {
+					ignore = {"E501"},
+				},
+				pycodestyle = {
+					ignore = {"E501"},
+				}
+			},
+		},
+	},
 }

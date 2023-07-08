@@ -19,3 +19,10 @@ vim.api.nvim_create_autocmd(
 		end
 	}
 )
+
+-- Print stuff quickly.
+-- Stolen from https://github.com/tjdevries/config_manager/blob/master/xdg_config/nvim/lua/tj/globals.lua
+function P(v)
+	print(vim.inspect(v))
+	return v
+end

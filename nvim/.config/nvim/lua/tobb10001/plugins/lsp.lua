@@ -15,18 +15,18 @@ local function on_attach(_, bufnr)
     nmap('gt', vim.lsp.buf.type_definition, '[G]oto [T]ype definition')
 end
 
-local settings = require('tobb10001.lsp_settings')
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local function init()
+    local settings = require('tobb10001.lsp_settings')
     require('mason-lspconfig').setup_handlers({
         function(server_name)
             require('lspconfig')[server_name].setup({
                 capabilities = capabilities,
                 on_attach = on_attach,
-                settings = settings[server_name],
+                settings = settings[server_name] and settings[server_name].settings or {},
+                root_dir = settings.root_dir
             })
         end
     })
@@ -46,6 +46,10 @@ return {
                 'williamboman/mason-lspconfig.nvim',
                 config = true,
             },
+            {
+                'folke/neodev.nvim',
+                config = true,
+            }
         },
     },
     {
@@ -67,9 +71,5 @@ return {
                 sources = {}
             })
         end
-    },
-    {
-        'folke/neodev.nvim',
-        config = true,
     },
 }

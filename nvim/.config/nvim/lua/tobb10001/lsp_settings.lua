@@ -29,10 +29,16 @@ return {
 			pylsp = {
 				plugins = {
 					flake8 = {
-						ignore = { "E501" },
+						ignore = {
+							"E501",
+							"W503",
+						},
 					},
 					pycodestyle = {
-						ignore = { "E501" },
+						ignore = {
+							"E501",
+							"W503",
+						},
 					}
 				},
 			},

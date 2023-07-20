@@ -12,7 +12,7 @@ local function on_attach(_, bufnr)
     nmap('K', vim.lsp.buf.hover, 'Hover documentation')
     nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
     nmap('gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-    nmap('gt', vim.lsp.buf.type_definition, '[G]oto [T]ype definition')
+    nmap('gT', vim.lsp.buf.type_definition, '[G]oto [T]ype definition')
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

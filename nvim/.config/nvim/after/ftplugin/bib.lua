@@ -18,4 +18,4 @@ vim.keymap.set('n', '<leader>u', function()
 
     -- Align new line.
     vim.fn.feedkeys("==")
-end, { desc = "Add [U]RL [D]ate" })
+end, { desc = "Add [u]rldate" })

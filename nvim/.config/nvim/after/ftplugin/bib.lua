@@ -1,4 +1,6 @@
 vim.cmd(":set textwidth=0")
+vim.cmd(":set foldmethod=expr")
+vim.cmd(":set foldexpr=nvim_treesitter#foldexpr()")
 
 vim.keymap.set('n', '<leader>u', function()
     -- Construct new line.

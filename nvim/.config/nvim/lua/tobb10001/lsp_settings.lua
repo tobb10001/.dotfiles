@@ -8,6 +8,11 @@ return {
 					enablePickyRules = true,
 				},
 				completionEnabled = true,
+				dictionary = {
+					["en-GB"] = {
+						"Neovim",
+					},
+				},
 				disabledRules = {
 					["en-GB"] = {
 						"ELLIPSIS",

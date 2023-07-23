@@ -36,3 +36,6 @@ export EDITOR=$(command -v nvim)
 
 # Find out wether or not we're in WSL.
 WSL=$([ -n "$WSL_DISTRO_NAME" ] && echo "WSL")
+
+# zplug
+ZPLUG_HOME=$XDG_DATA_HOME/zsh/zplug

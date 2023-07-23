@@ -3,6 +3,13 @@ if [ ! -x "$HOME/.local/bin/starship" ]; then
     curl -sS https://starship.rs/install.sh | sh /dev/stdin --bin-dir "$HOME/.local/bin"
 fi
 
+# Ensure zplug is installed
+if [ ! -d "$ZPLUG_HOME" ]; then
+    mkdir -p $(dirname $ZPLUG_HOME)
+    git clone https://github.com/zplug/zplug $ZPLUG_HOME
+fi
+source $ZDOTDIR/plugins.zsh
+
 # Aliases
 ## Clip
 if [ -n "$WSL" ]; then
@@ -25,6 +32,8 @@ alias watch="watch --color"
 . $ZDOTDIR/functions.zsh
 
 # Keybindings
+bindkey '^[[A' up-line-or-history
+bindkey '^[[B' down-line-or-history
 bindkey '^xe' edit-command-line
 
 # Local config

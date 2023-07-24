@@ -11,6 +11,8 @@ return {
 				dictionary = {
 					["en-GB"] = {
 						"Neovim",
+						"delighters",
+						"dissatisfiers",
 					},
 				},
 				disabledRules = {

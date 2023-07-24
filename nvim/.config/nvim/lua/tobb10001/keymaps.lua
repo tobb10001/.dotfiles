@@ -11,6 +11,9 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 -- Escape to escape from terminals.
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 
+-- Faster escape from insert mode
+vim.keymap.set('i', 'kj', '<Esc>')
+
 -- Type german letters
 vim.keymap.set('i', 'aee', 'ä')
 vim.keymap.set('i', 'oee', 'ö')

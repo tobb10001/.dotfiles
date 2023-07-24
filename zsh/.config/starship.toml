@@ -15,7 +15,7 @@ conflicted = "${count}🤨"
 modified = "${count}👀"
 stashed = "${count}📦"
 staged = "${count}😌"
-untracked = "${count}🤷🏽"
+untracked = "${count}🤷"
 
 [git_metrics]
 added_style = "bold green"

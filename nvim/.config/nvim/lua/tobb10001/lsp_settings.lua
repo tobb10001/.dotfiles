@@ -25,6 +25,7 @@ return {
 				latex = {
 					commands = {
 						["\\code{}"] = "dummy",
+						["\\crefrange{}{}"] = "dummy",
 						["\\includesvg{}"] = "ignore",
 					},
 				},

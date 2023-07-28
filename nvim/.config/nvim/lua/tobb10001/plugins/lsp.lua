@@ -22,12 +22,16 @@ local function init()
     local settings = require('tobb10001.lsp_settings')
     require('mason-lspconfig').setup_handlers({
         function(server_name)
-            require('lspconfig')[server_name].setup({
+            local params = {
                 capabilities = capabilities,
                 on_attach = on_attach,
-                settings = settings[server_name] and settings[server_name].settings or {},
+                settings = {},
                 root_dir = settings.root_dir
-            })
+            }
+            if settings[server_name] and settings[server_name].settings then
+                params.settings = settings[server_name].settings
+            end
+            require('lspconfig')[server_name].setup(params)
         end
     })
 end

@@ -19,6 +19,7 @@ else
     alias clip="xclip -selection clipboard"
 fi
 # lslsls
+alias ls="ls --color=auto"
 alias lslsls="echo Yeah, I don\'t know either..."
 alias open="xdg-open"
 alias pip="pip --require-virtualenv"

@@ -22,7 +22,9 @@ GOBIN="$GOPATH/bin"
 PATH="$GOBIN:$PATH"
 
 ## Rust
-. "$HOME/.cargo/env"
+if [ -f "$HOME/.cargo.env" ]; then
+    . "$HOME/.cargo/env"
+fi
 
 # Tools
 

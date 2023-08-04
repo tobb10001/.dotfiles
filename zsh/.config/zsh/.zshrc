@@ -43,6 +43,11 @@ if [ -f "$LOCAL_CONFIG" ]; then
     source $LOCAL_CONFIG
 fi
 
-# Init starship
+# Init stuff
 eval "$(aactivator init)"
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+nvm use stable --silent
+
 eval "$(starship init zsh)"

@@ -38,7 +38,7 @@ bindkey '^[[B' down-line-or-history
 bindkey '^xe' edit-command-line
 
 # Local config
-LOCAL_CONFIG=$XDG_CONFIG_HOME/zsh/local.zsh
+LOCAL_CONFIG=$XDG_CONFIG_HOME/zsh/zshrc.local
 if [ -f "$LOCAL_CONFIG" ]; then
     source $LOCAL_CONFIG
 fi

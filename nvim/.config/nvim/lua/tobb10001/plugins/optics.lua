@@ -52,5 +52,12 @@ return {
                 lualine_c = { { 'filename', path = 1 } },
             }
         },
-    }
+    },
+    -- Tabline
+    {
+        'akinsho/bufferline.nvim',
+        version = "*",
+        dependencies = 'nvim-tree/nvim-web-devicons',
+        config = true,
+    },
 }

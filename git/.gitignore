@@ -2,3 +2,4 @@
 .deactivate.sh
 .dotfiles
 .git/
+.luarc.json

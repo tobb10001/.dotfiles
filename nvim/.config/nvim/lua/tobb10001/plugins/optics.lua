@@ -4,7 +4,23 @@ return {
         'folke/tokyonight.nvim',
         lazy = false,
         priority = 1000,
-        opts = {},
+        opts = {
+            transparent = false,
+            on_highlights = function (hl, c)
+                hl.LineNr = {
+                    fg = "#ffffff",
+                }
+                hl.LineNrAbove = {
+                    fg = "#cccccc"
+                }
+                hl.LineNrBelow = {
+                    fg = "#cccccc"
+                }
+                hl.Comment = {
+                    fg = "#aaaaaa"
+                }
+            end
+        },
         init = function()
             vim.cmd(':colorscheme tokyonight')
         end,

@@ -28,3 +28,7 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous dia
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+
+-- Quickfix list
+vim.keymap.set('n', '[c', function() vim.cmd(":cprev") end, { desc = "Previos quickfix item." })
+vim.keymap.set('n', ']c', function() vim.cmd(":cnext") end, { desc = "Next quickfix item." })

@@ -19,6 +19,9 @@ return {
                 hl.Comment = {
                     fg = "#aaaaaa"
                 }
+                hl.DiagnosticUnnecessary = {
+                    fg = "#777777"
+                }
             end
         },
         init = function()

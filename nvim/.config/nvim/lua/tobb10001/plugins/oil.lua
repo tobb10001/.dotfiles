@@ -1,5 +1,5 @@
 return {
-	{
+    {
         'stevearc/oil.nvim',
         opts = {
             view_options = {
@@ -9,7 +9,7 @@ return {
         keys = {
             {
                 "-",
-                function ()
+                function()
                     return require("oil").open()
                 end,
                 mode = 'n',
@@ -17,5 +17,5 @@ return {
             },
         },
         dependencies = { 'nvim-tree/nvim-web-devicons' },
-	}
+    }
 }

@@ -47,7 +47,13 @@ fi
 eval "$(aactivator init)"
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-nvm use stable --silent
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+    . "$NVM_DIR/nvm.sh" # This loads nvm
+    nvm use stable --silent
+fi
+
+if [ ! -z "$TMUX_PANE" ]; then
+    echo "\$TMUX_PANE: $TMUX_PANE"
+fi
 
 eval "$(starship init zsh)"

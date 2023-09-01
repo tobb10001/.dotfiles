@@ -17,8 +17,10 @@ return {
 				},
 				disabledRules = {
 					["en-GB"] = {
-						"ELLIPSIS",
+						"ARROWS",
 						"DASH_RULE",
+						"ELLIPSIS",
+						"UNIT_SPACE",
 					},
 				},
 				language = "en-GB",

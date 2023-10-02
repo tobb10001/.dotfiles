@@ -6,7 +6,7 @@ return {
         priority = 1000,
         opts = {
             transparent = false,
-            on_highlights = function (hl, c)
+            on_highlights = function(hl, c)
                 hl.LineNr = {
                     fg = "#ffffff",
                 }
@@ -52,9 +52,9 @@ return {
     },
     {
         'lukas-reineke/indent-blankline.nvim',
+        main = 'ibl',
         opts = {
-            char = '┊',
-            show_trailing_blankline_indent = false,
+            indent = { char = "┊" },
         },
     },
     -- Lualine

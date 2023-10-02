@@ -20,8 +20,8 @@
 [init]
 	defaultBranch = main
 [core]
-	excludesfile = ~/.gitignore
-	attributesFile = ~/.gitattributes
+	excludesfile = ~/.config/git/ignore
+	attributesFile = ~/.config/git/attributes
 [diff "jupyternotebook"]
 	command = git-nbdiffdriver diff
 [merge "jupyternotebook"]
@@ -34,11 +34,6 @@
 	keepBackup = false
 [mergetool "vimdiff"]
 	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
-
-[include]
-	path = ~/.gitconfig.local
-[includeIf "gitdir:~/Documents/hs/**"]
-	path = ~/.gitconfig-hs
 [push]
 	autoSetupRemote = true
 [fetch]

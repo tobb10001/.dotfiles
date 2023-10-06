@@ -38,3 +38,6 @@
 	autoSetupRemote = true
 [fetch]
 	prune = true
+
+[include]
+	path = ~/.config/git/config.local

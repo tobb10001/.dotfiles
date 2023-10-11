@@ -1,5 +1,6 @@
 .activate.sh
 .deactivate.sh
+.envrc
 .dotfiles
 .git/
 .luarc.json

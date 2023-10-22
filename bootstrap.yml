@@ -25,3 +25,25 @@
     - name: Stow
       ansible.builtin.include_tasks:
         file: ansible/stow.yml
+
+    - name: Install JetBrains Mono NerdFont
+      block:
+        - name: Create JetBrains Mono target directory.
+          become: true
+          ansible.builtin.file:
+            path: /usr/share/fonts/JetBrainsMonoNerd/
+            state: directory
+            mode: '0755'
+        - name: Download JetBrains Mono NerdFont
+          become: true
+          ansible.builtin.unarchive:
+            src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip
+            dest: /usr/share/fonts/JetBrainsMonoNerd/
+            exclude:
+              - OFL.txt
+              - readme.md
+            remote_src: true
+            creates: /usr/share/fonts/JetBrainsMonoNerd/JetBrainsMonoNerdFont-Regular.ttf
+        - name: Update fonts cache
+          become: true
+          ansible.builtin.command: fc-cache --force --verbose

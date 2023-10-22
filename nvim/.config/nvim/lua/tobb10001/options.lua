@@ -44,3 +44,6 @@ vim.opt.colorcolumn = '88'
 
 -- Statusline
 vim.o.laststatus = 3
+
+-- Tab size
+vim.o.tabstop = 4

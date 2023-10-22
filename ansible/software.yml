@@ -5,6 +5,7 @@
     name:
       - bat
       - curl
+      - direnv
       - git
       - gnupg
       - python3-pip

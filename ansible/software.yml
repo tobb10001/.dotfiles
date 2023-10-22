@@ -103,3 +103,22 @@
           exec "$HOME/.local/share/lua-language-server/bin/lua-language-server" "$@"
         dest: ~/.local/bin/lua-language-server
         mode: '0755'
+
+- name: Install golang
+  block:
+    - name: Install golang
+      ansible.builtin.include_role:
+        name: gantsign.golang
+      vars:
+        golang_version: '1.21.1'
+    - name: go binary symlink
+      become: true
+      ansible.builtin.file:
+        src: /opt/go/1.21.1/bin/go
+        dest: /usr/bin/go
+        state: link
+
+- name: Install glow
+  command: go install github.com/charmbracelet/glow@latest
+  args:
+    creates: ~/go/bin/glow

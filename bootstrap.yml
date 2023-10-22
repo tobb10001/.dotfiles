@@ -1,0 +1,27 @@
+# vim: ft=yaml.ansible
+- name: Bootstrap development environment
+  hosts: localhost
+
+  tasks:
+    - name: Create some directories.
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        mode: '0755'
+      loop:
+        - ~/.local/bin
+        - ~/.local/share
+
+    - name: Install software
+      ansible.builtin.include_tasks:
+        file: ansible/software.yml
+
+    - name: Update tldr cache
+      become: false
+      ansible.builtin.command: tldr --update
+      register: tldr_updated
+      changed_when: tldr_updated.rc != 0
+
+    - name: Stow
+      ansible.builtin.include_tasks:
+        file: ansible/stow.yml

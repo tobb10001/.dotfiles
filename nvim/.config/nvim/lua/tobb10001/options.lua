@@ -40,10 +40,17 @@ vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 
 -- ColorColumn
-vim.opt.colorcolumn = '88'
+vim.o.colorcolumn = '88'
 
 -- Statusline
 vim.o.laststatus = 3
 
 -- Tab size
 vim.o.tabstop = 4
+
+-- Folding
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+
+-- Wrapping
+vim.o.linebreak = true

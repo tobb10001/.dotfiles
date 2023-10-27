@@ -13,6 +13,7 @@ return {
 						"Neovim",
 						"delighters",
 						"dissatisfiers",
+						"Trivy",
 					},
 				},
 				disabledRules = {

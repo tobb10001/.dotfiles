@@ -6,11 +6,11 @@ if status is-interactive
     set -gx XDG_DATA_HOME "$HOME/.local/share"
     set -gx XDG_STATE_HOME "$HOME/.local/state"
 
-    if wsl()
+    if wsl
         alias clip "clip.exe"
     else
         alias clip "xclip -selection clipboard"
-    fi
+    end
     alias ls "ls --color=auto"
     alias lslsls "echo Yeah, I don\'t know either..."
     alias open "xdg-open"
@@ -18,10 +18,10 @@ if status is-interactive
     alias view "nvim -R"
     alias watch "watch --color"
 
-    set $LOCAL_CONFIG $XDG_CONFIG_HOME/fish/local.fish
+    set LOCAL_CONFIG $XDG_CONFIG_HOME/fish/local.fish
     if test -f $LOCAL_CONFIG
         source $LOCAL_CONFIG
-    fi
+    end
 
     direnv hook fish | source
     starship init fish | source

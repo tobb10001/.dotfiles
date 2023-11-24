@@ -1,5 +1,6 @@
 if status is-interactive
 
+    set -gx EDITOR (which nvim)
     set -gx PATH ~/.local/bin $PATH
     set -gx XDG_CACHE_HOME "$HOME/.cache"
     set -gx XDG_CONFIG_HOME "$HOME/.config"

@@ -5,8 +5,10 @@ local function init()
     local lspconfig = require('lspconfig')
 
     lspconfig.ansiblels.setup({})
-    lspconfig.pyright.setup({})
     lspconfig.lua_ls.setup({})
+    lspconfig.pyright.setup({})
+    lspconfig.r_language_server.setup({})
+    lspconfig.tsserver.setup({})
 
     vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('UserLspConfig', {}),

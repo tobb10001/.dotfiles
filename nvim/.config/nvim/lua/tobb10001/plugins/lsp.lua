@@ -5,6 +5,7 @@ local function init()
     local lspconfig = require('lspconfig')
 
     lspconfig.ansiblels.setup({})
+    lspconfig.gopls.setup({})
     lspconfig.lua_ls.setup({})
     lspconfig.pyright.setup({})
     lspconfig.r_language_server.setup({})

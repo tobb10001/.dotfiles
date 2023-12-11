@@ -72,11 +72,8 @@ return {
             }
         },
     },
-    -- Tabline
     {
-        'akinsho/bufferline.nvim',
-        version = "*",
-        dependencies = 'nvim-tree/nvim-web-devicons',
-        config = true,
-    },
+        'mawkler/modicator.nvim',
+        opts = {},
+    }
 }

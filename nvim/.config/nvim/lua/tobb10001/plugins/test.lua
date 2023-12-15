@@ -5,6 +5,7 @@ return {
         "antoinemadec/FixCursorHold.nvim",
 
         "nvim-neotest/neotest-go",
+        "nvim-neotest/neotest-python",
     },
     config = function()
         local neotest_ns = vim.api.nvim_create_namespace("neotest")
@@ -18,6 +19,7 @@ return {
         require("neotest").setup({
             adapters = {
                 require("neotest-go"),
+                require("neotest-python"),
             },
         })
     end,

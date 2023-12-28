@@ -1,4 +1,5 @@
-nvim/.config/nvim/plugin
+kitty/.config/kitty/background
 lazy-lock.json
-/zsh/.config/zsh/.zcompdump
 *local*
+nvim/.config/nvim/plugin
+/zsh/.config/zsh/.zcompdump

@@ -32,12 +32,11 @@ return {
     {
         'j-hui/fidget.nvim',
         opts = {
-            text = {
-                spinner = "moon", -- animation shown when tasks are ongoing
-            },
-            fmt = {
-                leftpad = false, -- right-justify text in fidget box
-            },
+            progress = {
+                display = {
+                    progress_icon = { pattern = "moon" }
+                },
+            }
         },
     },
     -- Gitsigns
@@ -75,5 +74,9 @@ return {
     {
         'mawkler/modicator.nvim',
         opts = {},
-    }
+    },
+    {
+        'shortcuts/no-neck-pain.nvim',
+        version = "*",
+    },
 }

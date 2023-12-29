@@ -6,3 +6,4 @@
 .luarc.json
 *:Zone.Identifier
 /wt-*
+shell.nix

@@ -5,8 +5,12 @@ local function init()
     local lspconfig = require('lspconfig')
 
     lspconfig.ansiblels.setup({})
+    lspconfig.dockerls.setup({})
     lspconfig.gopls.setup({})
-    lspconfig.lua_ls.setup({})
+    lspconfig.ltex.setup({})
+    lspconfig.lua_ls.setup({
+        cmd = { "lua-lsp" },
+    })
     lspconfig.pyright.setup({})
     lspconfig.r_language_server.setup({})
     lspconfig.tsserver.setup({})
@@ -21,8 +25,12 @@ local function init()
 
                 vim.keymap.set('n', keys, func, { buffer = ev.buf, desc = desc })
             end
+            client = vim.lsp.get_client_by_id(ev.data.client_id)
+
             nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-            nmap('<leader>f', vim.lsp.buf.format, '[F]ormat current buffer')
+            if client.supports_method("textDocument/formatting") then
+                nmap('<leader>f', vim.lsp.buf.format, '[F]ormat current buffer with LSP')
+            end
             nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame symbol')
             nmap('K', vim.lsp.buf.hover, 'Hover documentation')
             nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature help')

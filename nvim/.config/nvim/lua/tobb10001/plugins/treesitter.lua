@@ -16,4 +16,5 @@ return {
         'nvim-treesitter/playground',
         build = ':TSInstall query',
     },
+    tag = "v0.9.1"
 }

@@ -36,12 +36,20 @@ local keys = {
         desc = '[S]earch [D]iagnostics',
     },
     {
-        'sf',
+        'sa',
         function()
             return require('telescope.builtin').find_files({ hidden = true })
         end,
         mode = 'n',
-        desc = '[S]earch [D]iagnostics',
+        desc = '[S]earch [A]ll files',
+    },
+    {
+        'sf',
+        function()
+            return require('telescope.builtin').git_files()
+        end,
+        mode = 'n',
+        desc = '[S]earch [F]iles',
     },
     {
         'sg',
@@ -78,4 +86,5 @@ return {
             build = 'make'
         }
     },
+    tag = "0.1.5",
 }

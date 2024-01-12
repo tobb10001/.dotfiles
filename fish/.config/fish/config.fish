@@ -54,6 +54,10 @@ if status is-interactive
         bind '$' bind_dollar
     end
 
+    set AUTOJUMP_INIT /usr/share/autojump/autojump.fish
+    if test -f $AUTOJUMP_INIT
+        source $AUTOJUMP_INIT
+    end
 
     direnv hook fish | source
     starship init fish | source

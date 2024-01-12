@@ -55,3 +55,6 @@ vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- Wrapping
 vim.o.linebreak = true
+
+-- Python environment
+vim.g.python3_host_prog = "~/.local/share/nvim/python_venv/bin/python"

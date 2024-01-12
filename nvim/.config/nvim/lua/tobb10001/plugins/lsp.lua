@@ -14,6 +14,16 @@ local function init()
     lspconfig.pyright.setup({})
     lspconfig.r_language_server.setup({})
     lspconfig.tsserver.setup({})
+    lspconfig.yamlls.setup({
+        yaml = {
+            schemaStore = {
+                enable = true
+            },
+            schemas = {
+                ["https://gitlab.com/gitlab-org/gitlab/-/blob/master/app/assets/javascripts/editor/schema/ci.json"] = "/**/.gitlab-ci.yml"
+            },
+        }
+    })
 
     vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('UserLspConfig', {}),

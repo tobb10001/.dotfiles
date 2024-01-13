@@ -6,7 +6,9 @@ local function init()
 
     lspconfig.ansiblels.setup({})
     lspconfig.dockerls.setup({})
-    lspconfig.gopls.setup({})
+    lspconfig.gopls.setup({
+        cmd = require'lspcontainers'.command('gopls'),
+    })
     lspconfig.ltex.setup({})
     lspconfig.lua_ls.setup({
         cmd = { "lua-lsp" },
@@ -67,5 +69,9 @@ return {
     {
         'simrat39/symbols-outline.nvim',
         config = true,
-    }
+    },
+    'lspcontainers/lspcontainers.nvim',
+    {
+        'klen/nvim-config-local',
+    },
 }

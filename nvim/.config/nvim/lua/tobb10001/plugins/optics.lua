@@ -53,8 +53,9 @@ return {
         'lukas-reineke/indent-blankline.nvim',
         main = 'ibl',
         opts = {
-            indent = { char = "┊" },
+            -- indent = { char = "┊" },
         },
+	version = "v3.5.0",
     },
     -- Lualine
     {

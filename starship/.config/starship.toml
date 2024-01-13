@@ -26,6 +26,12 @@ disabled = false
 [memory_usage]
 disabled = false
 
+[nix_shell]
+format = 'via [$symbol$state( \($name\))]($style) '
+impure_msg = "🪨"
+pure_msg = "💎"
+symbol = "❄️ "
+
 [status]
 disabled = false
 format = '[$symbol $status]($style) '

@@ -10,16 +10,14 @@ local function init()
         cmd = require('lspcontainers').command('gopls'),
     })
     lspconfig.ltex.setup({})
-    lspconfig.lua_ls.setup({
-        cmd = require('lspcontainers').command('lua_ls'),
-    })
+    lspconfig.lua_ls.setup({})
     lspconfig.pyright.setup({})
     lspconfig.r_language_server.setup({})
     lspconfig.tsserver.setup({
-        cmd = {"tsserver", "--stdio"},
+        cmd = { "tsserver", "--stdio" },
     })
     lspconfig.yamlls.setup({
-        filetypes = {"yaml", "gitlab-ci.yaml", "yaml.dockerfile"},
+        filetypes = { "yaml", "gitlab-ci.yaml", "yaml.dockerfile" },
         yaml = {
             schemaStore = {
                 enable = true
@@ -40,7 +38,7 @@ local function init()
 
                 vim.keymap.set('n', keys, func, { buffer = ev.buf, desc = desc })
             end
-            client = vim.lsp.get_client_by_id(ev.data.client_id)
+            local client = vim.lsp.get_client_by_id(ev.data.client_id)
 
             nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
             if client.supports_method("textDocument/formatting") then
@@ -76,7 +74,7 @@ return {
     'lspcontainers/lspcontainers.nvim',
     {
         'klen/nvim-config-local',
-        init = function() 
+        init = function()
             require('config-local').setup({
                 config_files = { ".nvim.lua" },
                 commands_create = true,

@@ -48,10 +48,13 @@ vim.o.laststatus = 3
 
 -- Tab size
 vim.o.tabstop = 4
+vim.o.shiftwidth = 4
 
 -- Folding
 vim.o.foldmethod = "expr"
 vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+vim.o.foldenable = false
+vim.o.foldminlines = 5
 
 -- Wrapping
 vim.o.linebreak = true

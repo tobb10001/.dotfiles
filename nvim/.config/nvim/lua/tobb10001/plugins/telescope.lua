@@ -46,7 +46,7 @@ local keys = {
     {
         'sf',
         function()
-            return require('telescope.builtin').git_files()
+            return require('telescope.builtin').git_files({ hidden = True })
         end,
         mode = 'n',
         desc = '[S]earch [F]iles',
@@ -54,7 +54,7 @@ local keys = {
     {
         'sg',
         function()
-            return require('telescope.builtin').live_grep()
+            return require('telescope.builtin').live_grep({ additional_args = { "-." } })
         end,
         mode = 'n',
         desc = '[S]earch by [G]rep',

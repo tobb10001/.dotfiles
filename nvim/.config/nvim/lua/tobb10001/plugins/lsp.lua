@@ -7,16 +7,19 @@ local function init()
     lspconfig.ansiblels.setup({})
     lspconfig.dockerls.setup({})
     lspconfig.gopls.setup({
-        cmd = require'lspcontainers'.command('gopls'),
+        cmd = require('lspcontainers').command('gopls'),
     })
     lspconfig.ltex.setup({})
     lspconfig.lua_ls.setup({
-        cmd = { "lua-lsp" },
+        cmd = require('lspcontainers').command('lua_ls'),
     })
     lspconfig.pyright.setup({})
     lspconfig.r_language_server.setup({})
-    lspconfig.tsserver.setup({})
+    lspconfig.tsserver.setup({
+        cmd = {"tsserver", "--stdio"},
+    })
     lspconfig.yamlls.setup({
+        filetypes = {"yaml", "gitlab-ci.yaml", "yaml.dockerfile"},
         yaml = {
             schemaStore = {
                 enable = true
@@ -73,5 +76,11 @@ return {
     'lspcontainers/lspcontainers.nvim',
     {
         'klen/nvim-config-local',
+        init = function() 
+            require('config-local').setup({
+                config_files = { ".nvim.lua" },
+                commands_create = true,
+            })
+        end,
     },
 }

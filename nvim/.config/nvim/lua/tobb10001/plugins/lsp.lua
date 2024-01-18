@@ -17,7 +17,7 @@ local function init()
         cmd = { "tsserver", "--stdio" },
     })
     lspconfig.yamlls.setup({
-        filetypes = { "yaml", "gitlab-ci.yaml", "yaml.dockerfile" },
+        filetypes = { "yaml", "yaml.gitlab-ci", "yaml.dockerfile" },
         yaml = {
             schemaStore = {
                 enable = true

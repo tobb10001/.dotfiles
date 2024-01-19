@@ -11,6 +11,7 @@ return {
                 indent = { enable = true },
                 ensure_installed = {
                     "bash",
+                    "dockerfile",
                     "fish",
                     "go",
                     "html",

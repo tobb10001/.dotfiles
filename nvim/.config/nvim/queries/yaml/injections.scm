@@ -23,12 +23,9 @@
   key: (flow_node
 	 (plain_scalar (string_scalar) @variables_key))
   value: (block_node
-	   (block_sequence
-	     (block_sequence_item
-	       (block_node
-		 (block_mapping
-		   (block_mapping_pair
-		     value: (_) @injection.content)))))))
+	   (block_mapping
+	     (block_mapping_pair
+	       value: (_) @injection.content))))
   (#eq? @variables_key "variables")
   (#set! injection.language "bash")
   (#set! injection.include-children)

@@ -109,8 +109,9 @@ return {
         'nvim-treesitter/nvim-treesitter-context',
         init = function()
             vim.keymap.set("n", "gC", function()
-                require('treesitter.context').go_to_context(vim.v.count1)
+                require('treesitter-context').go_to_context(vim.v.count1)
             end, { silent = true, desc = "[G]oto [C]ontext" })
         end
     },
+    'IndianBoy42/tree-sitter-just',
 }

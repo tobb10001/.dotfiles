@@ -10,7 +10,9 @@ local function init()
         cmd = require('lspcontainers').command('gopls'),
     })
     lspconfig.ltex.setup({})
-    lspconfig.lua_ls.setup({})
+    lspconfig.lua_ls.setup({
+        cmd = {"lua-lsp"},
+    })
     lspconfig.pyright.setup({})
     lspconfig.r_language_server.setup({})
     lspconfig.tsserver.setup({

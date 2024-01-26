@@ -10,6 +10,13 @@ return {
             },
             ["core.concealer"] = {},
             ["core.defaults"] = {},
+            ["core.dirman"] = {
+                config  = {
+                    workspaces = {
+                        meetings = "~/notes/meetings"
+                    },
+                },
+            },
             ["core.export"] = {},
             ["core.export.markdown"] = {},
         },

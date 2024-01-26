@@ -1,3 +1,4 @@
 return {
-    'mogelbrod/vim-jsonpath'
+    'mogelbrod/vim-jsonpath',
+    'gennaro-tedesco/nvim-jqx',
 }

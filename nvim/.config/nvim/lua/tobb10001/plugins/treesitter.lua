@@ -15,7 +15,9 @@ return {
                     "fish",
                     "go",
                     "html",
+                    "http",
                     "javascript",
+                    "jsdoc",
                     "json",
                     "lua",
                     "markdown",
@@ -59,7 +61,7 @@ return {
                             ["ab"] = "@block.outer",
                             ["ib"] = "@block.inner",
                             ["ic"] = "@call.inner",
-                            ["oc"] = "@call.outer",
+                            ["ac"] = "@call.outer",
                             ["ae"] = "@statement.outer", -- expression
                             ["af"] = "@function.outer",
                             ["if"] = "@function.inner",

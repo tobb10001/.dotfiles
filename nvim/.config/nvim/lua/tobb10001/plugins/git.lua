@@ -21,6 +21,22 @@ return {
     },
     'tpope/vim-fugitive',
     {
+        'linrongbin16/gitlinker.nvim',
+        config = function()
+            require('gitlinker').setup({
+                router = {
+                    -- false positives are never a problem here...
+                    browse = {
+                        ["^gitlab.*"] = require('gitlinker.routers').gitlab_browse
+                    },
+                    blame = {
+                        ["^gitlab.*"] = require('gitlinker.routers').gitlab_blame
+                    }
+                }
+            })
+        end,
+    },
+    {
         'harrisoncramer/gitlab.nvim',
         dependencies = {
             "MunifTanjim/nui.nvim",
@@ -29,7 +45,7 @@ return {
             "stevearc/dressing.nvim", -- Recommended but not required. Better UI for pickers.
             "nvim-tree/nvim-web-devicons" -- Recommended but not required. Icons in discussion tree.
         },
-        build = function () require("gitlab.server").builD(true) end,
+        build = function () require("gitlab.server").build(true) end,
         config = function() require("gitlab").setup() end,
     },
 }

@@ -1,10 +1,11 @@
+*:Zone.Identifier
 .activate.sh
 .deactivate.sh
-.envrc
 .dotfiles
+.envrc
 .git/
 .luarc.json
-*:Zone.Identifier
+.nvim.lua
 /wt-*
-shell.nix
 justfile
+shell.nix

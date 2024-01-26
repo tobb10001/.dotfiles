@@ -5,6 +5,7 @@ local function init()
     local lspconfig = require('lspconfig')
 
     lspconfig.ansiblels.setup({})
+    lspconfig.bashls.setup({})
     lspconfig.dockerls.setup({})
     lspconfig.gopls.setup({
         cmd = require('lspcontainers').command('gopls'),
@@ -16,7 +17,7 @@ local function init()
     lspconfig.pyright.setup({})
     lspconfig.r_language_server.setup({})
     lspconfig.tsserver.setup({
-        cmd = { "tsserver", "--stdio" },
+        -- cmd = { "tsserver", "--stdio" },
     })
     lspconfig.yamlls.setup({
         filetypes = { "yaml", "yaml.gitlab-ci", "yaml.dockerfile" },

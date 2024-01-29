@@ -3,12 +3,16 @@ local function init()
 
     local cmp = require('cmp')
     local luasnip = require('luasnip')
+    local lspkind = require('lspkind')
 
     cmp.setup({
-        snippet = {
-            expand = function(args)
-                require('luasnip').lsp_expand(args.body)
-            end,
+        formatting = {
+            format = lspkind.cmp_format({
+                mode = 'symbol',
+                maxwidth = 50,
+                ellipsis_char = '...',
+                show_labelDetails = true,
+            })
         },
         mapping = cmp.mapping.preset.insert({
             ['<C-d>'] = cmp.mapping.scroll_docs(-4),
@@ -47,14 +51,11 @@ local function init()
                 end
             end, { 'i', 's' }),
         }),
-        sources = require('cmp').config.sources({
-            { name = 'nvim_lsp' },
-            { name = 'luasnip' },
+        snippet = {
+            expand = function(args)
+                require('luasnip').lsp_expand(args.body)
+            end,
         },
-        {
-            { name = 'path' },
-            { name = 'buffer' },
-        }),
         sorting = {
             comparators = {
                 cmp.config.compare.offset,
@@ -67,6 +68,13 @@ local function init()
                 cmp.config.compare.order,
             },
         },
+        sources = require('cmp').config.sources({
+            { name = 'nvim_lsp' },
+            { name = 'luasnip' },
+            { name = 'path' },
+            { name = 'buffer' },
+            { name = 'treesitter' },
+        }),
     })
 end
 
@@ -80,11 +88,16 @@ return {
             'hrsh7th/cmp-path',
             {
                 'L3MON4D3/LuaSnip',
-                version = '1.*',
+                version = "v2.*",
                 build = 'make install_jsregexp',
+                dependencies = {
+                    'saadparwaizl/cmp_luasnip',
+                    'rafamadriz/friendly-snippets',
+                },
             },
             'saadparwaiz1/cmp_luasnip',
-            "lukas-reineke/cmp-under-comparator",
+            'lukas-reineke/cmp-under-comparator',
+            'ray-x/cmp-treesitter',
         }
     },
 }

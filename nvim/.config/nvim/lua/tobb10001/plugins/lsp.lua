@@ -15,6 +15,7 @@ local function init()
         cmd = {"lua-lsp"},
     })
     lspconfig.pyright.setup({})
+    lspconfig.qmlls.setup({})
     lspconfig.r_language_server.setup({})
     lspconfig.tsserver.setup({
         -- cmd = { "tsserver", "--stdio" },
@@ -26,7 +27,8 @@ local function init()
                 enable = true
             },
             schemas = {
-                ["http://gitlab.com/gitlab-org/gitlab/-/blob/master/app/assets/javascripts/editor/schema/ci.json"] = "/**/.gitlab-ci.yml"
+                ["http://gitlab.com/gitlab-org/gitlab/-/blob/master/app/assets/javascripts/editor/schema/ci.json"] = "/**/.gitlab-ci.yml",
+                ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "/**/docker-compose.ya?ml",
             },
         }
     })
@@ -67,6 +69,14 @@ return {
             {
                 'folke/neodev.nvim',
                 config = true,
+            },
+            {
+                "SmiteshP/nvim-navbuddy",
+                dependencies = {
+                    "SmiteshP/nvim-navic",
+                    "MunifTanjim/nui.nvim"
+                },
+                opts = { lsp = { auto_attach = true } }
             }
         },
     },
@@ -84,4 +94,12 @@ return {
             })
         end,
     },
+    'onsails/lspkind.nvim',
+    {
+        'kosayoda/nvim-lightbulb',
+        config = {
+            autocmd = { enabled = true },
+        },
+    },
+    'VidocqH/lsp-lens.nvim',
 }

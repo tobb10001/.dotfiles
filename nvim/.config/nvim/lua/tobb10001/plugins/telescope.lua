@@ -71,7 +71,6 @@ local keys = {
 
 return {
     'nvim-telescope/telescope.nvim',
-    version = '*',
     opts = {
         defaults = {
             mappings = {},
@@ -86,5 +85,4 @@ return {
             build = 'make'
         }
     },
-    tag = "0.1.5",
 }

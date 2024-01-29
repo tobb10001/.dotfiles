@@ -79,10 +79,6 @@ return {
     {
         'lukas-reineke/indent-blankline.nvim',
         main = 'ibl',
-        opts = {
-            -- indent = { char = "┊" },
-        },
-        version = "v3.5.0",
     },
     -- Lualine
     {
@@ -105,6 +101,5 @@ return {
     },
     {
         'shortcuts/no-neck-pain.nvim',
-        version = "*",
     },
 }

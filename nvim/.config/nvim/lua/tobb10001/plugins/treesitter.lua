@@ -40,7 +40,6 @@ return {
                 }
             })
         end,
-        tag = "*",
     },
     {
         'nvim-treesitter/playground',
@@ -71,7 +70,7 @@ return {
                             ["al"] = "@loop.outer",
                             ["as"] = "@class.outer",   -- struct
                             ["is"] = "@class.inner",
-                            ["it"] = "@comment.inner", -- text
+                            ["it"] = "@comment.inner", --  FIXME: text
                             ["at"] = "@comment.outer",
                         }
                     },

@@ -7,5 +7,7 @@
 .luarc.json
 .nvim.lua
 /wt-*
+Taskfile.yml
 justfile
+pyrightconfig.json
 shell.nix

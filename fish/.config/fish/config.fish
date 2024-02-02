@@ -15,7 +15,9 @@ if status is-interactive
     else
         alias clip "xclip -selection clipboard"
     end
-    alias go "grc go"
+    if command -v grc;
+        alias go "grc go"
+    end
     alias ls "ls --color=auto"
     alias lslsls "echo Yeah, I don\'t know either..."
     alias open "xdg-open"

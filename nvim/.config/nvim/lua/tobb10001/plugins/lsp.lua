@@ -15,11 +15,8 @@ local function init()
         cmd = {"lua-lsp"},
     })
     lspconfig.pyright.setup({})
-    lspconfig.qmlls.setup({})
     lspconfig.r_language_server.setup({})
-    lspconfig.tsserver.setup({
-        -- cmd = { "tsserver", "--stdio" },
-    })
+    lspconfig.tsserver.setup({})
     lspconfig.yamlls.setup({
         filetypes = { "yaml", "yaml.gitlab-ci", "yaml.dockerfile" },
         yaml = {

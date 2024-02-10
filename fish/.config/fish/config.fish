@@ -15,7 +15,7 @@ if status is-interactive
     else
         alias clip "xclip -selection clipboard"
     end
-    if command -v grc;
+    if command -v grc > /dev/null;
         alias go "grc go"
     end
     alias ls "ls --color=auto"
@@ -29,6 +29,10 @@ if status is-interactive
     if test -f $LOCAL_CONFIG
         source $LOCAL_CONFIG
     end
+    
+    # Keybinds #########################################################################
+
+    fish_vi_key_bindings
 
     # Enable !! and !$
     # https://superuser.com/a/944589
@@ -55,6 +59,13 @@ if status is-interactive
         bind ! bind_bang
         bind '$' bind_dollar
     end
+
+    # TODO: Get this stuff to work.
+    # bind \cK history_search_backward
+    # bind \cJ history_search_fowrard
+    # bind \cL accept_autosuggestion
+
+    # Init the stuff ###################################################################
 
     set AUTOJUMP_INIT /usr/share/autojump/autojump.fish
     if test -f $AUTOJUMP_INIT

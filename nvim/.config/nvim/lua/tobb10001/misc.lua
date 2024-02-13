@@ -28,4 +28,4 @@ function P(v)
 end
 
 -- Skeletons
-vim.cmd([[:auotcmd BufNewFile shell.nix 0r ~/.config/nvim/skeletons/shell.nix]])
+vim.cmd([[:autocmd BufNewFile shell.nix 0r ~/.config/nvim/skeletons/shell.nix]])

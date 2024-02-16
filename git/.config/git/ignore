@@ -1,5 +1,6 @@
 *:Zone.Identifier
 .activate.sh
+.coverage
 .deactivate.sh
 .dotfiles
 .envrc

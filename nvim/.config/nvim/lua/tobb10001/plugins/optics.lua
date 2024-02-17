@@ -64,12 +64,13 @@ return {
                 },
             }
         },
-        enabled = false,
+        enabled = false,  -- noice does that...
     },
     -- Gitsigns
     {
         'lewis6991/gitsigns.nvim',
         config = true,
+        event = { "BufReadPost", "BufNewFile" },
     },
     -- Transparent
     {
@@ -98,8 +99,6 @@ return {
     {
         'mawkler/modicator.nvim',
         opts = {},
-    },
-    {
-        'shortcuts/no-neck-pain.nvim',
+        event = { "BufReadPost", "BufNewFile" },
     },
 }

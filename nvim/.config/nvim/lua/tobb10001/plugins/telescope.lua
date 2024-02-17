@@ -1,4 +1,4 @@
-local function init()
+local function config()
     pcall(require('telescope').load_extension, 'fzf')
 end
 
@@ -76,7 +76,7 @@ return {
             mappings = {},
         },
     },
-    init = init,
+    config = config,
     keys = keys,
     dependencies = {
         'nvim-lua/plenary.nvim',

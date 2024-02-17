@@ -2,53 +2,50 @@ return {
     {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
-        init = function()
-            require("nvim-treesitter.configs").setup({
-                highlight = {
-                    enable = true,
-                    additional_vim_regex_highlighting = false,
+        main = "nvim-treesitter.configs",
+        opts = {
+            highlight = {
+                enable = true,
+                additional_vim_regex_highlighting = false,
+            },
+            indent = { enable = true },
+            ensure_installed = {
+                "bash",
+                "dockerfile",
+                "fish",
+                "go",
+                "html",
+                "http",
+                "javascript",
+                "jsdoc",
+                "json",
+                "lua",
+                "markdown",
+                "markdown_inline",
+                "python",
+                "query",
+                "typescript",
+                "yaml",
+            },
+            sync_install = false,
+            auto_install = true,
+            incremental_selection = {
+                enable = true,
+                keymaps = {
+                    init_selection = "vin",
+                    node_incremental = "ni",
+                    scope_incremental = false, -- I don't understand scope.
+                    node_decremental = "nd",
                 },
-                indent = { enable = true },
-                ensure_installed = {
-                    "bash",
-                    "dockerfile",
-                    "fish",
-                    "go",
-                    "html",
-                    "http",
-                    "javascript",
-                    "jsdoc",
-                    "json",
-                    "lua",
-                    "markdown",
-                    "markdown_inline",
-                    "python",
-                    "query",
-                    "typescript",
-                    "yaml",
-                },
-                sync_install = false,
-                auto_install = true,
-                incremental_selection = {
-                    enable = true,
-                    keymaps = {
-                        init_selection = "vin",
-                        node_incremental = "ni",
-                        scope_incremental = false, -- I don't understand scope.
-                        node_decremental = "nd",
-                    },
-                }
-            })
-        end,
-    },
-    {
-        'nvim-treesitter/playground',
-        build = ':TSInstall query',
+            }
+        },
+        event = "VeryLazy",
     },
     {
         'nvim-treesitter/nvim-treesitter-textobjects',
         dependencies = { 'nvim-treesitter/nvim-treesitter' },
-        init = function()
+        event = "VeryLazy",
+        config = function()
             require('nvim-treesitter.configs').setup({
                 textobjects = {
                     select = {
@@ -109,11 +106,11 @@ return {
     },
     {
         'nvim-treesitter/nvim-treesitter-context',
-        init = function()
-            vim.keymap.set("n", "gC", function()
+        event = "VeryLazy",
+        keys = {
+            { "gC", function()
                 require('treesitter-context').go_to_context(vim.v.count1)
-            end, { silent = true, desc = "[G]oto [C]ontext" })
-        end
+            end, desc = "[G]oto [C]ontext", silent = true },
+        },
     },
-    'IndianBoy42/tree-sitter-just',
 }

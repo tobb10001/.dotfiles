@@ -4,19 +4,23 @@ return {
         'rcarriga/nvim-dap-ui',
         'mfussenegger/nvim-dap-python',
     },
+    keys = {
+        { "<leader>ds", function() require("dap").continue() end, desc = '[D]ebug: [S]tart/Continue' },
+        { '<leader>di', function() require("dap").step_into() end, desc = '[D]ebug: [S]tep Into' },
+        { '<leader>dj', function() require("dap").step_over() end, desc = '[D]ebug: [S]tep Over' },
+        { '<leader>do', function() require("dap").step_out() end, desc = '[D]ebug: [S]tep Out' },
+        { '<leader>db', function() require("dap").toggle_breakpoint() end, desc = '[D]ebug: Toggle [B]reakpoint' },
+        {
+            '<leader>dB',
+            function()
+                requre("dap").set_breakpoint(vim.fn.input 'Breakpoint condition: ')
+            end,
+            desc = '[D]ebug: Set [B]reakpoint'
+        },
+    },
     config = function()
         local dap = require 'dap'
         local dapui = require 'dapui'
-
-        -- Basic debugging keymaps, feel free to change to your liking!
-        vim.keymap.set('n', '<leader>ds', dap.continue, { desc = '[D]ebug: [S]tart/Continue' })
-        vim.keymap.set('n', '<leader>di', dap.step_into, { desc = '[D]ebug: [S]tep Into' })
-        vim.keymap.set('n', '<leader>dj', dap.step_over, { desc = '[D]ebug: [S]tep Over' })
-        vim.keymap.set('n', '<leader>do', dap.step_out, { desc = '[D]ebug: [S]tep Out' })
-        vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = '[D]ebug: Toggle [B]reakpoint' })
-        vim.keymap.set('n', '<leader>dB', function()
-            dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-        end, { desc = '[D]ebug: Set [B]reakpoint' })
 
         -- Dap UI setup
         -- For more information, see |:help nvim-dap-ui|

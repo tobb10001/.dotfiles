@@ -25,5 +25,5 @@ return {
         'nvim-lua/plenary.nvim',
         'nvim-neorg/neorg-telescope',
     },
-    lazy = false,
+    event = { "BufReadPost *.norg", "BufNewFile *.norg" }
 }

@@ -1,23 +1,30 @@
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+local function config()
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-local function init()
     local lspconfig = require('lspconfig')
 
-    lspconfig.ansiblels.setup({})
-    lspconfig.bashls.setup({})
-    lspconfig.dockerls.setup({})
-    lspconfig.gopls.setup({
-        cmd = require('lspcontainers').command('gopls'),
-    })
-    lspconfig.ltex.setup({})
-    lspconfig.lua_ls.setup({
+    local general_options = { capabilities = capabilities }
+
+    local mkoptions = function(specific_options) 
+        local result = {}
+        for k,v in pairs(general_options) do result[k] = v end
+        for k,v in pairs(specific_options) do result[k] = v end
+        return result
+    end
+
+    lspconfig.ansiblels.setup(general_options)
+    lspconfig.bashls.setup(general_options)
+    lspconfig.dockerls.setup(general_options)
+    lspconfig.gopls.setup(general_options)
+    lspconfig.ltex.setup(general_options)
+    lspconfig.lua_ls.setup(mkoptions({
         cmd = {"lua-lsp"},
-    })
-    lspconfig.pyright.setup({})
-    lspconfig.r_language_server.setup({})
-    lspconfig.tsserver.setup({})
-    lspconfig.yamlls.setup({
+    }))
+    lspconfig.pyright.setup(general_options)
+    lspconfig.r_language_server.setup(general_options)
+    lspconfig.tsserver.setup(general_options)
+    lspconfig.yamlls.setup(mkoptions({
         filetypes = { "yaml", "yaml.gitlab-ci", "yaml.dockerfile" },
         yaml = {
             schemaStore = {
@@ -28,7 +35,7 @@ local function init()
                 ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "/**/docker-compose.ya?ml",
             },
         }
-    })
+    }))
 
     vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('UserLspConfig', {}),
@@ -61,7 +68,7 @@ end
 return {
     {
         'neovim/nvim-lspconfig',
-        init = init,
+        config = config,
         dependencies = {
             {
                 'folke/neodev.nvim',
@@ -74,29 +81,25 @@ return {
                     "MunifTanjim/nui.nvim"
                 },
                 opts = { lsp = { auto_attach = true } }
-            }
+            },
+            {
+                'simrat39/symbols-outline.nvim',
+                config = true,
+                event = { "BufReadPost", "BufNewFile" },
+            },
+            'onsails/lspkind.nvim',
+            'VidocqH/lsp-lens.nvim',
+            {
+                'klen/nvim-config-local',
+                lazy = false,
+                config = function()
+                    require('config-local').setup({
+                        config_files = { ".nvim.lua" },
+                        commands_create = true,
+                    })
+                end,
+            },
         },
+        event = { "BufReadPost", "BufNewFile" },
     },
-    {
-        'simrat39/symbols-outline.nvim',
-        config = true,
-    },
-    'lspcontainers/lspcontainers.nvim',
-    {
-        'klen/nvim-config-local',
-        init = function()
-            require('config-local').setup({
-                config_files = { ".nvim.lua" },
-                commands_create = true,
-            })
-        end,
-    },
-    'onsails/lspkind.nvim',
-    {
-        'kosayoda/nvim-lightbulb',
-        config = {
-            autocmd = { enabled = true },
-        },
-    },
-    'VidocqH/lsp-lens.nvim',
 }

@@ -1,4 +1,4 @@
-local function init()
+local function config()
     vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
     local cmp = require('cmp')
@@ -82,7 +82,7 @@ end
 return {
     {
         'hrsh7th/nvim-cmp',
-        init = init,
+        config = config,
         dependencies = {
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-buffer',
@@ -92,13 +92,15 @@ return {
                 version = "v2.*",
                 build = 'make install_jsregexp',
                 dependencies = {
-                    'saadparwaizl/cmp_luasnip',
+                    'saadparwaiz1/cmp_luasnip',
                     'rafamadriz/friendly-snippets',
                 },
             },
             'saadparwaiz1/cmp_luasnip',
             'lukas-reineke/cmp-under-comparator',
             'ray-x/cmp-treesitter',
-        }
+            'onsails/lspkind.nvim',
+        },
+        event = { "BufReadPost", "BufNewFile" },
     },
 }

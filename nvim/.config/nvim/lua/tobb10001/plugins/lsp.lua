@@ -22,9 +22,7 @@ local function config()
 	lspconfig.dockerls.setup(general_options)
 	lspconfig.gopls.setup(general_options)
 	lspconfig.ltex.setup(general_options)
-	lspconfig.lua_ls.setup(mkoptions({
-		cmd = { "lua-lsp" },
-	}))
+	lspconfig.lua_ls.setup(general_options)
 	lspconfig.pyright.setup(general_options)
 	lspconfig.r_language_server.setup(general_options)
 	lspconfig.tsserver.setup(general_options)
@@ -76,7 +74,7 @@ return {
 		dependencies = {
 			{
 				"folke/neodev.nvim",
-				config = true,
+				opts = {},
 			},
 			{
 				"SmiteshP/nvim-navbuddy",

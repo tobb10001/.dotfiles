@@ -21,8 +21,12 @@ function format()
 end
 
 function format_write()
-	format()
-	vim.cmd(":w")
+	if filetype()[vim.bo.filetype] ~= nil then
+		vim.cmd(":FormatWrite")
+	else
+		vim.lsp.buf.format()
+		vim.cmd(":w")
+	end
 end
 
 return {
@@ -33,7 +37,7 @@ return {
 			filetype = filetype(),
 		})
 		vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-			callback = format_write(),
+			callback = format_write,
 		})
 	end,
 	keys = {

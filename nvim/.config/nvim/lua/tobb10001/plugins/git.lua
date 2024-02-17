@@ -64,6 +64,10 @@ return {
 		end,
 		event = { "BufReadPost", "BufNewFile" },
 	},
+	{
+		"sindrets/diffview.nvim",
+		event = { "VeryLazy" },
+	},
 	-- {
 	--     'harrisoncramer/gitlab.nvim',
 	--     dependencies = {

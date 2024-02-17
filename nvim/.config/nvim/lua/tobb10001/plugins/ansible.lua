@@ -1,4 +1,4 @@
 return {
-    'pearofducks/ansible-vim',
-    enabled = false
+	"pearofducks/ansible-vim",
+	enabled = false,
 }

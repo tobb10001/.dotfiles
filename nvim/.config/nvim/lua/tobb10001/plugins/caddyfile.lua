@@ -1,4 +1,4 @@
 return {
-    'isobit/vim-caddyfile',
-    event = { "BufReadPost *Caddyfile*", "BufNewFile *Caddyfile*" }
+	"isobit/vim-caddyfile",
+	event = { "BufReadPost *Caddyfile*", "BufNewFile *Caddyfile*" },
 }

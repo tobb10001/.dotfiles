@@ -15,30 +15,31 @@ return {
 		{
 			"<C-e>",
 			function()
-				require("harpoon").ui:toggle_quick_menu(harpoon:list())
+				local harpoon = require("harpoon")
+				harpoon.ui:toggle_quick_menu(harpoon:list())
 			end,
 		},
 
 		{
-			"<C-u>",
+			"<C-h>",
 			function()
 				require("harpoon"):list():select(1)
 			end,
 		},
 		{
-			"<C-i>",
+			"<C-j>",
 			function()
 				require("harpoon"):list():select(2)
 			end,
 		},
 		{
-			"<C-o>",
+			"<C-k>",
 			function()
 				require("harpoon"):list():select(3)
 			end,
 		},
 		{
-			"<C-p>",
+			"<C-l>",
 			function()
 				require("harpoon"):list():select(4)
 			end,

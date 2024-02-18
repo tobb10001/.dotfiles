@@ -12,7 +12,10 @@ local filetype = function()
 	}
 end
 
-function format()
+local format = function()
+	if vim.fn.expand("%"):find("oil://", 1, true) == 1 then
+		return
+	end
 	if filetype()[vim.bo.filetype] ~= nil then
 		vim.cmd(":Format")
 	else
@@ -20,7 +23,10 @@ function format()
 	end
 end
 
-function format_write()
+local format_write = function()
+	if vim.fn.expand("%"):find("oil://", 1, true) == 1 then
+		return
+	end
 	if filetype()[vim.bo.filetype] ~= nil then
 		vim.cmd(":FormatWrite")
 	else

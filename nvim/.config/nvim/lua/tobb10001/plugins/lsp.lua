@@ -4,29 +4,34 @@ local function config()
 
 	local lspconfig = require("lspconfig")
 
-	local general_options = { capabilities = capabilities }
+	lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_config, {
+		capabilities = capabilities,
+	})
 
-	local mkoptions = function(specific_options)
-		local result = {}
-		for k, v in pairs(general_options) do
-			result[k] = v
-		end
-		for k, v in pairs(specific_options) do
-			result[k] = v
-		end
-		return result
-	end
-
-	lspconfig.ansiblels.setup(general_options)
-	lspconfig.bashls.setup(general_options)
-	lspconfig.dockerls.setup(general_options)
-	lspconfig.gopls.setup(general_options)
-	lspconfig.ltex.setup(general_options)
-	lspconfig.lua_ls.setup(general_options)
-	lspconfig.pyright.setup(general_options)
-	lspconfig.r_language_server.setup(general_options)
-	lspconfig.tsserver.setup(general_options)
-	lspconfig.yamlls.setup(mkoptions({
+	-- Ansible
+	lspconfig.ansiblels.setup({})
+	-- Bash
+	lspconfig.bashls.setup({})
+	-- Docker
+	lspconfig.dockerls.setup({})
+	-- Go
+	lspconfig.gopls.setup({})
+	-- LaTeX, Markdown, ...
+	lspconfig.ltex.setup({})
+	-- Lua
+	lspconfig.lua_ls.setup({})
+	-- Nix
+	lspconfig.nil_ls.setup({})
+	lspconfig.nixd.setup({})
+	-- Python
+	lspconfig.pyright.setup({})
+	lspconfig.pylsp.setup({})
+	-- R
+	lspconfig.r_language_server.setup({})
+	-- TypeScript, JavaScript
+	lspconfig.tsserver.setup({})
+	-- Yaml
+	lspconfig.yamlls.setup({
 		filetypes = { "yaml", "yaml.gitlab-ci", "yaml.dockerfile" },
 		yaml = {
 			schemaStore = {
@@ -37,7 +42,7 @@ local function config()
 				["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "/**/docker-compose.ya?ml",
 			},
 		},
-	}))
+	})
 
 	vim.api.nvim_create_autocmd("LspAttach", {
 		group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -52,12 +57,13 @@ local function config()
 			local client = vim.lsp.get_client_by_id(ev.data.client_id)
 
 			nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+			vim.keymap.set("v", "<leader>ca", vim.lsp.buf.code_action, { buffer = ev.buf, desc = "[C]ode [A]ction" })
 			if client.supports_method("textDocument/formatting") then
 				nmap("<leader>f", vim.lsp.buf.format, "[F]ormat current buffer with LSP")
 			end
 			nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame symbol")
 			nmap("K", vim.lsp.buf.hover, "Hover documentation")
-			nmap("<C-k>", vim.lsp.buf.signature_help, "Signature help")
+			-- nmap("<C-k>", vim.lsp.buf.signature_help, "Signature help")
 			nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
 			nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 			nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
@@ -98,6 +104,14 @@ return {
 					require("config-local").setup({
 						config_files = { ".nvim.lua" },
 						commands_create = true,
+					})
+				end,
+			},
+			{
+				"kosayoda/nvim-lightbulb",
+				config = function()
+					require("nvim-lightbulb").setup({
+						autocmd = { enabled = true },
 					})
 				end,
 			},

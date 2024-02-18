@@ -112,5 +112,10 @@ return {
 				},
 			})
 		end,
+		event = { "VeryLazy" },
+	},
+	{
+		"stevearc/dressing.nvim",
+		config = true,
 	},
 }

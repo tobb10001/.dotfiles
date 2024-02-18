@@ -17,7 +17,7 @@ local function config()
 		mapping = cmp.mapping.preset.insert({
 			["<C-d>"] = cmp.mapping.scroll_docs(-4),
 			["<C-u>"] = cmp.mapping.scroll_docs(4),
-			-- ['<space><space>'] = cmp.mapping.complete({}),
+			["<C-Space>"] = cmp.mapping.complete({}),
 			["<CR>"] = cmp.mapping.confirm({
 				behavior = cmp.ConfirmBehavior.Insert,
 				select = false,
@@ -75,6 +75,7 @@ local function config()
 			{ name = "path" },
 			{ name = "buffer" },
 			{ name = "treesitter" },
+			{ name = "dotenv" },
 		}),
 	})
 end
@@ -100,6 +101,7 @@ return {
 			"lukas-reineke/cmp-under-comparator",
 			"ray-x/cmp-treesitter",
 			"onsails/lspkind.nvim",
+			"SergioRibera/cmp-dotenv",
 		},
 		event = { "BufReadPost", "BufNewFile" },
 	},

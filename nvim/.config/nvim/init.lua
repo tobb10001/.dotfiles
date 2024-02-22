@@ -24,3 +24,5 @@ require("tobb10001.keymaps")
 
 -- Miscellaneous stuff.
 require("tobb10001.misc")
+require("tobb10001.skeletons")
+require("tobb10001.snippets")

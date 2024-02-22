@@ -50,6 +50,12 @@ local function config()
 					fallback()
 				end
 			end, { "i", "s" }),
+			["<C-n>"] = cmp.mapping(function(fallback)
+				require("luasnip").change_choice(1)
+			end, { "i", "s" }),
+			["<C-p>"] = cmp.mapping(function(fallback)
+				require("luasnip").change_choice(-1)
+			end, { "i", "s" }),
 		}),
 		preselect = cmp.PreselectMode.None,
 		snippet = {

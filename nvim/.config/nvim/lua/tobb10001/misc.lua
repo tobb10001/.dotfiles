@@ -20,6 +20,3 @@ function P(v)
 	print(vim.inspect(v))
 	return v
 end
-
--- Skeletons
-vim.cmd([[:autocmd BufNewFile shell.nix 0r ~/.config/nvim/skeletons/shell.nix]])

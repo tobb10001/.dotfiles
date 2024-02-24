@@ -1,4 +1,4 @@
-local function config()
+local function config(opts)
 	vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 	local cmp = require("cmp")
@@ -7,6 +7,7 @@ local function config()
 
 	cmp.setup({
 		formatting = {
+			expandable_indicator = true,
 			format = lspkind.cmp_format({
 				mode = "symbol_text",
 				maxwidth = 50,
@@ -24,14 +25,14 @@ local function config()
 			}),
 			["<C-j>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
-					cmp.select_next_item()
+					cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
 				else
 					fallback()
 				end
 			end, { "i", "s" }),
 			["<C-k>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
-					cmp.select_prev_item()
+					cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
 				else
 					fallback()
 				end
@@ -51,10 +52,18 @@ local function config()
 				end
 			end, { "i", "s" }),
 			["<C-n>"] = cmp.mapping(function(fallback)
-				require("luasnip").change_choice(1)
+				if luasnip.choice_active() then
+					luasnip.change_choice(1)
+				else
+					fallback()
+				end
 			end, { "i", "s" }),
 			["<C-p>"] = cmp.mapping(function(fallback)
-				require("luasnip").change_choice(-1)
+				if luasnip.choice_active() then
+					luasnip.change_choice(-1)
+				else
+					fallback()
+				end
 			end, { "i", "s" }),
 		}),
 		preselect = cmp.PreselectMode.None,
@@ -84,6 +93,22 @@ local function config()
 			{ name = "dotenv" },
 		}),
 	})
+	-- `/` cmdline setup.
+	cmp.setup.cmdline("/", {
+		mapping = cmp.mapping.preset.cmdline(),
+		sources = {
+			{ name = "buffer" },
+		},
+	})
+	-- `:` cmdline setup.
+	cmp.setup.cmdline(":", {
+		mapping = cmp.mapping.preset.cmdline(),
+		sources = cmp.config.sources({
+			{ name = "path" },
+		}, {
+			{ name = "cmdline" },
+		}),
+	})
 end
 
 return {
@@ -102,6 +127,25 @@ return {
 					"saadparwaiz1/cmp_luasnip",
 					"rafamadriz/friendly-snippets",
 				},
+				config = function(_, opts)
+					if opts then
+						require("luasnip").config.setup(opts)
+					end
+					for _, type in ipairs({ "vscode", "snipmate", "lua" }) do
+						require("luasnip.loaders.from_" .. type).lazy_load()
+					end
+					local comments = {
+						javascript = { "jsdoc" },
+						lua = { "luadoc" },
+						pytnon = { "pydoc" },
+						rust = { "rustdoc" },
+						sh = { "shelldoc" },
+						typescript = { "tsdoc" },
+					}
+					for ft, subject in pairs(comments) do
+						require("luasnip").filetype_extend(ft, subject)
+					end
+				end,
 			},
 			"saadparwaiz1/cmp_luasnip",
 			"lukas-reineke/cmp-under-comparator",

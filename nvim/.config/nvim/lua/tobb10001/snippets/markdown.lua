@@ -14,18 +14,34 @@ local t = ls.text_node
 
 -- VitePress --------------------------------------------------------------------------
 
-for _, type in ipairs({ "info", "tip", "warning", "danger", "details" }) do
-	ls.add_snippets("markdown", {
-		s(
-			"vp" .. type,
-			fmta([[
-::: ]] .. type .. [[
-
-	<body>
+-- for _, type in ipairs({ "info", "tip", "warning", "danger", "details" }) do
+-- 	ls.add_snippets("markdown", {
+-- 		s(
+-- 			"vp" .. type,
+-- 			fmta([[
+-- ::: ]] .. type .. [[
+--
+-- 	<body>
+-- :::
+-- ]], {
+-- 				body = i(1),
+-- 			})
+-- 		),
+-- 	})
+-- end
+ls.add_snippets("markdown", {
+	s(
+		"vpcontainer",
+		fmta(
+			[[
+::: <type>
+<body>
 :::
-]], {
-				body = i(1),
-			})
-		),
-	})
-end
+]],
+			{
+				type = c(1, { t("info"), t("tip"), t("warning"), t("danger"), t("details") }),
+				body = i(2),
+			}
+		)
+	),
+})

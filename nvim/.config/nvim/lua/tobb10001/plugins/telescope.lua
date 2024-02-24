@@ -1,5 +1,7 @@
 local function config()
 	pcall(require("telescope").load_extension, "fzf")
+
+	require("telescope").load_extension("luasnip")
 end
 
 local keys = {
@@ -46,7 +48,7 @@ local keys = {
 	{
 		"sf",
 		function()
-			return require("telescope.builtin").git_files({ hidden = True })
+			return require("telescope.builtin").git_files({ hidden = true })
 		end,
 		mode = "n",
 		desc = "[S]earch [F]iles",
@@ -67,6 +69,14 @@ local keys = {
 		mode = "n",
 		desc = "[S]earch [H]help tags",
 	},
+	{
+		"ss",
+		function()
+			vim.cmd(":Telescope luasnip")
+		end,
+		mode = "n",
+		desc = "[S]earch [s]nippets",
+	},
 }
 
 return {
@@ -78,11 +88,16 @@ return {
 	},
 	config = config,
 	keys = keys,
+	cmd = "Telescope",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
+		},
+		{
+			"benfowler/telescope-luasnip.nvim",
+			module = "telescope._extensions.luasnip",
 		},
 	},
 }

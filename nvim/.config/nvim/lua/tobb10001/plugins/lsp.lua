@@ -45,7 +45,6 @@ local function config()
 	})
 
 	vim.api.nvim_create_autocmd("LspAttach", {
-		group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 		callback = function(ev)
 			local nmap = function(keys, func, desc)
 				if desc then

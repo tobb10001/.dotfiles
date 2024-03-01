@@ -77,6 +77,14 @@ local keys = {
 		mode = "n",
 		desc = "[S]earch [s]nippets",
 	},
+	{
+		"sw",
+		function()
+			return require("telescope.builtin").lsp_dynamic_workspace_symbols()
+		end,
+		mode = "n",
+		desc = "[S]earch LSP [W]orkspace Symbols",
+	},
 }
 
 return {

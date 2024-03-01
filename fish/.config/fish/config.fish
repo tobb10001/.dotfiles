@@ -15,10 +15,14 @@ if status is-interactive
     else
         alias clip "xclip -selection clipboard"
     end
+    if command -v eza > /dev/null;
+        alias ls "eza --icons"
+    else
+        alias ls "ls --color=auto"
+    end
     if command -v grc > /dev/null;
         alias go "grc go"
     end
-    alias ls "ls --color=auto"
     alias lslsls "echo Yeah, I don\'t know either..."
     alias open "xdg-open"
     alias pip "pip --require-virtualenv"
@@ -55,12 +59,11 @@ if status is-interactive
         end
     end
 
-    function fish_user_key_bindings
-        bind ! bind_bang
-        bind '$' bind_dollar
-    end
-
     # TODO: Get this stuff to work.
+    # function fish_user_key_bindings
+    #     bind ! bind_bang
+    #     bind '$' bind_dollar
+    # end
     # bind \cK history_search_backward
     # bind \cJ history_search_fowrard
     # bind \cL accept_autosuggestion

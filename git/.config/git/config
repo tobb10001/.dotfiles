@@ -13,6 +13,7 @@
 	pullsh = !sh -c 'git pull && git push'
 	pushf = push --force-with-lease
 	pushsc = push -o ci.skip
+	stush = stash --include-untracked
 	todo = grep -Eni '\\btodo\\b'
 
 	statu = status

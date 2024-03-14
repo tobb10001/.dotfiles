@@ -91,6 +91,7 @@ local function config(opts)
 			{ name = "buffer" },
 			{ name = "treesitter" },
 			{ name = "dotenv" },
+			{ name = "git" },
 		}),
 	})
 	-- `/` cmdline setup.
@@ -118,6 +119,7 @@ return {
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-cmdline",
 			"hrsh7th/cmp-path",
 			{
 				"L3MON4D3/LuaSnip",
@@ -147,10 +149,21 @@ return {
 					end
 				end,
 			},
-			"saadparwaiz1/cmp_luasnip",
 			"lukas-reineke/cmp-under-comparator",
-			"ray-x/cmp-treesitter",
 			"onsails/lspkind.nvim",
+			{
+				"petertriho/cmp-git",
+				opts = {
+					gitlab = {
+						hosts = GitlabHost ~= nil and { GitlabHost } or {},
+					},
+				},
+				dependencies = {
+					"nvim-lua/plenary.nvim",
+				},
+			},
+			"ray-x/cmp-treesitter",
+			"saadparwaiz1/cmp_luasnip",
 			"SergioRibera/cmp-dotenv",
 		},
 		event = { "BufReadPost", "BufNewFile" },

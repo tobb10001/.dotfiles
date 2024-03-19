@@ -3,7 +3,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-pcall(require("tobb10001.local"))
+pcall(require, "tobb10001.local")
 
 -- Package Manager: folke/lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

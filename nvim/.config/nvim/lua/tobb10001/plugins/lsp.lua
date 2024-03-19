@@ -12,6 +12,8 @@ local function config()
 	lspconfig.ansiblels.setup({})
 	-- Bash
 	lspconfig.bashls.setup({})
+	-- C
+	lspconfig.clangd.setup({})
 	-- Docker
 	lspconfig.dockerls.setup({})
 	-- Go

@@ -9,6 +9,7 @@ local filetype = function()
 		python = {
 			require("formatter.filetypes.python").black,
 			require("formatter.filetypes.python").isort,
+			require("formatter.filetypes.python").ruff,
 		},
 	}
 end

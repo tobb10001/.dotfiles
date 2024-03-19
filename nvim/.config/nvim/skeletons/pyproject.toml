@@ -4,23 +4,28 @@ description = "Python project skeleton"
 authors = [
   {name = "Tobias Fischer", email = "..."},
 ]
+version = "0.0.0"
 # requires-python = ">=3.11"
 # classifiers = [
 #   "Programming Language :: Python :: 3 :: Only",
 #   "Programming Language :: Python :: 3.11",
 #   "Programming Language :: Python :: 3.12",
 # ]
-# [project.urls]
-# homepage = "https://github.com/tobb10001/python-skeleton"
 dependencies = [
     
 ]
+# [project.urls]
+# homepage = "https://github.com/tobb10001/python-skeleton"
+# [project.scripts]
+# cli = python_skeleton.cli:main
+# [project.gui-scripts]
+# gui = python_skeleton.gui:main
 #
 # [tool.ruff]
 # line-length = 79
 #
 # [tool.ruff.lint]
-# select = ["I", "RUF", "UP"]
+# select = ["D", "I", "RUF", "UP"]
 #
 # [tool.ruff.lint.isort]
 # combine-as-imports = true

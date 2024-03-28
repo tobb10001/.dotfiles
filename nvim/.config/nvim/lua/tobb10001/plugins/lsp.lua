@@ -26,8 +26,9 @@ local function config()
 	lspconfig.nil_ls.setup({})
 	lspconfig.nixd.setup({})
 	-- Python
-	lspconfig.pyright.setup({})
+	-- lspconfig.basedpyright.setup({})
 	-- lspconfig.pylsp.setup({})
+	lspconfig.pyright.setup({})
 	-- R
 	lspconfig.r_language_server.setup({})
 	-- TypeScript, JavaScript

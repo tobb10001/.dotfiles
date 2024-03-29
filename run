@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+set -euxo pipefail
+
+XDG_CACHE_HOME="$HOME/.cache"
+XDG_CONFIG_HOME="$HOME/.config"
+XDG_DATA_HOME="$HOME/.local/share"
+XDG_STATE_HOME="$HOME/.local/state"
+
+DOTFILES_DIR="$HOME/.dotfiles"
+
+if ! command -v ansible > /dev/null; then
+    sudo apt install ansible
+fi
+
+if ! command -v git > /dev/null; then
+    sudo apt install git
+fi
+
+if ! [[ -d "$DOTFILES_DIR" ]]; then
+    git clone "https://github.com/tobb10001/.dotfiles.git" "$DOTFILES_DIR"
+# else
+#     git -C "$DOTFILES_DIR" pull
+fi
+
+ansible-playbook --diff "$DOTFILES_DIR/main.yaml" "$@"

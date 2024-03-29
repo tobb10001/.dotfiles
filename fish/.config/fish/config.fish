@@ -72,4 +72,5 @@ if status is-interactive
 
     direnv hook fish | source
     starship init fish | source
+    zoxide init --cmd cd --hook prompt fish | source
 end

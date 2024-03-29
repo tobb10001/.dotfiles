@@ -1,0 +1,27 @@
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Set Roles
+      set_fact:
+        roles: "{{ default_roles }}"
+      tags:
+        - always
+    - name: Display Roles
+      debug: "var=roles"
+      tags:
+        - always
+    - name: Create Cache Directory
+      file:
+        path: "{{ ansible_env.XDG_CACHE_HOME }}/dotfiles"
+        state: directory
+    - name: Run roles
+      include_role:
+        apply:
+          tags:
+            - "{{ roles_item }}"
+        name: "{{ roles_item }}"
+      loop_control:
+        loop_var: roles_item
+      with_items: "{{ roles }}"
+      tags:
+        - always

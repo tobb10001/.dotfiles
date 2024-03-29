@@ -9,9 +9,11 @@ else
 	config = {}
 end
 
+HOME = os.getenv("HOME")
+
 -- Appearence ----------------------------------------------------------------------
 -- Colors & Background
-config.window_background_image = os.getenv("HOME") .. "/.config/wezterm/background"
+config.window_background_image = HOME .. "/.config/wezterm/background"
 config.window_background_image_hsb = {
 	brightness = 0.1,
 }
@@ -29,8 +31,8 @@ config.use_fancy_tab_bar = false
 
 -- Dim inactive panes
 config.inactive_pane_hsb = {
-	saturation = 0.24,
-	brightness = 0.5,
+	saturation = 0.75,
+	brightness = 0.75,
 }
 
 -- Keybinds ------------------------------------------------------------------------
@@ -39,7 +41,7 @@ config.keys = {
 	-- Send ` when pressing ` twice.
 	{ key = "`", mods = "LEADER", action = act.SendKey({ key = "`" }) },
 	-- Windows
-	{ key = "w", mods = "LEADER", action = act.SpawnWindow },
+	-- { key = "w", mods = "LEADER", action = act.SpawnWindow },
 	-- Tabs
 	{ key = "t", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
 	{ key = "]", mods = "LEADER", action = act.ActivateTabRelative(1) },
@@ -48,8 +50,10 @@ config.keys = {
 	{ key = "}", mods = "LEADER|SHIFT", action = act.MoveTabRelative(1) },
 	{ key = "{", mods = "LEADER|SHIFT", action = act.MoveTabRelative(-1) },
 	-- Splits
-	{ key = "s", mods = "LEADER", action = act.SplitHorizontal },
-	{ key = "v", mods = "LEADER", action = act.SplitVertical },
+	-- They seem to be the wrong way round, but this matches the way in which vim's
+	-- :split and :vsplit work.
+	{ key = "v", mods = "LEADER", action = act.SplitHorizontal },
+	{ key = "s", mods = "LEADER", action = act.SplitVertical },
 	-- Panes
 	{ key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
 	{ key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
@@ -66,6 +70,30 @@ config.keys = {
 		action = act.SwitchToWorkspace({ name = "monitoring", spawn = { args = { "top" } } }),
 	},
 	{ key = "w", mods = "LEADER", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
+	{
+		key = "c",
+		mods = "LEADER",
+		action = act.PromptInputLine({
+			description = wezterm.format({
+				{ Attribute = { Intensity = "Bold" } },
+				{ Foreground = { AnsiColor = "Fuchsia" } },
+				{ Text = "Enter name for new workspace" },
+			}),
+			action = wezterm.action_callback(function(window, pane, line)
+				-- line will be `nil` if they hit escape without entering anything
+				-- An empty string if they just hit enter
+				-- Or the actual line of text they wrote
+				if line then
+					window:perform_action(
+						act.SwitchToWorkspace({
+							name = line,
+						}),
+						pane
+					)
+				end
+			end),
+		}),
+	},
 }
 
 config.key_tables = {

@@ -53,6 +53,9 @@ return {
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",
 		},
+		keys = {
+			{ "<leader>nd", "<cmd>NoiceDismiss<CR>", { desc = "[D]ismiss [N]oice Message" } },
+		},
 	},
 	-- Fidget for LSP Progress
 	{

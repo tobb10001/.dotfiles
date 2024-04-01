@@ -10,10 +10,25 @@ else
 end
 
 HOME = os.getenv("HOME")
+BACKGROUND_IMAGE = HOME .. "/.config/wezterm/background"
+
+wezterm.on("toggle-background", function(window, _)
+	local overrides = window:get_config_overrides() or {}
+	wezterm.log_info("reading", overrides)
+	if overrides.window_background_image then
+		overrides.window_background_image = nil
+	else
+		overrides.window_background_image = BACKGROUND_IMAGE
+	end
+	wezterm.log_info("writing", overrides)
+	wezterm.log_info(window)
+	window:set_config_overrides(overrides)
+end)
 
 -- Appearence ----------------------------------------------------------------------
 -- Colors & Background
-config.window_background_image = HOME .. "/.config/wezterm/background"
+config.window_background_image = nil
+config.color_scheme = "Tokyo Night"
 config.window_background_image_hsb = {
 	brightness = 0.1,
 }
@@ -42,6 +57,7 @@ config.keys = {
 	{ key = "`", mods = "LEADER", action = act.SendKey({ key = "`" }) },
 	-- Windows
 	-- { key = "w", mods = "LEADER", action = act.SpawnWindow },
+	{ key = "p", mods = "LEADER", action = act.EmitEvent("toggle-background") },
 	-- Tabs
 	{ key = "t", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
 	{ key = "]", mods = "LEADER", action = act.ActivateTabRelative(1) },
@@ -94,6 +110,8 @@ config.keys = {
 			end),
 		}),
 	},
+	-- Debugging
+	{ key = "d", mods = "LEADER", action = act.ShowDebugOverlay },
 }
 
 config.key_tables = {

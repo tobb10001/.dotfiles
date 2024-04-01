@@ -20,8 +20,6 @@ local format = function()
 	end
 	if filetype()[vim.bo.filetype] ~= nil then
 		vim.cmd(":Format")
-	else
-		vim.lsp.buf.format()
 	end
 end
 
@@ -31,9 +29,6 @@ local format_write = function()
 	end
 	if filetype()[vim.bo.filetype] ~= nil then
 		vim.cmd(":FormatWrite")
-	else
-		vim.lsp.buf.format()
-		vim.cmd(":w")
 	end
 end
 

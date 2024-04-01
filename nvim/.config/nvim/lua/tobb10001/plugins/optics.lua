@@ -5,7 +5,7 @@ return {
 		lazy = false,
 		priority = 1000,
 		opts = {
-			transparent = false,
+			transparent = true,
 			on_highlights = function(hl, c)
 				hl.LineNr = {
 					fg = "#ffffff",
@@ -75,15 +75,11 @@ return {
 		config = true,
 		event = { "BufReadPost", "BufNewFile" },
 	},
-	-- Transparent
-	{
-		"xiyaowong/transparent.nvim",
-		lazy = false,
-	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",
 		opts = {},
+		event = "VeryLazy",
 	},
 	-- Lualine
 	{
@@ -99,6 +95,7 @@ return {
 				lualine_c = { { "filename", path = 1 } },
 			},
 		},
+		event = "VeryLazy",
 	},
 	{
 		"mawkler/modicator.nvim",
@@ -120,6 +117,7 @@ return {
 	},
 	{
 		"stevearc/dressing.nvim",
-		config = true,
+		opts = {},
+		event = "VeryLazy",
 	},
 }

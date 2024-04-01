@@ -147,6 +147,7 @@ return {
 					for ft, subject in pairs(comments) do
 						require("luasnip").filetype_extend(ft, subject)
 					end
+					require("tobb10001.snippets")
 				end,
 			},
 			"lukas-reineke/cmp-under-comparator",

@@ -66,7 +66,23 @@ return {
 	},
 	{
 		"sindrets/diffview.nvim",
-		event = { "VeryLazy" },
+		cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+		keys = {
+			{
+				"<leader>dv",
+				function()
+					vim.cmd(":DiffviewOpen")
+				end,
+				{ desc = "Open [D]iff[V]iew" },
+			},
+			{
+				"<leader>dc",
+				function()
+					vim.cmd(":DiffviewClose")
+				end,
+				{ desc = "[C]lose [D]iffView" },
+			},
+		},
 	},
 	-- {
 	--     'harrisoncramer/gitlab.nvim',

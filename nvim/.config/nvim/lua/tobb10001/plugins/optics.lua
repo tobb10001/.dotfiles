@@ -1,5 +1,4 @@
 return {
-	-- Colorscheme
 	{
 		"folke/tokyonight.nvim",
 		lazy = false,
@@ -57,19 +56,6 @@ return {
 			{ "<leader>nd", "<cmd>NoiceDismiss<CR>", { desc = "[D]ismiss [N]oice Message" } },
 		},
 	},
-	-- Fidget for LSP Progress
-	{
-		"j-hui/fidget.nvim",
-		opts = {
-			progress = {
-				display = {
-					progress_icon = { pattern = "moon" },
-				},
-			},
-		},
-		enabled = false, -- noice does that...
-	},
-	-- Gitsigns
 	{
 		"lewis6991/gitsigns.nvim",
 		config = true,
@@ -81,7 +67,12 @@ return {
 		opts = {},
 		event = "VeryLazy",
 	},
-	-- Lualine
+	{
+        "lukas-reineke/headlines.nvim",
+        dependencies = "nvim-treesitter/nvim-treesitter",
+        opts = {},
+		ft = "markdown",
+	},
 	{
 		"nvim-lualine/lualine.nvim",
 		opts = {

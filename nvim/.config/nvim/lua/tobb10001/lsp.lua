@@ -11,7 +11,9 @@ local function server_setup()
 	-- Go
 	lspconfig.gopls.setup({})
 	-- LaTeX, Markdown, ...
-	lspconfig.ltex.setup({})
+	lspconfig.ltex.setup({
+		autostart = false,
+	})
 	-- Lua
 	lspconfig.lua_ls.setup({})
 	-- Nix

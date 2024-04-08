@@ -8,6 +8,7 @@
 	amend = commit --amend --no-edit
 	broom = !git branch --merged | grep -Ev '(^\\*|main|master|dev)' | xargs --no-run-if-empty git branch -d
 	git = !git
+	glmr = "!f() { git fetch origin merge-requests/$1/head:mr-$1; git switch mr-$1; }; f"
 	gone = !git branch -av | grep -F "[gone]" | awk -F' ' '{ print $1 }' | xargs --no-run-if-empty git branch -D
 	last = log -1 HEAD
 	pullsh = !sh -c 'git pull && git push'

@@ -5,6 +5,7 @@ if status is-interactive
     set -gx PATH /usr/local/go/bin $PATH
     set -gx PATH ~/go/bin $PATH
     set -gx PATH /usr/local/nvim-linux64/bin $PATH
+    set -gx PATH ~/.nix-profile/bin/ $PATH
     set -gx XDG_CACHE_HOME "$HOME/.cache"
     set -gx XDG_CONFIG_HOME "$HOME/.config"
     set -gx XDG_DATA_HOME "$HOME/.local/share"

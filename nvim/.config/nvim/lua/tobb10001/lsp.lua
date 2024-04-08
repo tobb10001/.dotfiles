@@ -71,12 +71,6 @@ return function()
 
 			nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 			vim.keymap.set("v", "<leader>ca", vim.lsp.buf.code_action, { buffer = ev.buf, desc = "[C]ode [A]ction" })
-			if client.supports_method("textDocument/formatting") then
-				nmap("<leader>f", vim.lsp.buf.format, "[F]ormat current buffer with LSP")
-				vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-					callback = vim.lsp.buf.format,
-				})
-			end
 			nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame symbol")
 			nmap("K", vim.lsp.buf.hover, "Hover documentation")
 			-- nmap("<C-k>", vim.lsp.buf.signature_help, "Signature help")

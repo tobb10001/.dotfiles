@@ -1,3 +1,5 @@
+local M = {}
+
 local function server_setup()
 	local lspconfig = require("lspconfig")
 	-- Ansible
@@ -42,8 +44,7 @@ local function server_setup()
 	})
 end
 
-return function()
-	-- Set up capabilities
+function M.capabilities()
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
 	capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
@@ -51,6 +52,31 @@ return function()
 		dynamicRegistration = false,
 		lineFoldingOnly = true,
 	}
+end
+
+function M.on_attach(ev)
+	local nmap = function(keys, func, desc)
+		if desc then
+			desc = "LSP: " .. desc
+		end
+
+		vim.keymap.set("n", keys, func, { buffer = ev.buf, desc = desc })
+	end
+
+	nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+	vim.keymap.set("v", "<leader>ca", vim.lsp.buf.code_action, { buffer = ev.buf, desc = "[C]ode [A]ction" })
+	nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame symbol")
+	nmap("K", vim.lsp.buf.hover, "Hover documentation")
+	-- nmap("<C-k>", vim.lsp.buf.signature_help, "Signature help")
+	nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
+	nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+	nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
+	nmap("gS", vim.lsp.buf.type_definition, "[G]oto Type definition")
+	nmap("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
+end
+
+function M.lspconfig_config()
+	local capabilities = M.capabilities()
 
 	local lspconfig = require("lspconfig")
 
@@ -61,26 +87,8 @@ return function()
 	server_setup()
 
 	vim.api.nvim_create_autocmd("LspAttach", {
-		callback = function(ev)
-			local nmap = function(keys, func, desc)
-				if desc then
-					desc = "LSP: " .. desc
-				end
-
-				vim.keymap.set("n", keys, func, { buffer = ev.buf, desc = desc })
-			end
-			local client = vim.lsp.get_client_by_id(ev.data.client_id)
-
-			nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-			vim.keymap.set("v", "<leader>ca", vim.lsp.buf.code_action, { buffer = ev.buf, desc = "[C]ode [A]ction" })
-			nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame symbol")
-			nmap("K", vim.lsp.buf.hover, "Hover documentation")
-			-- nmap("<C-k>", vim.lsp.buf.signature_help, "Signature help")
-			nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
-			nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-			nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
-			nmap("gS", vim.lsp.buf.type_definition, "[G]oto Type definition")
-			nmap("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
-		end,
+		callback = M.on_attach,
 	})
 end
+
+return M

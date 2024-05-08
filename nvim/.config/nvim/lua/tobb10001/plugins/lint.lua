@@ -3,7 +3,7 @@ return {
 	ft = { "python" },
 	config = function()
 		require("lint").linters_by_ft = {
-			python = { "mypy", "ruff" },
+			python = { "ruff" },
 		}
 
 		vim.api.nvim_create_autocmd({ "BufWritePost" }, {

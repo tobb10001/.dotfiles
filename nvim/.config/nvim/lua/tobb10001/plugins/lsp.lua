@@ -1,7 +1,7 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
-		config = require("tobb10001.lsp"),
+		config = require("tobb10001.lsp").lspconfig_config,
 		dependencies = {
 			{
 				"folke/neodev.nvim",
@@ -43,6 +43,11 @@ return {
 			"mfussenegger/nvim-jdtls",
 		},
 		event = { "BufReadPost", "BufNewFile" },
+		opts = {
+			inlay_hints = {
+				enabled = true,
+			},
+		},
 	},
 	{
 		"zeioth/garbage-day.nvim",

@@ -25,8 +25,11 @@ local function server_setup()
 	-- lspconfig.basedpyright.setup({})
 	-- lspconfig.pylsp.setup({})
 	lspconfig.pyright.setup({})
+	lspconfig.ruff_lsp.setup({})
 	-- R
 	lspconfig.r_language_server.setup({})
+	-- Terraform
+	lspconfig.terraformls.setup({})
 	-- TypeScript, JavaScript
 	lspconfig.tsserver.setup({})
 	-- Yaml

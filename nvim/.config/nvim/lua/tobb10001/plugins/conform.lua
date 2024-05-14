@@ -12,7 +12,7 @@ return {
 			desc = "Format buffer",
 		},
 	},
-	opts = {
+	opts = ConformOptions or {
 		formatters_by_ft = {
 			lua = { "stylua" },
 		},

@@ -31,3 +31,15 @@
   (#set! injection.include-children)
   (#set! injection.self)
 )
+
+(
+(block_mapping_pair
+  key: (flow_node
+	 (plain_scalar (string_scalar) @inline_code_key))
+  value: (block_node
+	   (block_scalar) @injection.content))
+  (#eq? @inline_code_key "inline_code")
+  (#set! injection.language "lua")
+  (#set! injection.include-children)
+  (#set! injection.self)
+)

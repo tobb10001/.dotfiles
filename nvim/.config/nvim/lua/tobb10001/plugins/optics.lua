@@ -68,9 +68,9 @@ return {
 		event = "VeryLazy",
 	},
 	{
-        "lukas-reineke/headlines.nvim",
-        dependencies = "nvim-treesitter/nvim-treesitter",
-        opts = {},
+		"lukas-reineke/headlines.nvim",
+		dependencies = "nvim-treesitter/nvim-treesitter",
+		opts = {},
 		ft = "markdown",
 	},
 	{

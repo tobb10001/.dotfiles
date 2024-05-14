@@ -114,6 +114,14 @@ config.keys = {
 	{ key = "d", mods = "LEADER", action = act.ShowDebugOverlay },
 }
 
+for i = 1, 9 do
+  table.insert(config.keys, {
+    key = tostring(i),
+    mods = "LEADER",
+    action = act.ActivateTab(i - 1)
+  })
+end
+
 config.key_tables = {
 	Resize = {
 		{ key = "h", mods = "NONE", action = act.AdjustPaneSize({ "Left", 5 }) },

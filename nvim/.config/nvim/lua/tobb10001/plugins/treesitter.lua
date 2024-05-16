@@ -56,8 +56,8 @@ return {
 							["ia"] = "@parameter.inner",
 							["ab"] = "@block.outer",
 							["ib"] = "@block.inner",
-							["ic"] = "@call.inner",
 							["ac"] = "@call.outer",
+							["ic"] = "@call.inner",
 							["ae"] = "@statement.outer", -- expression
 							["af"] = "@function.outer",
 							["if"] = "@function.inner",

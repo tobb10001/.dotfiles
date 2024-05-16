@@ -1,5 +1,7 @@
 local filetypes = {}
 
+LintersByFt = LintersByFt or {}
+
 for k, _ in pairs(LintersByFt) do
 	filetypes[#filetypes + 1] = k
 end

@@ -1,36 +1,6 @@
 # .dotfiles
-My Dotfiles
 
-## Installation
+Those are my dotfiles.
 
-1. Install `ansible`.
-    
-    Probably something like.
-
-    ```console
-    $ sudo apt install ansible
-    ```
-    or
-    ```console
-    $ sudo apt install python3 python3-pip
-    $ pip install ansible
-    ```
-2. Install dependencies.
-
-    ```
-    $ ansible-galaxy install --role-file requirements.yml
-    ```
-    or shorter
-    ```
-    $ ansible-galaxy install -r requirements.yml
-    ```
-
-3. Install everything.
-
-    ```conosole
-    $ ansible-playbook --ask-become-pass bootstrap.yml
-    ```
-    or shorter
-    ```
-    $ ansible-playbook -K bootstrap.yml
-    ```
+I change the overall setup every now an then, and failed to keep this README up to date
+the last few times, so read the files to know what's gonig on. :)

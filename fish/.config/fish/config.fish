@@ -73,4 +73,7 @@ if status is-interactive
     direnv hook fish | source
     starship init fish | source
     zoxide init --cmd cd --hook prompt fish | source
+
+    # Be friends with home manager #####################################################
+    cat $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh | babelfish | source
 end

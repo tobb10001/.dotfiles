@@ -25,6 +25,9 @@ wezterm.on("toggle-background", function(window, _)
 	window:set_config_overrides(overrides)
 end)
 
+-- Shell ---------------------------------------------------------------------------
+config.default_prog = { "fish" }
+
 -- Appearence ----------------------------------------------------------------------
 -- Colors & Background
 config.window_background_image = nil
@@ -36,7 +39,7 @@ config.text_background_opacity = 0.75
 -- config.window_decorations = "RESIZE" -- Might this be incompatible with KDE?
 
 -- Font
-config.font = wezterm.font("JetbrainsMono NFM")
+config.font = wezterm.font("JetbrainsMono")
 config.font_size = 11
 
 -- Tab Bar
@@ -54,32 +57,32 @@ config.inactive_pane_hsb = {
 config.leader = { key = "`", modes = "NONE" }
 config.keys = {
 	-- Send ` when pressing ` twice.
-	{ key = "`", mods = "LEADER", action = act.SendKey({ key = "`" }) },
+	{ key = "`", mods = "LEADER",       action = act.SendKey({ key = "`" }) },
 	-- Windows
 	-- { key = "w", mods = "LEADER", action = act.SpawnWindow },
-	{ key = "p", mods = "LEADER", action = act.EmitEvent("toggle-background") },
+	{ key = "p", mods = "LEADER",       action = act.EmitEvent("toggle-background") },
 	-- Tabs
-	{ key = "t", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
-	{ key = "]", mods = "LEADER", action = act.ActivateTabRelative(1) },
-	{ key = "[", mods = "LEADER", action = act.ActivateTabRelative(-1) },
-	{ key = "n", mods = "LEADER", action = act.ShowTabNavigator },
+	{ key = "t", mods = "LEADER",       action = act.SpawnTab("CurrentPaneDomain") },
+	{ key = "]", mods = "LEADER",       action = act.ActivateTabRelative(1) },
+	{ key = "[", mods = "LEADER",       action = act.ActivateTabRelative(-1) },
+	{ key = "n", mods = "LEADER",       action = act.ShowTabNavigator },
 	{ key = "}", mods = "LEADER|SHIFT", action = act.MoveTabRelative(1) },
 	{ key = "{", mods = "LEADER|SHIFT", action = act.MoveTabRelative(-1) },
 	-- Splits
 	-- They seem to be the wrong way round, but this matches the way in which vim's
 	-- :split and :vsplit work.
-	{ key = "v", mods = "LEADER", action = act.SplitHorizontal },
-	{ key = "s", mods = "LEADER", action = act.SplitVertical },
+	{ key = "v", mods = "LEADER",       action = act.SplitHorizontal },
+	{ key = "s", mods = "LEADER",       action = act.SplitVertical },
 	-- Panes
-	{ key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
-	{ key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
-	{ key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
-	{ key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
-	{ key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
-	{ key = "r", mods = "LEADER", action = act.ActivateKeyTable({ name = "Resize", one_shot = false }) },
-	{ key = "o", mods = "LEADER", action = act.RotatePanes("Clockwise") },
+	{ key = "h", mods = "LEADER",       action = act.ActivatePaneDirection("Left") },
+	{ key = "j", mods = "LEADER",       action = act.ActivatePaneDirection("Down") },
+	{ key = "k", mods = "LEADER",       action = act.ActivatePaneDirection("Up") },
+	{ key = "l", mods = "LEADER",       action = act.ActivatePaneDirection("Right") },
+	{ key = "z", mods = "LEADER",       action = act.TogglePaneZoomState },
+	{ key = "r", mods = "LEADER",       action = act.ActivateKeyTable({ name = "Resize", one_shot = false }) },
+	{ key = "o", mods = "LEADER",       action = act.RotatePanes("Clockwise") },
 	-- Workspaces
-	{ key = "y", mods = "LEADER", action = act.SwitchToWorkspace({ name = "default" }) },
+	{ key = "y", mods = "LEADER",       action = act.SwitchToWorkspace({ name = "default" }) },
 	{
 		key = "u",
 		mods = "LEADER",
@@ -124,12 +127,12 @@ end
 
 config.key_tables = {
 	Resize = {
-		{ key = "h", mods = "NONE", action = act.AdjustPaneSize({ "Left", 5 }) },
-		{ key = "j", mods = "NONE", action = act.AdjustPaneSize({ "Down", 5 }) },
-		{ key = "k", mods = "NONE", action = act.AdjustPaneSize({ "Up", 5 }) },
-		{ key = "l", mods = "NONE", action = act.AdjustPaneSize({ "Right", 5 }) },
+		{ key = "h",      mods = "NONE", action = act.AdjustPaneSize({ "Left", 5 }) },
+		{ key = "j",      mods = "NONE", action = act.AdjustPaneSize({ "Down", 5 }) },
+		{ key = "k",      mods = "NONE", action = act.AdjustPaneSize({ "Up", 5 }) },
+		{ key = "l",      mods = "NONE", action = act.AdjustPaneSize({ "Right", 5 }) },
 		{ key = "Escape", mods = "NONE", action = "PopKeyTable" },
-		{ key = "Enter", mods = "NONE", action = "PopKeyTable" },
+		{ key = "Enter",  mods = "NONE", action = "PopKeyTable" },
 	},
 }
 

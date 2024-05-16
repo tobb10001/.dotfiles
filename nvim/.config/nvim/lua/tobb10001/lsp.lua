@@ -40,8 +40,10 @@ local function server_setup()
 				enable = true,
 			},
 			schemas = {
-				["http://gitlab.com/gitlab-org/gitlab/-/blob/master/app/assets/javascripts/editor/schema/ci.json"] = "/**/.gitlab-ci.yml",
-				["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "/**/docker-compose.ya?ml",
+				["http://gitlab.com/gitlab-org/gitlab/-/blob/master/app/assets/javascripts/editor/schema/ci.json"] =
+				"/**/.gitlab-ci.yml",
+				["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] =
+				"/**/docker-compose.ya?ml",
 			},
 		},
 	})
@@ -57,17 +59,17 @@ function M.capabilities()
 	}
 end
 
-function M.on_attach(ev)
+function M.on_attach(client, _)
 	local nmap = function(keys, func, desc)
 		if desc then
 			desc = "LSP: " .. desc
 		end
 
-		vim.keymap.set("n", keys, func, { buffer = ev.buf, desc = desc })
+		vim.keymap.set("n", keys, func, { buffer = client.buf, desc = desc })
 	end
 
 	nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-	vim.keymap.set("v", "<leader>ca", vim.lsp.buf.code_action, { buffer = ev.buf, desc = "[C]ode [A]ction" })
+	vim.keymap.set("v", "<leader>ca", vim.lsp.buf.code_action, { buffer = client.buf, desc = "[C]ode [A]ction" })
 	nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame symbol")
 	nmap("K", vim.lsp.buf.hover, "Hover documentation")
 	-- nmap("<C-k>", vim.lsp.buf.signature_help, "Signature help")
@@ -76,6 +78,10 @@ function M.on_attach(ev)
 	nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
 	nmap("gS", vim.lsp.buf.type_definition, "[G]oto Type definition")
 	nmap("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
+
+	if client.resolved_capabilities.highlight_provider() then
+		vim.cmd(":TSBufDisable highlight")
+	end
 end
 
 function M.lspconfig_config()
@@ -85,13 +91,10 @@ function M.lspconfig_config()
 
 	lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_config, {
 		capabilities = capabilities,
+		on_attach = M.on_attach,
 	})
 
 	server_setup()
-
-	vim.api.nvim_create_autocmd("LspAttach", {
-		callback = M.on_attach,
-	})
 end
 
 return M

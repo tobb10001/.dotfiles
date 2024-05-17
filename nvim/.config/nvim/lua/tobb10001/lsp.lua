@@ -31,7 +31,8 @@ local function server_setup()
 	-- Terraform
 	lspconfig.terraformls.setup({})
 	-- TypeScript, JavaScript
-	lspconfig.tsserver.setup({})
+	-- Handled by typescript-tools
+	-- lspconfig.tsserver.setup({})
 	-- Yaml
 	lspconfig.yamlls.setup({
 		filetypes = { "yaml", "yaml.gitlab-ci", "yaml.dockerfile" },

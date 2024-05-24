@@ -68,12 +68,6 @@ return {
 		event = "VeryLazy",
 	},
 	{
-		"lukas-reineke/headlines.nvim",
-		dependencies = "nvim-treesitter/nvim-treesitter",
-		opts = {},
-		ft = "markdown",
-	},
-	{
 		"nvim-lualine/lualine.nvim",
 		opts = {
 			options = {

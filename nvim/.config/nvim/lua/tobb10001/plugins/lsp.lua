@@ -8,20 +8,11 @@ return {
 				opts = {},
 			},
 			{
-				"SmiteshP/nvim-navbuddy",
-				dependencies = {
-					"SmiteshP/nvim-navic",
-					"MunifTanjim/nui.nvim",
-				},
-				opts = { lsp = { auto_attach = true } },
-			},
-			{
 				"simrat39/symbols-outline.nvim",
 				config = true,
 				event = { "BufReadPost", "BufNewFile" },
 			},
 			"onsails/lspkind.nvim",
-			"VidocqH/lsp-lens.nvim",
 			{
 				"klen/nvim-config-local",
 				lazy = false,
@@ -33,14 +24,9 @@ return {
 				end,
 			},
 			{
-				"kosayoda/nvim-lightbulb",
-				config = function()
-					require("nvim-lightbulb").setup({
-						autocmd = { enabled = true },
-					})
-				end,
-			},
-			"mfussenegger/nvim-jdtls",
+				"mfussenegger/nvim-jdtls",
+				ft = { "java" },
+			}
 		},
 		event = { "BufReadPost", "BufNewFile" },
 		opts = {

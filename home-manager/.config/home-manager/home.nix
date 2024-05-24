@@ -40,8 +40,10 @@ assert username != "";
     # Other lovely CLI tools
     bat
     btop
+    commitizen
     fd
     fzf
+    go-task
     ripgrep
     moreutils # sponge
     translate-shell

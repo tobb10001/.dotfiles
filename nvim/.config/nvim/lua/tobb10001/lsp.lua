@@ -80,7 +80,7 @@ function M.on_attach(client, _)
 	nmap("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
 	nmap("gs", vim.lsp.buf.type_definition, "[G]oto Type definition")
 
-	if client.resolved_capabilities.highlight_provider() then
+	if client.resolved_capabilities and client.resolved_capabilities.highlight_provider() then
 		vim.cmd(":TSBufDisable highlight")
 	end
 end

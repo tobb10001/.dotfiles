@@ -59,5 +59,8 @@ vim.o.foldminlines = 5
 -- Wrapping
 vim.o.linebreak = true
 
+-- Scrolloff
+vim.o.scrolloff = 10
+
 -- Python environment
 vim.g.python3_host_prog = "~/.local/share/nvim/python_venv/bin/python"

@@ -44,6 +44,7 @@ assert username != "";
     fd
     fzf
     go-task
+    pipx
     ripgrep
     moreutils # sponge
     translate-shell

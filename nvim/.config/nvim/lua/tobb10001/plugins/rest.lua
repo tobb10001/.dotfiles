@@ -1,5 +1,6 @@
 return {
 	"rest-nvim/rest.nvim",
+	version = "1.*",
 	ft = "http",
 	dependencies = {
 		"nvim-lua/plenary.nvim",

@@ -150,7 +150,10 @@ return {
 					require("tobb10001.snippets")
 				end,
 			},
-			"lukas-reineke/cmp-under-comparator",
+			{
+				"lukas-reineke/cmp-under-comparator",
+				version = "*",
+			},
 			"onsails/lspkind.nvim",
 			{
 				"petertriho/cmp-git",

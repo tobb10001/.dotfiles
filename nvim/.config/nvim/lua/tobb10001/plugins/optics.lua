@@ -103,6 +103,7 @@ return {
 	{
 		"stevearc/dressing.nvim",
 		opts = {},
+		version = "*",
 		event = "VeryLazy",
 	},
 }

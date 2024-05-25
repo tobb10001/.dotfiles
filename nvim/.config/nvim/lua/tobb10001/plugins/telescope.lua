@@ -8,7 +8,7 @@ end
 
 local keys = {
 	{
-		"re",
+		"<leader>re", -- following the rest prefix
 		function()
 			return require("telescope").extensions.rest.select_env()
 		end,

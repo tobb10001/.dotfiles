@@ -1,6 +1,7 @@
 { pkgs, ... }:
   let
     username = builtins.getEnv "USER";
+    unstable = import <unstable> { config = { allowUnfree = true; }; };
   in
 assert username != "";
 {
@@ -27,7 +28,7 @@ assert username != "";
     zoxide
 
     # Neovim
-    neovim
+    unstable.neovim
     # Neovim: Soft dependencies
     xclip
     # Neovim: Language Server

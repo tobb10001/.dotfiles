@@ -87,13 +87,13 @@ return {
 				end,
 				{ desc = "Open [D]iff[V]iew" },
 			},
-			{
-				"<leader>dc",
-				function()
-					vim.cmd(":DiffviewClose")
-				end,
-				{ desc = "[C]lose [D]iffView" },
-			},
+			-- {
+			-- 	"<leader>dc",
+			-- 	function()
+			-- 		vim.cmd(":DiffviewClose")
+			-- 	end,
+			-- 	{ desc = "[C]lose [D]iffView" },
+			-- },
 		},
 	},
 }

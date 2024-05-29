@@ -1,7 +1,10 @@
 return {
 	"mfussenegger/nvim-dap",
 	dependencies = {
-		"rcarriga/nvim-dap-ui",
+		{
+			"rcarriga/nvim-dap-ui",
+			dependencies = { "nvim-neotest/nvim-nio" },
+		},
 		"mfussenegger/nvim-dap-python",
 	},
 	keys = {
@@ -11,6 +14,13 @@ return {
 				require("dap").continue()
 			end,
 			desc = "[D]ebug: [S]tart/Continue",
+		},
+		{
+			"<leader>dc",
+			function()
+				require("dap").run_to_cursor()
+			end,
+			desc = "[D]ebug: Run to [C]ursor",
 		},
 		{
 			"<leader>di",

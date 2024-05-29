@@ -16,7 +16,10 @@ return {
 		formatters_by_ft = {
 			lua = { "stylua" },
 		},
-		format_on_save = { timeout_ms = 500, lsp_fallback = true },
+		format_on_save = {
+			timeout_ms = 500,
+			lsp_fallback = false, -- ruff isn't there yet
+		},
 	},
 	init = function()
 		vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"

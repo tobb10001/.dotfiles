@@ -42,5 +42,6 @@ return {
 		opts = {
 			grace_period = 60 * 5,
 		},
+		enabled = false,
 	},
 }

@@ -25,7 +25,7 @@ local function server_setup()
 	-- lspconfig.basedpyright.setup({})
 	-- lspconfig.pylsp.setup({})
 	lspconfig.pyright.setup({})
-	lspconfig.ruff_lsp.setup({})
+	-- lspconfig.ruff.setup({})  -- it's not there yet
 	-- R
 	lspconfig.r_language_server.setup({})
 	-- Terraform
@@ -72,7 +72,7 @@ function M.on_attach(client, _)
 	nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 	vim.keymap.set("v", "<leader>ca", vim.lsp.buf.code_action, { buffer = client.buf, desc = "[C]ode [A]ction" })
 	nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame symbol")
-	nmap("K", vim.lsp.buf.hover, "Hover documentation")
+	-- nmap("K", vim.lsp.buf.hover, "Hover documentation")
 	-- nmap("<C-k>", vim.lsp.buf.signature_help, "Signature help")
 	nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
 	nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")

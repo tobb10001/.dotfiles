@@ -14,14 +14,11 @@ BACKGROUND_IMAGE = HOME .. "/.config/wezterm/background"
 
 wezterm.on("toggle-background", function(window, _)
 	local overrides = window:get_config_overrides() or {}
-	wezterm.log_info("reading", overrides)
 	if overrides.window_background_image then
 		overrides.window_background_image = nil
 	else
 		overrides.window_background_image = BACKGROUND_IMAGE
 	end
-	wezterm.log_info("writing", overrides)
-	wezterm.log_info(window)
 	window:set_config_overrides(overrides)
 end)
 
@@ -118,11 +115,11 @@ config.keys = {
 }
 
 for i = 1, 9 do
-  table.insert(config.keys, {
-    key = tostring(i),
-    mods = "LEADER",
-    action = act.ActivateTab(i - 1)
-  })
+	table.insert(config.keys, {
+		key = tostring(i),
+		mods = "LEADER",
+		action = act.ActivateTab(i - 1)
+	})
 end
 
 config.key_tables = {

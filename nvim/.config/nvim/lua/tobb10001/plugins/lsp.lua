@@ -3,10 +3,7 @@ return {
 		"neovim/nvim-lspconfig",
 		config = require("tobb10001.lsp").lspconfig_config,
 		dependencies = {
-			{
-				"folke/neodev.nvim",
-				opts = {},
-			},
+			{ "folke/lazydev.nvim", opts = {} },
 			{
 				"simrat39/symbols-outline.nvim",
 				config = true,
@@ -34,14 +31,5 @@ return {
 				enabled = true,
 			},
 		},
-	},
-	{
-		"zeioth/garbage-day.nvim",
-		dependencies = "neovim/nvim-lspconfig",
-		event = "VeryLazy",
-		opts = {
-			grace_period = 60 * 5,
-		},
-		enabled = false,
 	},
 }

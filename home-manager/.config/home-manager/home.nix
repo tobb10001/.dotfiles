@@ -42,6 +42,7 @@ assert username != "";
     bat
     btop
     commitizen
+    delta
     fd
     fzf
     go-task
@@ -49,6 +50,9 @@ assert username != "";
     ripgrep
     moreutils # sponge
     translate-shell
+
+    # Python Development
+    virtualenv
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

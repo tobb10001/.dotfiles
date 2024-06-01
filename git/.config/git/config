@@ -25,14 +25,21 @@
 [core]
 	excludesfile = ~/.config/git/ignore
 	attributesFile = ~/.config/git/attributes
-[diff "jupyternotebook"]
-	command = git-nbdiffdriver diff
-[merge "jupyternotebook"]
-	driver = git-nbmergedriver merge %O %A %B %L %P
-	name = jupyter notebook merge driver
+	pager = delta
 
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true
+	side-by-side = true
+	line-numbers = true
+
+[diff]
+	colorMoved = default
 [merge]
 	tool = vimdiff
+	conflictstyle = diff3
 [mergetool]
 	keepBackup = false
 [mergetool "vimdiff"]
@@ -44,3 +51,9 @@
 
 [include]
 	path = ~/.config/git/config.local
+
+[diff "jupyternotebook"]
+	command = git-nbdiffdriver diff
+[merge "jupyternotebook"]
+	driver = git-nbmergedriver merge %O %A %B %L %P
+	name = jupyter notebook merge driver

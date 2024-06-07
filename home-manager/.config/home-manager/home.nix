@@ -33,6 +33,7 @@ assert username != "";
     xclip
     # Neovim: Language Server
     clang-tools
+    ltex-ls
     lua-language-server
     nil
     nixd
@@ -45,14 +46,21 @@ assert username != "";
     delta
     fd
     fzf
+    glow
     go-task
-    pipx
+    unstable.pipx
     ripgrep
     moreutils # sponge
     translate-shell
+    yq
 
     # Python Development
     virtualenv
+
+    # Kubernetes development
+    k9s
+    kubectl
+    minikube
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

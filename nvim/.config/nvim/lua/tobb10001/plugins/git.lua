@@ -87,13 +87,17 @@ return {
 				end,
 				{ desc = "Open [D]iff[V]iew" },
 			},
-			-- {
-			-- 	"<leader>dc",
-			-- 	function()
-			-- 		vim.cmd(":DiffviewClose")
-			-- 	end,
-			-- 	{ desc = "[C]lose [D]iffView" },
-			-- },
 		},
+	},
+	{
+		'pwntester/octo.nvim',
+		requires = {
+			'nvim-lua/plenary.nivm',
+			'nvim-telescope/telescope.nvim',
+			'nvim-tree/nvim-web-devicons',
+		},
+		config = function()
+			require("octo").setup()
+		end
 	},
 }

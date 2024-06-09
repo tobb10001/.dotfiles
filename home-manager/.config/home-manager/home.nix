@@ -12,55 +12,50 @@ assert username != "";
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  home.packages = with pkgs; [
+  home.packages = [
     # Wezterm
     # # Wezterm doesn't work for some reason. We use a workaround using the AppImage,
     # # see home.file.
     # wezterm
-    jetbrains-mono
+    pkgs.jetbrains-mono
 
     # Fish
-    babelfish
-    direnv
-    eza
-    fish
-    starship
-    zoxide
+    pkgs.babelfish
+    pkgs.direnv
+    pkgs.eza
+    pkgs.fish
+    pkgs.starship
+    pkgs.zoxide
 
     # Neovim
     unstable.neovim
     # Neovim: Soft dependencies
-    xclip
+    pkgs.xclip
     # Neovim: Language Server
-    clang-tools
-    ltex-ls
-    lua-language-server
-    nil
-    nixd
-    yaml-language-server
+    pkgs.clang-tools
+    pkgs.ltex-ls
+    pkgs.lua-language-server
+    pkgs.nil
+    pkgs.nixd
+    pkgs.yaml-language-server
 
     # Other lovely CLI tools
-    bat
-    btop
-    commitizen
-    delta
-    fd
-    fzf
-    glow
-    go-task
-    unstable.pipx
-    ripgrep
-    moreutils # sponge
-    translate-shell
-    yq
+    pkgs.bat
+    pkgs.btop
+    pkgs.commitizen
+    pkgs.delta
+    pkgs.fd
+    pkgs.fzf
+    pkgs.gh
+    pkgs.go-task
+    pkgs.moreutils # sponge
+    pkgs.pipx
+    pkgs.ripgrep
+    pkgs.translate-shell
+    pkgs.yq
 
     # Python Development
-    virtualenv
-
-    # Kubernetes development
-    k9s
-    kubectl
-    minikube
+    pkgs.virtualenv
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

@@ -12,6 +12,8 @@ local function server_setup()
 	lspconfig.dockerls.setup({})
 	-- Go
 	lspconfig.gopls.setup({})
+	-- HTMX
+	lspconfig.htmx.setup({})
 	-- LaTeX, Markdown, ...
 	lspconfig.ltex.setup({
 		autostart = false,

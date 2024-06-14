@@ -47,8 +47,11 @@ assert username != "";
     pkgs.fd
     pkgs.fzf
     pkgs.gh
+    pkgs.glow
     pkgs.go-task
     pkgs.moreutils # sponge
+    pkgs.nodePackages.bash-language-server
+    pkgs.nodePackages.prettier
     pkgs.pipx
     pkgs.ripgrep
     pkgs.translate-shell

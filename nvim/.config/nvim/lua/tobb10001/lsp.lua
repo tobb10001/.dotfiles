@@ -9,7 +9,7 @@ local function server_setup()
 	-- C
 	lspconfig.clangd.setup({})
 	-- Docker
-	lspconfig.dockerls.setup({})
+	-- lspconfig.dockerls.setup({})
 	-- Go
 	lspconfig.gopls.setup({})
 	-- HTMX
@@ -27,7 +27,7 @@ local function server_setup()
 	-- lspconfig.basedpyright.setup({})
 	-- lspconfig.pylsp.setup({})
 	lspconfig.pyright.setup({})
-	-- lspconfig.ruff.setup({})  -- it's not there yet
+	lspconfig.ruff.setup({})
 	-- R
 	lspconfig.r_language_server.setup({})
 	-- Rust

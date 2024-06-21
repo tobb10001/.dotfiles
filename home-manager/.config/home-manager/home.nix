@@ -47,6 +47,7 @@ assert username != "";
     pkgs.fd
     pkgs.fzf
     pkgs.gh
+    pkgs.glab
     pkgs.glow
     pkgs.go-task
     pkgs.moreutils # sponge
@@ -55,6 +56,7 @@ assert username != "";
     pkgs.pipx
     pkgs.ripgrep
     pkgs.translate-shell
+    pkgs.watchexec
     pkgs.yq
 
     # Python Development

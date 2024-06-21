@@ -14,6 +14,7 @@ if status is-interactive
     else
         alias clip "xclip -selection clipboard"
     end
+    alias diff "diff -W (tput cols)"
     if command -v eza > /dev/null;
         alias ls "eza --icons"
     else

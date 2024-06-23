@@ -31,7 +31,15 @@ local function server_setup()
 	-- R
 	lspconfig.r_language_server.setup({})
 	-- Rust
-	lspconfig.rust_analyzer.setup({})
+	lspconfig.rust_analyzer.setup({
+		settings = {
+			["rust-analyzer"] = {
+				cargo = {
+					features = "all"
+				}
+			}
+		}
+	})
 	-- Terraform
 	lspconfig.terraformls.setup({})
 	-- TypeScript, JavaScript

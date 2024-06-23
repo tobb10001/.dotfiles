@@ -24,6 +24,7 @@ if status is-interactive
         alias go "grc go"
     end
     alias lslsls "echo Yeah, I don\'t know either..."
+    alias emacs "emacs -nw"
     alias open "xdg-open"
     alias pip "pip --require-virtualenv"
     alias view "nvim -R"
@@ -41,6 +42,7 @@ if status is-interactive
     # Init the stuff ###################################################################
 
     direnv hook fish | source
+    fzf --fish | source
     starship init fish | source
     zoxide init --cmd cd --hook prompt fish | source
 

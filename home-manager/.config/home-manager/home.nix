@@ -1,6 +1,7 @@
 { pkgs, ... }:
   let
     username = builtins.getEnv "USER";
+    homeDirectory =  "/home/" + username;
     unstable = import <unstable> { config = { allowUnfree = true; }; };
   in
 assert username != "";
@@ -8,15 +9,15 @@ assert username != "";
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = username;
-  home.homeDirectory = "/home/" + username;
+  home.homeDirectory = homeDirectory;
 
-  home.stateVersion = "23.11"; # Please read the comment before changing.
+  home.stateVersion = "24.05";
 
   home.packages = [
     # Wezterm
     # # Wezterm doesn't work for some reason. We use a workaround using the AppImage,
     # # see home.file.
-    # wezterm
+    # pkgs.wezterm
     pkgs.jetbrains-mono
 
     # Fish
@@ -26,6 +27,11 @@ assert username != "";
     pkgs.fish
     pkgs.starship
     pkgs.zoxide
+
+    # Programming Tools
+    pkgs.pandoc
+    pkgs.shellcheck
+    pkgs.virtualenv
 
     # Neovim
     unstable.neovim
@@ -39,6 +45,9 @@ assert username != "";
     pkgs.nixd
     pkgs.yaml-language-server
 
+    # Emacs
+    pkgs.emacs
+
     # Other lovely CLI tools
     pkgs.bat
     pkgs.btop
@@ -48,6 +57,7 @@ assert username != "";
     pkgs.fzf
     pkgs.gh
     pkgs.glab
+    pkgs.git
     pkgs.glow
     pkgs.go-task
     pkgs.moreutils # sponge
@@ -55,12 +65,10 @@ assert username != "";
     pkgs.nodePackages.prettier
     pkgs.pipx
     pkgs.ripgrep
+    pkgs.stow
     pkgs.translate-shell
     pkgs.watchexec
     pkgs.yq
-
-    # Python Development
-    pkgs.virtualenv
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -80,7 +88,7 @@ assert username != "";
         Version=1.0
         Type=Application
         Terminal=False
-        Exec=~/.local/bin/wezterm start
+        Exec='' + homeDirectory + ''/.local/bin/wezterm start
         Name=Wezterm
       '';
     };

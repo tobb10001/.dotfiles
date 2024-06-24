@@ -29,6 +29,7 @@ assert username != "";
     pkgs.zoxide
 
     # Programming Tools
+    pkgs.luajitPackages.luarocks
     pkgs.pandoc
     pkgs.shellcheck
     pkgs.virtualenv

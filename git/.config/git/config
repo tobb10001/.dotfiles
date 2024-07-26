@@ -19,7 +19,7 @@
 	todo = grep -Eni '\\btodo\\b'
 
 	statu = status
-	tree = !git ls-files | tree --fromfile .
+	tree = !eza --git-ignore -aT
 	pust = push
 [init]
 	defaultBranch = main

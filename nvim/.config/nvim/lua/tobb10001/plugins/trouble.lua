@@ -34,4 +34,5 @@ return {
 			desc = "Quickfix List (Trouble)",
 		},
 	},
+	cond = not vim.g.vscode,
 }

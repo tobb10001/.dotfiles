@@ -30,6 +30,7 @@ assert username != "";
 
     # Programming Tools
     pkgs.luajitPackages.luarocks
+    pkgs.nodejs
     pkgs.pandoc
     pkgs.shellcheck
     pkgs.virtualenv

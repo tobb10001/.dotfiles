@@ -95,9 +95,12 @@ return {
 			require("dap-python").setup("~/.local/share/nvim/debugpy_venv/bin/python")
 			dap.configurations.python[3].justMyCode = false -- FIXME: Find a better way to handle this stuff.
 		end,
+		cond = not vim.g.vscode,
 	},
 	{
 		"mfussenegger/nvim-dap-python",
-		dependencies = { "mfussenegger/nvim-dap" }
+		dependencies = { "mfussenegger/nvim-dap" },
+		ft = { "python" },
+		cond = not vim.g.vscode,
 	}
 }

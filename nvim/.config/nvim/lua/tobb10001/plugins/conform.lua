@@ -24,4 +24,5 @@ return {
 	init = function()
 		vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 	end,
+	cond = not vim.g.vscode,
 }

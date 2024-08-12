@@ -171,5 +171,6 @@ return {
 			"SergioRibera/cmp-dotenv",
 		},
 		event = { "BufReadPost", "BufNewFile" },
+		cond = not vim.g.vscode,
 	},
 }

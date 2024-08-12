@@ -128,4 +128,5 @@ return {
 			module = "telescope._extensions.luasnip",
 		},
 	},
+	cond = not vim.g.vscode,
 }

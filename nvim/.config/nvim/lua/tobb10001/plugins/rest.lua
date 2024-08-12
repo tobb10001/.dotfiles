@@ -39,4 +39,5 @@ return {
 			desc = "[R]est: Re-run the [l]ast Request.",
 		},
 	},
+	cond = not vim.g.vscode,
 }

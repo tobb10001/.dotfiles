@@ -71,7 +71,15 @@ return {
 							["at"] = "@comment.outer",
 						},
 					},
-					swap = { enable = false }, -- for now
+					swap = {
+						enable = true,
+						swap_next = {
+							["<leader>sa"] = "@parameter.inner",
+						},
+						swap_previous = {
+							["<leader>sA"] = "@parameter.inner"
+						}
+					},
 					move = {
 						enable = true,
 						set_jumps = false,

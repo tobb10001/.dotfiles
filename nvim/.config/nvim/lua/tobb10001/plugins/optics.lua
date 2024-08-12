@@ -26,6 +26,7 @@ return {
 		init = function()
 			vim.cmd(":colorscheme tokyonight")
 		end,
+		cond = not vim.g.vscode,
 	},
 	{
 		"folke/noice.nvim",
@@ -55,17 +56,20 @@ return {
 		keys = {
 			{ "<leader>nd", "<cmd>NoiceDismiss<CR>", { desc = "[D]ismiss [N]oice Message" } },
 		},
+		cond = not vim.g.vscode,
 	},
 	{
 		"lewis6991/gitsigns.nvim",
 		config = true,
 		event = { "BufReadPost", "BufNewFile" },
+		cond = not vim.g.vscode,
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",
 		opts = {},
 		event = "VeryLazy",
+		cond = not vim.g.vscode,
 	},
 	{
 		"nvim-lualine/lualine.nvim",
@@ -81,11 +85,13 @@ return {
 			},
 		},
 		event = "VeryLazy",
+		cond = not vim.g.vscode,
 	},
 	{
 		"mawkler/modicator.nvim",
 		opts = {},
 		event = { "BufReadPost", "BufNewFile" },
+		cond = not vim.g.vscode,
 	},
 	{
 		"akinsho/bufferline.nvim",
@@ -99,11 +105,13 @@ return {
 			})
 		end,
 		event = { "VeryLazy" },
+		cond = not vim.g.vscode,
 	},
 	{
 		"stevearc/dressing.nvim",
 		opts = {},
 		version = "*",
 		event = "VeryLazy",
+		cond = not vim.g.vscode,
 	},
 }

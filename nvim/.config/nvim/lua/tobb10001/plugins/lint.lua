@@ -18,4 +18,5 @@ return {
 			end,
 		})
 	end,
+	cond = not vim.g.vscode,
 }

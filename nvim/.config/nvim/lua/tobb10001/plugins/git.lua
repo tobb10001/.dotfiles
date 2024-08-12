@@ -88,6 +88,7 @@ return {
 				{ desc = "Open [D]iff[V]iew" },
 			},
 		},
+		cond = not vim.g.vscode,
 	},
 	{
 		'pwntester/octo.nvim',

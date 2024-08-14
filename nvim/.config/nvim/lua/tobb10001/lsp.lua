@@ -45,6 +45,8 @@ local function server_setup()
 	-- TypeScript, JavaScript
 	-- Handled by typescript-tools
 	-- lspconfig.tsserver.setup({})
+	-- Vue
+	lspconfig.volar.setup({})
 	-- Yaml
 	lspconfig.yamlls.setup({
 		filetypes = { "yaml", "yaml.gitlab-ci", "yaml.dockerfile" },

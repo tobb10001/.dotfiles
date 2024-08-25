@@ -29,7 +29,6 @@ assert username != "";
     pkgs.zoxide
 
     # Programming Tools
-    pkgs.luajitPackages.luarocks
     pkgs.nodejs
     pkgs.pandoc
     pkgs.shellcheck
@@ -55,6 +54,7 @@ assert username != "";
     pkgs.btop
     pkgs.commitizen
     pkgs.delta
+    pkgs.exiftool
     pkgs.fd
     pkgs.fzf
     pkgs.gh
@@ -62,7 +62,10 @@ assert username != "";
     pkgs.git
     pkgs.glow
     pkgs.go-task
+    pkgs.graphviz
     # pkgs.moreutils # sponge
+    pkgs.moreutils # sponge
+    pkgs.moreutils # sponge
     pkgs.nodePackages.bash-language-server
     pkgs.nodePackages.prettier
     pkgs.parallel-full

@@ -1,8 +1,7 @@
 return {
 	{
 		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
+		event = "VeryLazy",
 		opts = {
 			transparent = true,
 			on_highlights = function(hl, c)

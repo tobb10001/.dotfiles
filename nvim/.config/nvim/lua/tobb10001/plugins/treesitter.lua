@@ -52,7 +52,7 @@ return {
 						enable = true,
 						lookahead = true,
 						keymaps = {
-							["aa"] = "@parameter.outer", -- ???
+							["aa"] = "@parameter.outer",
 							["ia"] = "@parameter.inner",
 							["ab"] = "@block.outer",
 							["ib"] = "@block.inner",
@@ -84,18 +84,22 @@ return {
 						enable = true,
 						set_jumps = false,
 						goto_next_start = {
+							["]a"] = "@parameter.outer",
 							["]f"] = "@function.outer",
 							["]s"] = "@class.outer", -- struct
 						},
 						goto_next_end = {
+							["]A"] = "@parameter.outer",
 							["]F"] = "@function.outer",
 							["]S"] = "@class.outer", -- struct
 						},
 						goto_previous_start = {
+							["[a"] = "@parameter.outer",
 							["[f"] = "@function.outer",
 							["[s"] = "@class.outer", -- struct
 						},
 						goto_previous_end = {
+							["]A"] = "@parameter.outer",
 							["[F"] = "@function.outer",
 							["[S"] = "@class.outer", -- struct
 						},

@@ -10,6 +10,7 @@
 .nvim.lua
 /wt-*
 Taskfile.yml
+coverage.json
 justfile
 pyrightconfig.json
 shell.nix

@@ -6,6 +6,14 @@ return {
 			current_line_blame_opts = {
 				virt_text = true,
 			},
+			signs = {
+				add = { text = "+" },
+				change = { text = "~" },
+			},
+			signs_staged = {
+				add = { text = "+" },
+				change = { text = "~" },
+			},
 			on_attach = function(bufnr)
 				local gs = package.loaded.gitsigns
 				local map = function(mode, keys, func, opts)

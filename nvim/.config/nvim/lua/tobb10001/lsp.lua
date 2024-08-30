@@ -24,9 +24,9 @@ local function server_setup()
 	lspconfig.nil_ls.setup({})
 	lspconfig.nixd.setup({})
 	-- Python
-	-- lspconfig.basedpyright.setup({})
+	lspconfig.basedpyright.setup({})
 	-- lspconfig.pylsp.setup({})
-	lspconfig.pyright.setup({})
+	-- lspconfig.pyright.setup({})
 	lspconfig.ruff.setup({})
 	-- R
 	lspconfig.r_language_server.setup({})
@@ -92,6 +92,7 @@ function M.on_attach(client, _)
 	nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
 	nmap("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
 	nmap("gs", vim.lsp.buf.type_definition, "[G]oto Type definition")
+	vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, { buffer = client.buf, desc = "[S]ignature help" })
 
 	if client.resolved_capabilities and client.resolved_capabilities.highlight_provider() then
 		vim.cmd(":TSBufDisable highlight")

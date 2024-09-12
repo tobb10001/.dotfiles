@@ -13,7 +13,7 @@ local function server_setup()
 	-- Go
 	lspconfig.gopls.setup({})
 	-- HTMX
-	lspconfig.htmx.setup({})
+	-- lspconfig.htmx.setup({})
 	-- LaTeX, Markdown, ...
 	lspconfig.ltex.setup({
 		autostart = false,

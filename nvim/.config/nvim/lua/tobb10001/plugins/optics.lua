@@ -63,12 +63,38 @@ return {
 		event = { "BufReadPost", "BufNewFile" },
 		cond = not vim.g.vscode,
 	},
+	-- {
+	-- 	"lukas-reineke/indent-blankline.nvim",
+	-- 	main = "ibl",
+	-- 	opts = {},
+	-- 	event = "VeryLazy",
+	-- 	cond = not vim.g.vscode,
+	-- },
 	{
-		"lukas-reineke/indent-blankline.nvim",
-		main = "ibl",
-		opts = {},
-		event = "VeryLazy",
-		cond = not vim.g.vscode,
+		"shellRaining/hlchunk.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		config = function()
+			require("hlchunk").setup({
+				chunk = { enable = true, use_treesitter = true },
+				indent = {
+					enable = true,
+					chars = {
+						"│",
+					},
+					style = {
+						"#FF0000",
+						"#FF7F00",
+						"#FFFF00",
+						"#00FF00",
+						"#00FFFF",
+						-- "#0000FF",  # too dark on my background
+						"#8B00FF",
+					},
+				},
+				line_num = { enable = false }, -- FIXME: Colors...
+				blank = { enable = true },
+			})
+		end,
 	},
 	{
 		"nvim-lualine/lualine.nvim",
@@ -113,4 +139,8 @@ return {
 		event = "VeryLazy",
 		cond = not vim.g.vscode,
 	},
+	{
+		"RRethy/vim-illuminate",
+		event = "VeryLazy"
+	}
 }

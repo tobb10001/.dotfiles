@@ -40,6 +40,7 @@ return {
 			},
 		},
 		event = "VeryLazy",
+		cmd = { "TSBufEnable", "TSBufDisable" },
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",

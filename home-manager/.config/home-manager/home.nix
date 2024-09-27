@@ -64,8 +64,6 @@ assert username != "";
     pkgs.go-task
     pkgs.graphviz
     # pkgs.moreutils # sponge
-    pkgs.moreutils # sponge
-    pkgs.moreutils # sponge
     pkgs.nodePackages.bash-language-server
     pkgs.nodePackages.prettier
     pkgs.parallel-full

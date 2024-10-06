@@ -20,11 +20,12 @@ assert username != "";
     # pkgs.wezterm
     pkgs.jetbrains-mono
 
-    # Fish
+    # Shell
     pkgs.babelfish
     pkgs.direnv
     pkgs.eza
     pkgs.fish
+    pkgs.nushell
     pkgs.starship
     pkgs.zoxide
 

@@ -1,2 +1,0 @@
-- gitsigns.nvim
-- lspsaga.nvim

@@ -23,7 +23,7 @@ wezterm.on("toggle-background", function(window, _)
 end)
 
 -- Shell ---------------------------------------------------------------------------
-config.default_prog = { "fish" }
+config.default_prog = { "nu" }
 
 -- Appearence ----------------------------------------------------------------------
 -- Colors & Background

@@ -1,5 +1,8 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+[direnv]
+disabled = false
+
 [git_branch]
 symbol = "🌿 "
 
@@ -31,6 +34,10 @@ format = 'via [$symbol$state( \($name\))]($style) '
 impure_msg = "🪨"
 pure_msg = "💎"
 symbol = "❄️ "
+
+[shell]
+disabled = false
+fish_indicator = '󰈺 '
 
 [status]
 disabled = false

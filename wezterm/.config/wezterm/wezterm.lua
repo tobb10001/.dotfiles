@@ -51,7 +51,7 @@ config.inactive_pane_hsb = {
 }
 
 -- Keybinds ------------------------------------------------------------------------
-config.leader = { key = "`", modes = "NONE" }
+config.leader = { key = "`", mods = "NONE" }
 config.keys = {
 	-- Send ` when pressing ` twice.
 	{ key = "`", mods = "LEADER",       action = act.SendKey({ key = "`" }) },

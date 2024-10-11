@@ -55,7 +55,7 @@ return {
 					require("neotest").run.attach()
 				end,
 				mode = "n",
-				desc = "[T]est: [S]top nearest test"
+				desc = "[T]est: [A]ttach to nearest test"
 			},
 			{
 				"<leader>ts",

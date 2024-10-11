@@ -877,6 +877,7 @@ alias lslsls = echo "Yeah, I don\'t know either..."
 alias emacs = emacs -nw
 alias xopen = xdg-open
 alias pip = pip --require-virtualenv
+alias uv = uv --native-tls
 alias view = nvim -R
 # alias watch = watch --color
 

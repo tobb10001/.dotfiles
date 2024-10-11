@@ -18,7 +18,7 @@ local keys = {
 	{
 		"so",
 		function()
-			return require("telescope.builtin").oldfiles()
+			return require("telescope.builtin").oldfiles({ only_cwd = true })
 		end,
 		mode = "n",
 		desc = "[S]earch [o]ld files",

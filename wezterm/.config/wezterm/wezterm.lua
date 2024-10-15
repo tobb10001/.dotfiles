@@ -36,7 +36,7 @@ config.text_background_opacity = 0.75
 -- config.window_decorations = "RESIZE" -- Might this be incompatible with KDE?
 
 -- Font
-config.font = wezterm.font("JetbrainsMono")
+-- config.font = wezterm.font("JetbrainsMono")
 config.font_size = 11
 
 -- Tab Bar

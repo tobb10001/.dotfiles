@@ -18,7 +18,6 @@ assert username != "";
     # # Wezterm doesn't work for some reason. We use a workaround using the AppImage,
     # # see home.file.
     # pkgs.wezterm
-    pkgs.jetbrains-mono
 
     # Shell
     pkgs.babelfish

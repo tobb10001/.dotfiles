@@ -57,7 +57,7 @@ assert username != "";
     pkgs.exiftool
     pkgs.fd
     pkgs.fzf
-    pkgs.gh
+    unstable.gh
     pkgs.glab
     pkgs.git
     pkgs.glow

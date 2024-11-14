@@ -24,7 +24,8 @@ assert username != "";
     pkgs.direnv
     pkgs.eza
     pkgs.fish
-    pkgs.nushell
+    unstable.nushell
+    unstable.nushellPlugins.gstat
     pkgs.starship
     pkgs.zoxide
 
@@ -45,6 +46,7 @@ assert username != "";
     pkgs.nil
     pkgs.nixd
     pkgs.yaml-language-server
+    pkgs.nodePackages.bash-language-server
 
     # Emacs
     pkgs.emacs
@@ -63,8 +65,6 @@ assert username != "";
     pkgs.glow
     pkgs.go-task
     pkgs.graphviz
-    # pkgs.moreutils # sponge
-    pkgs.nodePackages.bash-language-server
     pkgs.nodePackages.prettier
     pkgs.parallel-full
     pkgs.pipx
@@ -73,6 +73,9 @@ assert username != "";
     pkgs.translate-shell
     pkgs.watchexec
     pkgs.yq
+
+    # Vision 100% Keyboard
+    pkgs.kanata
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

@@ -1,4 +1,4 @@
--- vim: foldmethod=marker,foldmarker={{{,}}}
+-- vim: foldmethod=marker foldmarker={{{,}}}
 ---@diagnostic disable: lowercase-global,undefined-global
 
 -- If LuaRocks is installed, make sure that packages installed through it are
@@ -78,7 +78,7 @@ awful.layout.layouts = {
     -- awful.layout.suit.fair.horizontal,
     -- awful.layout.suit.spiral,
     -- awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max,
+    -- awful.layout.suit.max,
     -- awful.layout.suit.max.fullscreen,
     -- awful.layout.suit.magnifier,
     -- awful.layout.suit.corner.nw,

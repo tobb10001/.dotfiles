@@ -86,6 +86,14 @@ return {
 			})
 		end,
 		event = { "BufReadPost", "BufNewFile" },
+		keys = { {
+			"<leader>g",
+			function()
+				require("gitlinker").link({ remote = "origin" })
+			end,
+			mode = { "n", "v" },
+			desc = "[G]it Link",
+		} }
 	},
 	{
 		"sindrets/diffview.nvim",

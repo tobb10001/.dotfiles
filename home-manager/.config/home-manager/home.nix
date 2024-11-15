@@ -70,6 +70,7 @@ assert username != "";
     pkgs.pipx
     pkgs.ripgrep
     pkgs.stow
+    pkgs.tldr
     pkgs.translate-shell
     pkgs.watchexec
     pkgs.yq

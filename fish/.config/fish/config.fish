@@ -10,6 +10,8 @@ if status is-interactive
     set -gx XDG_DATA_HOME "$HOME/.local/share"
     set -gx XDG_STATE_HOME "$HOME/.local/state"
 
+    set -x RIPGREP_CONFIG_PATH $XDG_CONFIG_HOME/ripgrep/config
+
     if wsl
         alias clip "clip.exe"
     else

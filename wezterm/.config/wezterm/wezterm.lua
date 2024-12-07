@@ -50,6 +50,10 @@ config.inactive_pane_hsb = {
 	brightness = 0.75,
 }
 
+-- Plugins -------------------------------------------------------------------------
+
+local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
+
 -- Keybinds ------------------------------------------------------------------------
 config.leader = { key = "`", mods = "NONE" }
 config.keys = {
@@ -85,7 +89,7 @@ config.keys = {
 		mods = "LEADER",
 		action = act.SwitchToWorkspace({ name = "monitoring", spawn = { args = { "top" } } }),
 	},
-	{ key = "w", mods = "LEADER", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
+	{ key = "w", mods = "LEADER", action = workspace_switcher.switch_workspace() },
 	{
 		key = "c",
 		mods = "LEADER",
@@ -133,7 +137,8 @@ config.key_tables = {
 	},
 }
 
-config.status_update_interval = 1000
+
+config.status_update_interval = 200
 wezterm.on("update-status", function(window, pane)
 	-- Workspace name
 	local stat = window:active_workspace()
@@ -169,19 +174,20 @@ wezterm.on("update-status", function(window, pane)
 	end
 
 	-- Current command
-	local cmd = pane:get_foreground_process_name()
-	-- CWD and CMD could be nil (e.g. viewing log using Ctrl-Alt-l)
-	cmd = cmd and basename(cmd) or ""
+	local proc_info = pane:get_foreground_process_info()
+	local proc = "-/-"
+	if proc_info ~= nil then
+		proc = proc_info.name .. " (" .. proc_info.pid .. ")"
+	end
 
 	-- Time
-	local time = wezterm.strftime("%H:%M")
+	local time = wezterm.strftime("%H:%M:%S")
 
 	-- Left status (left of the tab line)
 	window:set_left_status(wezterm.format({
 		{ Foreground = { Color = stat_color } },
 		{ Text = "  " },
 		{ Text = wezterm.nerdfonts.oct_table .. "  " .. stat },
-		{ Text = " |" },
 	}))
 
 	-- Right status
@@ -191,7 +197,7 @@ wezterm.on("update-status", function(window, pane)
 		{ Text = wezterm.nerdfonts.md_folder .. "  " .. cwd },
 		{ Text = " | " },
 		{ Foreground = { Color = "#e0af68" } },
-		{ Text = wezterm.nerdfonts.fa_code .. "  " .. cmd },
+		{ Text = wezterm.nerdfonts.fa_code .. "  " .. proc },
 		"ResetAttributes",
 		{ Text = " | " },
 		{ Text = wezterm.nerdfonts.md_clock .. "  " .. time },

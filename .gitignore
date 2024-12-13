@@ -1,4 +1,5 @@
 wezterm/.config/wezterm/background
 *local*
+!\.local
 nvim/.config/nvim/plugin
 /zsh/.config/zsh/.zcompdump

@@ -85,6 +85,7 @@ local function config(opts)
 			},
 		},
 		sources = require("cmp").config.sources({
+			{ name = "copilot" },
 			{ name = "nvim_lsp" },
 			{ name = "luasnip" },
 			{ name = "path" },

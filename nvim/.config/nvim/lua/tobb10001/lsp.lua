@@ -14,6 +14,8 @@ local function server_setup()
 	lspconfig.gopls.setup({})
 	-- HTMX
 	-- lspconfig.htmx.setup({})
+	-- JSON
+	lspconfig.jsonls.setup({})
 	-- LaTeX, Markdown, ...
 	lspconfig.ltex.setup({
 		autostart = false,

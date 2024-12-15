@@ -3,6 +3,9 @@
 [direnv]
 disabled = false
 
+[docker_context]
+only_with_files = false
+
 [git_branch]
 symbol = "🌿 "
 

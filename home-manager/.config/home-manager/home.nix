@@ -67,6 +67,7 @@ assert username != "";
     pkgs.graphviz
     pkgs.imagemagick
     pkgs.just
+    pkgs.jq
     pkgs.nodePackages.prettier
     pkgs.parallel-full
     pkgs.pipx

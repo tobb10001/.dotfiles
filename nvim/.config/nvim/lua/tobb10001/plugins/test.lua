@@ -65,7 +65,8 @@ return {
 				mode = "n",
 				desc = "[T]est: [S]ummary"
 			},
-		}
+		},
+		enabled = false,
 	},
 	{
 		"andythigpen/nvim-coverage",

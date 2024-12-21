@@ -28,37 +28,6 @@ return {
 		cond = not vim.g.vscode,
 	},
 	{
-		"folke/noice.nvim",
-		event = "VeryLazy",
-		opts = {
-			lsp = {
-				progress = { enabled = false },
-				-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-				override = {
-					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-					["vim.lsp.util.stylize_markdown"] = true,
-					["cmp.entry.get_documentation"] = true,
-				},
-			},
-			-- you can enable a preset for easier configuration
-			presets = {
-				bottom_search = true, -- use a classic bottom cmdline for search
-				command_palette = true, -- position the cmdline and popupmenu together
-				long_message_to_split = true, -- long messages will be sent to a split
-				inc_rename = true, -- enables an input dialog for inc-rename.nvim
-				lsp_doc_border = true, -- add a border to hover docs and signature help
-			},
-		},
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"rcarriga/nvim-notify",
-		},
-		keys = {
-			{ "<leader>nd", "<cmd>NoiceDismiss<CR>", { desc = "[D]ismiss [N]oice Message" } },
-		},
-		cond = not vim.g.vscode,
-	},
-	{
 		"lewis6991/gitsigns.nvim",
 		config = true,
 		event = { "BufReadPost", "BufNewFile" },
@@ -92,7 +61,7 @@ return {
 						"#8B00FF",
 					},
 				},
-				line_num = { enable = false }, -- FIXME: Colors...
+				line_num = { enable = true }, -- FIXME: Colors...
 				blank = { enable = true },
 			})
 		end,
@@ -103,11 +72,13 @@ return {
 			options = {
 				icons_enabled = true,
 				theme = "tokyonight",
-				component_separators = "|",
-				section_separators = "",
+				component_separators = { left = '', right = '' },
+				section_separators = { left = '', right = '' },
 			},
 			sections = {
 				lualine_c = { { "filename", path = 1 } },
+				lualine_y = { "tabs" },
+				lualine_z = { "progress", "location" },
 			},
 		},
 		event = "VeryLazy",

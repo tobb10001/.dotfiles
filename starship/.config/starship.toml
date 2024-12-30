@@ -3,6 +3,12 @@
 [direnv]
 disabled = false
 
+allowed_msg = "a"
+not_allowed_msg = "na"
+
+loaded_msg = "l"
+unloaded_msg = "nl"
+
 [docker_context]
 only_with_files = false
 

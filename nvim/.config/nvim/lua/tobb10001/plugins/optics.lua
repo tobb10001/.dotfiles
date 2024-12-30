@@ -76,6 +76,17 @@ return {
 				section_separators = { left = '', right = '' },
 			},
 			sections = {
+				lualine_b = {
+					{
+						"branch",
+						fmt = function(str)
+							if str:len() > 20 then
+								return str:sub(1, 20) .. "…"
+							end
+							return str
+						end
+					}
+				},
 				lualine_c = { { "filename", path = 1 } },
 				lualine_y = { "tabs" },
 				lualine_z = { "progress", "location" },

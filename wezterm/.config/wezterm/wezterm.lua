@@ -22,8 +22,9 @@ wezterm.on("toggle-background", function(window, _)
 	window:set_config_overrides(overrides)
 end)
 
--- Shell ---------------------------------------------------------------------------
+-- General Options -----------------------------------------------------------------
 config.default_prog = { "fish" }
+config.warn_about_missing_glyphs = false
 
 -- Appearence ----------------------------------------------------------------------
 -- Colors & Background

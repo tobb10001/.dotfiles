@@ -62,6 +62,7 @@ assert username != "";
     unstable.gh
     pkgs.glab
     pkgs.git
+    pkgs.git-lfs
     pkgs.glow
     pkgs.go-task
     pkgs.graphviz

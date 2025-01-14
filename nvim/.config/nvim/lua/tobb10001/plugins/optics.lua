@@ -102,20 +102,6 @@ return {
 		cond = not vim.g.vscode,
 	},
 	{
-		"akinsho/bufferline.nvim",
-		version = "*",
-		dependencies = "nvim-tree/nvim-web-devicons",
-		config = function()
-			require("bufferline").setup({
-				options = {
-					mode = "tabs",
-				},
-			})
-		end,
-		event = { "VeryLazy" },
-		cond = not vim.g.vscode,
-	},
-	{
 		"stevearc/dressing.nvim",
 		opts = {},
 		version = "*",

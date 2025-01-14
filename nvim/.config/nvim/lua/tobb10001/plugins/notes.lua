@@ -11,25 +11,25 @@ return {
 	cmd = { "ScribeFind", "ScribeNew", "ScribeOpen" },
 	keys = {
 		{
-			"<leader>nf",
+			"<leader>sf",
 			function()
 				vim.cmd(":ScribeFind")
 			end,
-			{ desc = "[F]ind [N]ote" },
+			desc = "[S]cribe [F]ind note",
 		},
 		{
-			"<leader>nn",
+			"<leader>sn",
 			function()
 				vim.cmd(":ScribeNew")
 			end,
-			{ desc = "[N]ew [N]ote" },
+			desc = "[S]cribe [N]ew note",
 		},
 		{
-			"<leader>no",
+			"<leader>so",
 			function()
 				vim.cmd(":ScribeOpen")
 			end,
-			{ desc = "[O]pen [N]otes" },
+			desc = "[S]cribe [O]pen notes",
 		},
 	},
 }

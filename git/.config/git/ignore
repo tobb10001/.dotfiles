@@ -8,6 +8,7 @@
 .git/
 .luarc.json
 .nvim.lua
+.requires-python
 /wt-*
 Taskfile.yml
 coverage.json

@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+if [ -e "./.pre-commit-config.yaml" ]; then
+    echo -e "\e[0;33mA .pre-commit-config.yaml file exists, but there is no pre-commit hook in your repository.\e[0m"
+    echo -e "\e[0;33mInstalling for you... (\$ pre-commit install -f)\e[0m"
+
+    # The current file is the pre-commit hook.
+    # `pre-commit install -f` will install `pre-commit`s pre-commit hook and OVERWRITE
+    # this file in the repository we're currently looking at.
+    pre-commit install -f
+    echo -e "\e[0;32m\`pre-commit\` hook successfully installed!\e[0m"
+
+    # Don't run
+    # $ git commit
+    # here, because we'd be risking an infinite loop.
+    # (Not really, because we'd bail out if `pre-commit install` fails, but not worth
+    # the risk.)
+
+    echo -e "\e[0;32mRe-run your commit command now.\e[0m"
+    exit 1;
+fi
+

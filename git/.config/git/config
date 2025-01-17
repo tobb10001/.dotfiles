@@ -23,6 +23,7 @@
 	pust = push
 [init]
 	defaultBranch = main
+	templatedir = ~/.config/git/template
 [core]
 	excludesfile = ~/.config/git/ignore
 	attributesFile = ~/.config/git/attributes

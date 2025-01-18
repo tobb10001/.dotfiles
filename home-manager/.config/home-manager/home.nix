@@ -72,6 +72,7 @@ assert username != "";
     pkgs.nodePackages.prettier
     pkgs.parallel-full
     pkgs.pipx
+    pkgs.restish
     pkgs.ripgrep
     pkgs.stow
     pkgs.tldr

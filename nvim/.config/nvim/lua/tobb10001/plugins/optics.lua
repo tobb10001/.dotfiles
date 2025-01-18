@@ -21,9 +21,11 @@ return {
 					fg = "#777777",
 				}
 			end,
+			dim_inactive = true,
+			lualine_bold = true,
 		},
 		init = function()
-			vim.cmd(":colorscheme tokyonight")
+			vim.cmd(":colorscheme tokyonight-night")
 		end,
 		cond = not vim.g.vscode,
 	},
@@ -71,7 +73,6 @@ return {
 		opts = {
 			options = {
 				icons_enabled = true,
-				theme = "tokyonight",
 				component_separators = { left = '', right = '' },
 				section_separators = { left = '', right = '' },
 			},

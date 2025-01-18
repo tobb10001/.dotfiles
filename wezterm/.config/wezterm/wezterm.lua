@@ -33,11 +33,10 @@ config.color_scheme = "Tokyo Night"
 config.window_background_image_hsb = {
 	brightness = 0.05,
 }
-config.text_background_opacity = 0.75
+config.text_background_opacity = 1
 -- config.window_decorations = "RESIZE" -- Might this be incompatible with KDE?
 
 -- Font
--- config.font = wezterm.font("JetbrainsMono")
 config.font_size = 11
 
 -- Tab Bar

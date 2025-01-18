@@ -209,8 +209,8 @@ globalkeys = gears.table.join(
         end,
         { description = "focus previous by index", group = "client" }
     ),
-    awful.key({ modkey, }, "w", function() mymainmenu:show() end,
-        { description = "show main menu", group = "awesome" }),
+    -- awful.key({ modkey, }, "w", function() mymainmenu:show() end,
+    --     { description = "show main menu", group = "awesome" }),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift" }, "j", function() awful.client.swap.byidx(1) end,
@@ -269,8 +269,8 @@ globalkeys = gears.table.join(
         { description = "restore minimized", group = "client" }),
 
     -- Prompt
-    awful.key({ modkey }, "r", function() awful.screen.focused().mypromptbox:run() end,
-        { description = "run prompt", group = "launcher" }),
+    -- awful.key({ modkey }, "r", function() awful.screen.focused().mypromptbox:run() end,
+    --     { description = "run prompt", group = "launcher" }),
 
     awful.key({ modkey }, "x",
         function()
@@ -302,8 +302,8 @@ clientkeys = gears.table.join(
         { description = "move to master", group = "client" }),
     awful.key({ modkey, }, "o", function(c) c:move_to_screen() end,
         { description = "move to screen", group = "client" }),
-    awful.key({ modkey, }, "t", function(c) c.ontop = not c.ontop end,
-        { description = "toggle keep on top", group = "client" }),
+    -- awful.key({ modkey, }, "t", function(c) c.ontop = not c.ontop end,
+    --     { description = "toggle keep on top", group = "client" }),
     awful.key({ modkey, }, "n",
         function(c)
             -- The client currently has the input focus, so it cannot be
@@ -331,13 +331,11 @@ clientkeys = gears.table.join(
         { description = "(un)maximize horizontally", group = "client" })
 )
 
--- Bind all key numbers to tags.
--- Be careful: we use keycodes to make it work on any keyboard layout.
--- This should map on the top row of your keyboard, usually 1 to 9.
-for i = 1, 9 do
+-- Bind top row to tags.
+for i, key in ipairs({ "q", "w", "e", "r", "t", --[[ "y", "u", "i", "o", "p" ]] }) do
     globalkeys = gears.table.join(globalkeys,
         -- View tag only.
-        awful.key({ modkey }, "#" .. i + 9,
+        awful.key({ modkey }, key,
             function()
                 local screen = awful.screen.focused()
                 local tag = screen.tags[i]
@@ -347,7 +345,7 @@ for i = 1, 9 do
             end,
             { description = "view tag #" .. i, group = "tag" }),
         -- Toggle tag display.
-        awful.key({ modkey, "Control" }, "#" .. i + 9,
+        awful.key({ modkey, "Control" }, key,
             function()
                 local screen = awful.screen.focused()
                 local tag = screen.tags[i]
@@ -357,7 +355,7 @@ for i = 1, 9 do
             end,
             { description = "toggle tag #" .. i, group = "tag" }),
         -- Move client to tag.
-        awful.key({ modkey, "Shift" }, "#" .. i + 9,
+        awful.key({ modkey, "Shift" }, key,
             function()
                 if client.focus then
                     local tag = client.focus.screen.tags[i]
@@ -368,7 +366,7 @@ for i = 1, 9 do
             end,
             { description = "move focused client to tag #" .. i, group = "tag" }),
         -- Toggle tag on focused client.
-        awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
+        awful.key({ modkey, "Control", "Shift" }, key,
             function()
                 if client.focus then
                     local tag = client.focus.screen.tags[i]

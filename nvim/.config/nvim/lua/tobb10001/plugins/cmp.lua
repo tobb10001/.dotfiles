@@ -85,14 +85,15 @@ local function config(opts)
 			},
 		},
 		sources = require("cmp").config.sources({
-			{ name = "copilot",      group_index = 1 },
-			{ name = "nvim_lsp",     group_index = 1 },
-			{ name = "luasnip",      group_index = 1 },
-			{ name = "path",         group_index = 2 },
-			{ name = "buffer",       group_index = 2 },
-			{ name = "treesitter",   group_index = 2 },
-			{ name = "dotenv",       group_index = 2 },
-			{ name = "git",          group_index = 2 },
+			{ name = "copilot",    group_index = 1 },
+			{ name = "nvim_lsp",   group_index = 1 },
+			{ name = "lazydev",    group_index = 1 },
+			{ name = "luasnip",    group_index = 1 },
+			{ name = "path",       group_index = 2 },
+			{ name = "buffer",     group_index = 2 },
+			{ name = "treesitter", group_index = 2 },
+			{ name = "dotenv",     group_index = 2 },
+			{ name = "git",        group_index = 2 },
 		}),
 	})
 	-- `/` cmdline setup.

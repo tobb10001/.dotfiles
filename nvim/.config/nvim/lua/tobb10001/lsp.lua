@@ -10,6 +10,8 @@ local function server_setup()
 	lspconfig.clangd.setup({})
 	-- Docker
 	-- lspconfig.dockerls.setup({})
+	-- GitHub Actions
+	lspconfig.gh_actions_ls.setup({})
 	-- Go
 	lspconfig.gopls.setup({})
 	-- HTMX
@@ -51,7 +53,7 @@ local function server_setup()
 	lspconfig.volar.setup({})
 	-- Yaml
 	lspconfig.yamlls.setup({
-		filetypes = { "yaml", "yaml.gitlab-ci", "yaml.dockerfile" },
+		filetypes = { "yaml", "yaml.gitlab-ci", "yaml.dockerfile", "yaml.github" },
 		yaml = {
 			schemaStore = {
 				enable = true,
@@ -101,6 +103,10 @@ function M.on_attach(client, _)
 	end
 
 	vim.lsp.inlay_hint.enable()
+
+	if client.name == "ltex" then
+		require("ltex_extra").setup({})
+	end
 end
 
 function M.lspconfig_config()

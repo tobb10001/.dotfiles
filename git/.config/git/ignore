@@ -13,5 +13,6 @@
 Taskfile.yml
 coverage.json
 justfile
+ltex.*.txt
 pyrightconfig.json
 shell.nix

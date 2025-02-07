@@ -1,9 +1,10 @@
 if status is-interactive
 
-    set -gx PATH ~/.local/bin $PATH
     set -gx PATH /usr/local/go/bin $PATH
-    set -gx PATH ~/go/bin $PATH
+    set -gx PATH ~/.local/bin $PATH
     set -gx PATH ~/.nix-profile/bin/ $PATH
+    set -gx PATH ~/.npm-packages/bin $PATH
+    set -gx PATH ~/go/bin $PATH
     set -gx PATH ~/swift/swift-6.0.1/usr/bin $PATH
     set -gx XDG_CACHE_HOME "$HOME/.cache"
     set -gx XDG_CONFIG_HOME "$HOME/.config"

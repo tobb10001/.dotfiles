@@ -46,6 +46,8 @@ local function server_setup()
 	})
 	-- Terraform
 	lspconfig.terraformls.setup({})
+	-- TOML
+	lspconfig.taplo.setup({})
 	-- TypeScript, JavaScript
 	-- Handled by typescript-tools
 	-- lspconfig.tsserver.setup({})

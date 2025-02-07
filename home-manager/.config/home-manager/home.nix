@@ -45,8 +45,10 @@ assert username != "";
     pkgs.lua-language-server
     pkgs.nil
     pkgs.nixd
-    pkgs.yaml-language-server
     pkgs.nodePackages.bash-language-server
+    pkgs.nodePackages.prettier
+    pkgs.taplo
+    pkgs.yaml-language-server
 
     # Emacs
     pkgs.emacs
@@ -54,7 +56,6 @@ assert username != "";
     # Other lovely CLI tools
     pkgs.bat
     pkgs.btop
-    pkgs.commitizen
     pkgs.delta
     pkgs.exiftool
     pkgs.fd
@@ -66,10 +67,10 @@ assert username != "";
     pkgs.glow
     pkgs.go-task
     pkgs.graphviz
+    pkgs.grc
     pkgs.imagemagick
     pkgs.just
     pkgs.jq
-    pkgs.nodePackages.prettier
     pkgs.parallel-full
     pkgs.pipx
     pkgs.restish
@@ -124,7 +125,7 @@ assert username != "";
   #  /etc/profiles/per-user/tobi/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    EDITOR = "nvim";
+    EDITOR = homeDirectory + "/.nix-profile/bin/nvim";
   };
 
   # Let Home Manager install and manage itself.

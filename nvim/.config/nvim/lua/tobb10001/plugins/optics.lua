@@ -21,10 +21,10 @@ return {
 					fg = "#777777",
 				}
 				hl.CopilotAnnotation = {
-					fg = "#BBBBBB",
+					fg = "#DDDDDD",
 				}
 				hl.CopilotSuggestion = {
-					fg = "#DDDDDD",
+					fg = "#CCCCCC",
 				}
 			end,
 			dim_inactive = true,

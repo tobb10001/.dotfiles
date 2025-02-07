@@ -21,6 +21,10 @@ return {
 					dismiss = "<M-x>",
 				},
 			},
+			filetypes = {
+				markdown = false,
+				["*"] = true,
+			}
 		},
 	},
 	"AndreM222/copilot-lualine",

@@ -5,15 +5,23 @@ return {
 		event = "InsertEnter",
 		main = "copilot",
 		opts = {
-			suggestion = { enabled = false },
-			panel = { enabled = false },
+			panel = {
+				enabled = true,
+				keymap = {
+					open = "<C-c>",
+				}
+			},
+			suggestion = {
+				keymap = {
+					accept = "<M-a>",
+					accept_word = "<M-w>",
+					accept_line = "<M-l>",
+					next = "<M-n>",
+					prev = "<M-p>",
+					dismiss = "<M-x>",
+				},
+			},
 		},
 	},
-	{
-		"zbirenbaum/copilot-cmp",
-		main = "copilot_cmp",
-		config = true,
-		dependencies = { "zbirenbaum/copilot.lua" },
-		event = { "InsertEnter", "LspAttach" },
-	}
+	"AndreM222/copilot-lualine",
 }

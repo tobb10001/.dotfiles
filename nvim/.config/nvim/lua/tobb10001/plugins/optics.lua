@@ -20,6 +20,12 @@ return {
 				hl.DiagnosticUnnecessary = {
 					fg = "#777777",
 				}
+				hl.CopilotAnnotation = {
+					fg = "#BBBBBB",
+				}
+				hl.CopilotSuggestion = {
+					fg = "#DDDDDD",
+				}
 			end,
 			dim_inactive = true,
 			lualine_bold = true,
@@ -35,38 +41,12 @@ return {
 		event = { "BufReadPost", "BufNewFile" },
 		cond = not vim.g.vscode,
 	},
-	-- {
-	-- 	"lukas-reineke/indent-blankline.nvim",
-	-- 	main = "ibl",
-	-- 	opts = {},
-	-- 	event = "VeryLazy",
-	-- 	cond = not vim.g.vscode,
-	-- },
 	{
-		"shellRaining/hlchunk.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		config = function()
-			require("hlchunk").setup({
-				chunk = { enable = true, use_treesitter = true },
-				indent = {
-					enable = true,
-					chars = {
-						"│",
-					},
-					style = {
-						"#FF0000",
-						"#FF7F00",
-						"#FFFF00",
-						"#00FF00",
-						"#00FFFF",
-						-- "#0000FF",  # too dark on my background
-						"#8B00FF",
-					},
-				},
-				line_num = { enable = true }, -- FIXME: Colors...
-				blank = { enable = true },
-			})
-		end,
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		opts = {},
+		event = "VeryLazy",
+		cond = not vim.g.vscode,
 	},
 	{
 		"nvim-lualine/lualine.nvim",
@@ -89,6 +69,16 @@ return {
 					}
 				},
 				lualine_c = { { "filename", path = 1 } },
+				lualine_x = {
+					{
+						"copilot",
+						show_colors = true,
+						show_loading = true,
+					},
+					"encoding",
+					"fileformat",
+					"filetype" },
+
 				lualine_y = { "tabs" },
 				lualine_z = { "progress", "location" },
 			},
@@ -112,5 +102,16 @@ return {
 	{
 		"RRethy/vim-illuminate",
 		event = "VeryLazy"
-	}
+	},
+	-- Fidget for LSP Progress
+	{
+		"j-hui/fidget.nvim",
+		opts = {
+			progress = {
+				display = {
+					progress_icon = { pattern = "moon" },
+				},
+			},
+		},
+	},
 }

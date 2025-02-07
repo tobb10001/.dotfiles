@@ -85,7 +85,6 @@ local function config(opts)
 			},
 		},
 		sources = require("cmp").config.sources({
-			{ name = "copilot",    group_index = 1 },
 			{ name = "nvim_lsp",   group_index = 1 },
 			{ name = "lazydev",    group_index = 1 },
 			{ name = "luasnip",    group_index = 1 },

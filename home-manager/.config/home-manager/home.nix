@@ -79,6 +79,7 @@ assert username != "";
     pkgs.tldr
     pkgs.translate-shell
     pkgs.watchexec
+    pkgs.yamllint
     pkgs.yq
 
     # Vision 100% Keyboard

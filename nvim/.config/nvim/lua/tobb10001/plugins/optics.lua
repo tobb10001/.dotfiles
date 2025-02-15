@@ -106,6 +106,7 @@ return {
 	-- Fidget for LSP Progress
 	{
 		"j-hui/fidget.nvim",
+		event = "VeryLazy",
 		opts = {
 			progress = {
 				display = {
@@ -114,4 +115,5 @@ return {
 			},
 		},
 	},
+	"ntpeters/vim-better-whitespace"
 }

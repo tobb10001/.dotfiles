@@ -22,6 +22,8 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 
+HOME = os.getenv("HOME")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -116,11 +118,21 @@ else
     })
 end
 
+mylauncher = awful.widget.launcher({
+    image = beautiful.awesome_icon,
+    menu = mymainmenu
+})
+
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
+-- Keyboard map indicator and switcher
+mykeyboardlayout = awful.widget.keyboardlayout()
+
 -- {{{ Wibar
+-- Create a textclock widget
+mytextclock = wibox.widget.textclock()
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -183,9 +195,62 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Each screen has its own tag table.
     awful.tag({ "Term", "Browse", "Comm", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+
+    -- Create a promptbox for each screen
+    s.mypromptbox = awful.widget.prompt()
+    -- Create an imagebox widget which will contain an icon indicating which layout we're using.
+    -- We need one layoutbox per screen.
+    s.mylayoutbox = awful.widget.layoutbox(s)
+    s.mylayoutbox:buttons(gears.table.join(
+        awful.button({}, 1, function() awful.layout.inc(1) end),
+        awful.button({}, 3, function() awful.layout.inc(-1) end),
+        awful.button({}, 4, function() awful.layout.inc(1) end),
+        awful.button({}, 5, function() awful.layout.inc(-1) end)))
+    -- Create a taglist widget
+    s.mytaglist = awful.widget.taglist {
+        screen  = s,
+        filter  = awful.widget.taglist.filter.all,
+        buttons = taglist_buttons
+    }
+
+    -- Create a tasklist widget
+    s.mytasklist = awful.widget.tasklist {
+        screen  = s,
+        filter  = awful.widget.tasklist.filter.currenttags,
+        buttons = tasklist_buttons
+    }
+
+    -- Create the wibox
+    s.mywibox = awful.wibar({ position = "top", screen = s })
+
+    -- Add widgets to the wibox
+    s.mywibox:setup {
+        layout = wibox.layout.align.horizontal,
+        { -- Left widgets
+            layout = wibox.layout.fixed.horizontal,
+            mylauncher,
+            s.mytaglist,
+            s.mypromptbox,
+        },
+        s.mytasklist, -- Middle widget
+        {             -- Right widgets
+            layout = wibox.layout.fixed.horizontal,
+            mykeyboardlayout,
+            wibox.widget.systray(),
+            mytextclock,
+            s.mylayoutbox,
+        },
+    }
+    s.mywibox.ontop = true
 end)
 -- }}}
 
+-- {{{ Mouse bindings
+root.buttons(gears.table.join(
+    awful.button({}, 3, function() mymainmenu:toggle() end),
+    awful.button({}, 4, awful.tag.viewnext),
+    awful.button({}, 5, awful.tag.viewprev)
+))
 -- {{{ Key bindings
 globalkeys = gears.table.join(
     awful.key({ modkey, }, "s", hotkeys_popup.show_help,
@@ -239,10 +304,10 @@ globalkeys = gears.table.join(
         { description = "reload awesome", group = "awesome" }),
     awful.key({ modkey, "Shift" }, "q", awesome.quit,
         { description = "quit awesome", group = "awesome" }),
-    awful.key({ modkey, }, "l", function() awful.tag.incmwfact(0.05) end,
-        { description = "increase master width factor", group = "layout" }),
-    awful.key({ modkey, }, "h", function() awful.tag.incmwfact(-0.05) end,
-        { description = "decrease master width factor", group = "layout" }),
+    -- awful.key({ modkey, }, "l", function() awful.tag.incmwfact(0.05) end,
+    --     { description = "increase master width factor", group = "layout" }),
+    -- awful.key({ modkey, }, "h", function() awful.tag.incmwfact(-0.05) end,
+    --     { description = "decrease master width factor", group = "layout" }),
     awful.key({ modkey, "Shift" }, "h", function() awful.tag.incnmaster(1, nil, true) end,
         { description = "increase the number of master clients", group = "layout" }),
     awful.key({ modkey, "Shift" }, "l", function() awful.tag.incnmaster(-1, nil, true) end,
@@ -272,7 +337,7 @@ globalkeys = gears.table.join(
     -- awful.key({ modkey }, "r", function() awful.screen.focused().mypromptbox:run() end,
     --     { description = "run prompt", group = "launcher" }),
 
-    awful.key({ modkey }, "x",
+    awful.key({ modkey, "Control" }, "x",
         function()
             awful.prompt.run {
                 prompt       = "Run Lua code: ",
@@ -459,6 +524,33 @@ awful.rules.rules = {
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
+
+    -- Integration with Plasma
+    -- https://userbase.kde.org/Tutorials/Using_Other_Window_Managers_with_Plasma
+    { -- General plasma rules
+        rule_any = {
+            class = {
+                "plasmashell",
+                "ksmserver-logout-greeter",
+            },
+        },
+        properties = {
+            floating = true,
+            border_width = 0,
+            titlebars = false,
+        },
+    },
+    { -- KDE apps
+        rule_any = {
+            class = {
+                "spectacle",
+                "krunner",
+            }
+        },
+        properties = {
+            floating = true,
+        }
+    },
 }
 -- }}}
 
@@ -474,6 +566,31 @@ client.connect_signal("manage", function(c)
         and not c.size_hints.program_position then
         -- Prevent clients from being unreachable after screen count changes.
         awful.placement.no_offscreen(c)
+    end
+
+    -- Integrate with KDE
+    -- https://userbase.kde.org/Tutorials/Using_Other_Window_Managers_with_Plasma
+    if c.type == "dock"             -- Plasma Panel
+        or c.type == "desktop" then -- Plasma Desktop
+        c.focusable = false
+        c:tags(c.screen.tags)
+    end
+    -- Show titlebars if enabled
+    if c.titlebars then
+        awful.titlebar.show(c)
+    else
+        awful.titlebar.hide(c)
+    end
+    -- Place floating windows. Plasma widgets provide this info
+    if c.floating then
+        if c.size_hints.user_position then
+            c.x = c.size_hints.user_position.x
+            c.y = c.size_hints.user_position.y
+        end
+        if c.size_hints.user_size then
+            c.width = c.size_hints.user_size.width
+            c.height = c.size_hints.user_size.height
+        end
     end
 end)
 
@@ -524,4 +641,11 @@ end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+
+-- }}}
+
+-- Autostart {{{
+awful.spawn.with_shell("xss-lock --transfer-sleep-lock -- i3lock --nofork -i " .. HOME .. "/.config/wezterm/background")
+awful.spawn.with_shell("nm-applet")
+-- TODO: Refactor to not pull the image from the wezterm dir.
 -- }}}

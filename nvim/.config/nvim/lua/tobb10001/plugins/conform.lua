@@ -1,3 +1,7 @@
+local file = io.open("./log", "w")
+io.write(vim.inspect(ConformOptions))
+io.close(file)
+
 return {
 	"stevearc/conform.nvim",
 	event = { "BufWritePre" },
@@ -12,13 +16,15 @@ return {
 			desc = "Format buffer",
 		},
 	},
-	opts = ConformOptions or {
+	config = function(opts)
+		require("conform").setup(ConformOptions or opts)
+	end,
+	opts = {
 		formatters_by_ft = {
 			lua = { "stylua" },
 		},
 		format_on_save = {
-			timeout_ms = 500,
-			lsp_fallback = true,
+			lsp_format = "fallback",
 		},
 	},
 	init = function()

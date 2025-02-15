@@ -33,7 +33,7 @@ assert username != "";
     pkgs.nodejs
     pkgs.pandoc
     pkgs.shellcheck
-    pkgs.virtualenv
+    unstable.typst
 
     # Neovim
     unstable.neovim
@@ -48,6 +48,7 @@ assert username != "";
     pkgs.nodePackages.bash-language-server
     pkgs.nodePackages.prettier
     pkgs.taplo
+    pkgs.texlab
     pkgs.yaml-language-server
 
     # Emacs

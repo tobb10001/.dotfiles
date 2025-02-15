@@ -22,6 +22,7 @@ local function server_setup()
 	lspconfig.ltex.setup({
 		autostart = false,
 	})
+	lspconfig.texlab.setup({})
 	-- Lua
 	lspconfig.lua_ls.setup({})
 	-- Nix
@@ -72,12 +73,8 @@ end
 
 function M.capabilities()
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
-	capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-	capabilities.textDocument.foldingRange = {
-		dynamicRegistration = false,
-		lineFoldingOnly = true,
-	}
+	capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 end
 
 function M.on_attach(client, _)

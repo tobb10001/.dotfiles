@@ -3,6 +3,7 @@ local skeletons = {
 	["pyproject.toml"] = { "pyproject.toml" },
 	[".pre-commit-config.yaml"] = { ".pre-commit-config.yaml" },
 	["Taskfile.yml"] = { "Taskfile.yml", "Taskfile.yaml" },
+	[".nvim.lua"] = { ".nvim.lua" },
 }
 
 local group = vim.api.nvim_create_augroup("tobb10001.skeletons", { clear = true })

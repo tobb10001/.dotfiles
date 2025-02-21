@@ -57,17 +57,14 @@ local function server_setup()
 	-- Yaml
 	lspconfig.yamlls.setup({
 		filetypes = { "yaml", "yaml.gitlab-ci", "yaml.dockerfile", "yaml.github" },
-		yaml = {
-			schemaStore = {
-				enable = true,
+		settings = {
+			yaml = {
+				schemas = {
+					["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/refs/heads/master/v1.32.1-standalone-strict/all.json"] =
+					"/**/.appstore/deployment.yml",
+				},
 			},
-			schemas = {
-				["http://gitlab.com/gitlab-org/gitlab/-/blob/master/app/assets/javascripts/editor/schema/ci.json"] =
-				"/**/.gitlab-ci.yml",
-				["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] =
-				"/**/docker-compose.ya?ml",
-			},
-		},
+		}
 	})
 end
 

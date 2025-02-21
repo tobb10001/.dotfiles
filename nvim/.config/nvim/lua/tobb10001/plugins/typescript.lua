@@ -4,6 +4,9 @@ return {
 	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 	opts = {
 		settings = {
+			tsserver_file_preferences = {
+				includeInlayParameterNameHints = "all",
+			},
 			tsserver_format_options = {
 				indentSize = 2,
 			},

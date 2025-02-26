@@ -1,0 +1,31 @@
+- name: Set natural scroll direction
+  ansible.builtin.copy:
+    src: libinput.conf
+    dest: /etc/X11/xorg.conf.d/40-libinput.conf
+    backup: true
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Configure device access for input, backlight, ...
+  block:
+
+    - name: Get user ID
+      ansible.builtin.set_fact:
+        real_user: "{{ lookup('env', 'USER') }}"
+
+    - name: Add user to groups
+      ansible.builtin.user:
+        name: "{{ real_user }}"
+        append: true  # <-- this is REALLY important
+        groups:
+          - input
+          - video
+
+    - name: Set udev rules for affected files
+      ansible.builtin.copy:
+        src: 99-kanata.rules
+        dest: /etc/udev/rules.d/99-kanata.rules
+        mode: "0644"
+        owner: root
+        group: root

@@ -1,0 +1,11 @@
+- name: Set access rights
+  ansible.builtin.include_tasks:
+    file: access.yml
+
+- name: Setup dependencies
+  ansible.builtin.include_tasks:
+    file: dependencies.yml
+
+- name: Configure input settings
+  ansible.builtin.include_tasks:
+    file: input.yml

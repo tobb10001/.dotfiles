@@ -17,6 +17,8 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
+-- Deficient
+local deficient = require("deficient")
 
 -- Load Debian menu entries
 local debian = require("debian.menu")
@@ -88,6 +90,8 @@ awful.layout.layouts = {
     -- awful.layout.suit.corner.sw,
     -- awful.layout.suit.corner.se,
 }
+
+local brightness_ctrl = deficient.brightness({})
 -- }}}
 
 -- {{{ Menu
@@ -127,12 +131,7 @@ mylauncher = awful.widget.launcher({
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
--- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
-
 -- {{{ Wibar
--- Create a textclock widget
-mytextclock = wibox.widget.textclock()
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -194,7 +193,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "Term", "Browse", "Comm", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    awful.tag({ "Term", "Browse", "Comm", "4", "5", --[[ "6", "7", "8", "9" ]] }, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -235,13 +234,17 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         {             -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
+            awful.widget.keyboardlayout(),
+            deficient.battery_widget({
+                ac_prefix = "🔌",
+                battery_prefix = "🔋",
+            }),
+            brightness_ctrl.widget,
             wibox.widget.systray(),
-            mytextclock,
+            wibox.widget.textclock(),
             s.mylayoutbox,
         },
     }
-    s.mywibox.ontop = true
 end)
 -- }}}
 
@@ -251,6 +254,8 @@ root.buttons(gears.table.join(
     awful.button({}, 4, awful.tag.viewnext),
     awful.button({}, 5, awful.tag.viewprev)
 ))
+-- }}}
+
 -- {{{ Key bindings
 globalkeys = gears.table.join(
     awful.key({ modkey, }, "s", hotkeys_popup.show_help,
@@ -262,6 +267,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey, }, "Escape", awful.tag.history.restore,
         { description = "go back", group = "tag" }),
 
+    -- Cycle through visible windows
     awful.key({ modkey, }, "j",
         function()
             awful.client.focus.byidx(1)
@@ -296,18 +302,10 @@ globalkeys = gears.table.join(
             end
         end,
         { description = "go back", group = "client" }),
-
-    -- Standard program
-    awful.key({ modkey, }, "Return", function() awful.spawn(terminal) end,
-        { description = "open a terminal", group = "launcher" }),
-    awful.key({ modkey, "Control" }, "r", awesome.restart,
-        { description = "reload awesome", group = "awesome" }),
-    awful.key({ modkey, "Shift" }, "q", awesome.quit,
-        { description = "quit awesome", group = "awesome" }),
-    -- awful.key({ modkey, }, "l", function() awful.tag.incmwfact(0.05) end,
-    --     { description = "increase master width factor", group = "layout" }),
-    -- awful.key({ modkey, }, "h", function() awful.tag.incmwfact(-0.05) end,
-    --     { description = "decrease master width factor", group = "layout" }),
+    awful.key({ modkey, }, "l", function() awful.tag.incmwfact(0.05) end,
+        { description = "increase master width factor", group = "layout" }),
+    awful.key({ modkey, }, "h", function() awful.tag.incmwfact(-0.05) end,
+        { description = "decrease master width factor", group = "layout" }),
     awful.key({ modkey, "Shift" }, "h", function() awful.tag.incnmaster(1, nil, true) end,
         { description = "increase the number of master clients", group = "layout" }),
     awful.key({ modkey, "Shift" }, "l", function() awful.tag.incnmaster(-1, nil, true) end,
@@ -333,23 +331,43 @@ globalkeys = gears.table.join(
         end,
         { description = "restore minimized", group = "client" }),
 
+    -- Non-layout controls
+    awful.key({ modkey, }, "Return", function() awful.spawn(terminal) end,
+        { description = "Open a Terminal", group = "launcher" }),
+    awful.key({ modkey, "Control" }, "r", awesome.restart,
+        { description = "Reload Awesome", group = "awesome" }),
+    awful.key({ modkey, "Shift" }, "q", awesome.quit,
+        { description = "Quit Awesome", group = "awesome" }),
+    awful.key({ modkey }, "x", function() awful.spawn("i3lock -i " .. HOME .. "/.config/wezterm/background") end,
+        { description = "Lock Screen", group = "awesome" }),
+
     -- Prompt
     -- awful.key({ modkey }, "r", function() awful.screen.focused().mypromptbox:run() end,
     --     { description = "run prompt", group = "launcher" }),
 
-    awful.key({ modkey, "Control" }, "x",
-        function()
-            awful.prompt.run {
-                prompt       = "Run Lua code: ",
-                textbox      = awful.screen.focused().mypromptbox.widget,
-                exe_callback = awful.util.eval,
-                history_path = awful.util.get_cache_dir() .. "/history_eval"
-            }
-        end,
-        { description = "lua execute prompt", group = "awesome" }),
+    -- awful.key({ modkey, "Control" }, "x",
+    --     function()
+    --         awful.prompt.run {
+    --             prompt       = "Run Lua code: ",
+    --             textbox      = awful.screen.focused().mypromptbox.widget,
+    --             exe_callback = awful.util.eval,
+    --             history_path = awful.util.get_cache_dir() .. "/history_eval"
+    --         }
+    --     end,
+    --     { description = "lua execute prompt", group = "awesome" }),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-        { description = "show the menubar", group = "launcher" })
+        { description = "show the menubar", group = "launcher" }),
+
+    -- XF86Keys
+    awful.key({}, "XF86AudioPlay", function() awful.util.spawn("playerctl play-pause") end),
+    awful.key({}, "XF86AudioNext", function() awful.util.spawn("playerctl next") end),
+    awful.key({}, "XF86AudioPrev", function() awful.util.spawn("playerctl prev") end),
+    awful.key({}, "XF86AudioRaiseVolume", function() awful.util.spawn("amixer -c 1 set Master 1dB+") end),
+    awful.key({}, "XF86AudioLowerVolume", function() awful.util.spawn("amixer -c 1 set Master 1dB-") end),
+    awful.key({}, "XF86AudioMute", function() awful.util.spawn("amixer -c 1 set Master toggle") end),
+    awful.key({}, "XF86MonBrightnessUp", function() awful.util.spawn("brightnessctl set +10%") end),
+    awful.key({}, "XF86MonBrightnessDown", function() awful.util.spawn("brightnessctl set 10%-") end)
 )
 
 clientkeys = gears.table.join(
@@ -645,7 +663,11 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- Autostart {{{
-awful.spawn.with_shell("xss-lock --transfer-sleep-lock -- i3lock --nofork -i " .. HOME .. "/.config/wezterm/background")
-awful.spawn.with_shell("nm-applet")
+awful.spawn("blueman-applet")
+awful.spawn("kanata")
+awful.spawn("nm-applet")
+awful.spawn.with_shell("pkill pasystray; pasystray")
+awful.spawn("xss-lock --transfer-sleep-lock -- i3lock --nofork -i " ..
+    HOME .. "/Images/Backgrounds/abheben-anfang-astronomie-2166.png")
 -- TODO: Refactor to not pull the image from the wezterm dir.
 -- }}}

@@ -1,0 +1,4 @@
+- name: Configure localhost
+  hosts: localhost
+  roles:
+    - awesome

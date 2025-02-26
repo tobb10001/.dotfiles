@@ -1,0 +1,28 @@
+---
+- name: Ensure necessary pacakges are installed
+  ansible.builtin.package:
+    name:
+      - acpid # deficient
+      - arandr
+      - awesome
+      - blueman
+      - brightnessctl # deficient
+      - i3lock
+      - network-manager-gnome
+
+      - pasystray
+      # Pasystray soft dependencies
+      - paprefs
+      - pavucontrol
+      - pulseaudio-module-zeroconf
+
+      - playerctl
+      - xss-lock
+    state: present
+
+- name: Start services
+  ansible.builtin.systemd_service:
+    name: "{{ item }}"
+    state: started
+  loop:
+    - acpid # deficient

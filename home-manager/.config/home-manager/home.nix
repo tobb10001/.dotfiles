@@ -56,6 +56,7 @@ assert username != "";
 
     # Other lovely CLI tools
     pkgs.bat
+    pkgs.borgbackup
     pkgs.btop
     pkgs.delta
     pkgs.exiftool

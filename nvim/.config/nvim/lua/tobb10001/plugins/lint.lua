@@ -1,7 +1,8 @@
 local filetypes = {}
 
 local linters_by_ft = {
-	yaml = { "yamllint" }
+	markdown = { "cspell" },
+	yaml = { "yamllint" },
 }
 
 for k, _ in pairs(linters_by_ft) do

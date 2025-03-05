@@ -46,6 +46,7 @@ assert username != "";
     pkgs.nil
     pkgs.nixd
     pkgs.nodePackages.bash-language-server
+    pkgs.nodePackages.cspell
     pkgs.nodePackages.prettier
     pkgs.taplo
     pkgs.texlab

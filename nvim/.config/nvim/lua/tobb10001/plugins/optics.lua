@@ -1,3 +1,7 @@
+function current_buf_id()
+	return vim.api.nvim_get_current_buf()
+end
+
 return {
 	{
 		"folke/tokyonight.nvim",
@@ -80,7 +84,13 @@ return {
 					"filetype" },
 
 				lualine_y = { "tabs" },
-				lualine_z = { "progress", "location" },
+				lualine_z = { "progress", {
+					"location",
+					fmt = function(str)
+						-- Is this cheating?
+						return str .. "(" .. vim.api.nvim_get_current_buf() .. ")"
+					end
+				} },
 			},
 		},
 		event = "VeryLazy",

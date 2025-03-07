@@ -30,4 +30,14 @@ return {
 	{
 		"barreiroleo/ltex_extra.nvim",
 	},
+	-- {
+	-- 	'nvimdev/lspsaga.nvim',
+	-- 	opts = {
+	-- 		lightbulb = { enabled = false },
+	-- 	},
+	-- 	dependencies = {
+	-- 		'nvim-treesitter/nvim-treesitter', -- optional
+	-- 		'nvim-tree/nvim-web-devicons', -- optional
+	-- 	}
+	-- }
 }

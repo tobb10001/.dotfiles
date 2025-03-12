@@ -52,9 +52,6 @@ assert username != "";
     pkgs.texlab
     pkgs.yaml-language-server
 
-    # Emacs
-    pkgs.emacs
-
     # Other lovely CLI tools
     pkgs.bat
     pkgs.borgbackup
@@ -87,6 +84,11 @@ assert username != "";
 
     # Vision 100% Keyboard
     pkgs.kanata
+
+    # Desktop tools
+    # Most are installed through the system package manager, but some are too old on
+    # my default Ubuntu...
+    pkgs.blueman
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

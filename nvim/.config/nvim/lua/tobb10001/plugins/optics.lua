@@ -125,5 +125,11 @@ return {
 			},
 		},
 	},
-	"ntpeters/vim-better-whitespace"
+	"ntpeters/vim-better-whitespace",
+	{
+		"norcalli/nvim-colorizer.lua",
+		setup = function()
+			require("colorizer").setup()
+		end
+	},
 }

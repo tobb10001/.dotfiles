@@ -5,6 +5,8 @@ local wibox = require("wibox")
 
 local deficient = require("deficient")
 
+local mylauncher = require("menu")
+
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
     awful.button({}, 1, function(t) t:view_only() end),
@@ -97,14 +99,14 @@ awful.screen.connect_for_each_screen(function(s)
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
-        {     -- Left widgets
+        { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             mylauncher,
             s.mytaglist,
             s.mypromptbox,
         },
-        s.mytasklist,     -- Middle widget
-        {                 -- Right widgets
+        s.mytasklist, -- Middle widget
+        {             -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             awful.widget.keyboardlayout(),
             deficient.battery_widget({

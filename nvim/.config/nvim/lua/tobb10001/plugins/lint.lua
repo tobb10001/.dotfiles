@@ -1,7 +1,9 @@
 local filetypes = {}
 
 local linters_by_ft = {
+	javascript = { "eslint" },
 	markdown = { "cspell" },
+	typescript = { "eslint" },
 	yaml = { "yamllint" },
 }
 

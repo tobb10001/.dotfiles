@@ -11,13 +11,17 @@ return {
 			function()
 				require("harpoon"):list():add()
 			end,
+			mode = "n",
+			desc = "[A]dd file to Harpoon",
 		},
 		{
-			"<C-e>",
+			"<leader>l",
 			function()
 				local harpoon = require("harpoon")
 				harpoon.ui:toggle_quick_menu(harpoon:list())
 			end,
+			mode = "n",
+			desc = "[L]ist Harpoon files",
 		},
 
 		{
@@ -45,7 +49,7 @@ return {
 			end,
 		},
 
-		-- Toggle previous & next buffers stored within Harpoon list },
+		-- Toggle previous & next buffers stored within Harpoon list,
 		{
 			"<C-S-P>",
 			function()

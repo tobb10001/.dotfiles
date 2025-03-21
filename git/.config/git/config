@@ -41,7 +41,7 @@
 	colorMoved = default
 [merge]
 	tool = vimdiff
-	conflictstyle = diff3
+	conflictstyle = zdiff3
 [mergetool]
 	keepBackup = false
 [mergetool "vimdiff"]

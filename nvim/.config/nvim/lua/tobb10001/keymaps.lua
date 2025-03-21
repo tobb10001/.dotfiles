@@ -32,11 +32,11 @@ vim.keymap.set("n", "<leader>td", function() vim.diagnostic.enable(not vim.diagn
 	{ desc = "[T]oggle [d]iagnostics" })
 
 -- Quickfix list
-vim.keymap.set("n", "[c", function()
+vim.keymap.set("n", "[q", function()
 	vim.cmd(":cprev")
 end, { desc = "Previos quickfix item." })
-vim.keymap.set("n", "]c", function()
+vim.keymap.set("n", "]q", function()
 	vim.cmd(":cnext")
 end, { desc = "Next quickfix item." })
-vim.keymap.set("n", "<leader>co", function() vim.cmd(":copen") end, { desc = "Open quickfix list" })
-vim.keymap.set("n", "<leader>cc", function() vim.cmd(":cclose") end, { desc = "Close quickfix list" })
+vim.keymap.set("n", "<leader>qo", function() vim.cmd(":copen") end, { desc = "Open quickfix list" })
+vim.keymap.set("n", "<leader>qc", function() vim.cmd(":cclose") end, { desc = "Close quickfix list" })

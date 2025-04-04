@@ -72,8 +72,12 @@ return {
 						end
 					}
 				},
-				lualine_c = { { "filename", path = 1 } },
+				lualine_c = { { "filename", path = 1 }, "diagnostics" },
 				lualine_x = {
+					{
+						"diagnostics",
+						sources = { "nvim_workspace_diagnostic" },
+					},
 					{
 						"copilot",
 						show_colors = true,

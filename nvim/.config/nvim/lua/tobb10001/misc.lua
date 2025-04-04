@@ -24,3 +24,13 @@ end
 -- Open `help` in a vertical split
 -- autocmd FileType help wincmd L
 vim.api.nvim_create_autocmd("FileType", { pattern = "help", callback = function() vim.cmd.wincmd("H") end })
+
+-- Configure diagnostics
+vim.diagnostic.config({
+	underline = true,
+	virtual_text = false,
+	virtual_lines = { current_line = true },
+	float = false,
+	signs = true,
+	severity_sort = true,
+})

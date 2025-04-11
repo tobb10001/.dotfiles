@@ -31,7 +31,7 @@ config.warn_about_missing_glyphs = false
 config.window_background_image = nil
 config.color_scheme = "Tokyo Night"
 config.window_background_image_hsb = {
-	brightness = 0.05,
+	brightness = 0.08,
 }
 config.text_background_opacity = 1
 -- config.window_decorations = "RESIZE" -- Might this be incompatible with KDE?

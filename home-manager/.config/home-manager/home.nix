@@ -46,8 +46,8 @@ assert username != "";
     pkgs.nil
     pkgs.nixd
     pkgs.nodePackages.bash-language-server
-    pkgs.nodePackages.cspell
     pkgs.nodePackages.prettier
+    pkgs.stylua
     pkgs.taplo
     pkgs.texlab
     pkgs.yaml-language-server
@@ -64,7 +64,6 @@ assert username != "";
     pkgs.glab
     pkgs.git
     pkgs.git-lfs
-    pkgs.glow
     pkgs.go-task
     pkgs.graphviz
     pkgs.grc
@@ -72,8 +71,6 @@ assert username != "";
     pkgs.just
     pkgs.jq
     pkgs.parallel-full
-    pkgs.pipx
-    pkgs.restish
     pkgs.ripgrep
     pkgs.stow
     pkgs.tldr
@@ -84,11 +81,6 @@ assert username != "";
 
     # Vision 100% Keyboard
     pkgs.kanata
-
-    # Desktop tools
-    # Most are installed through the system package manager, but some are too old on
-    # my default Ubuntu...
-    pkgs.blueman
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

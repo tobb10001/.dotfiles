@@ -31,7 +31,6 @@ assert username != "";
 
     # Programming Tools
     pkgs.nodejs
-    pkgs.pandoc
     pkgs.shellcheck
     unstable.typst
 

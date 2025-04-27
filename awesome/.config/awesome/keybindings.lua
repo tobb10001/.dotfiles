@@ -73,15 +73,21 @@ local globalkeys = gears.table.join(
 	end, { description = "restore minimized", group = "client" }),
 
 	-- Non-layout controls
-	awful.key({ modkey }, "Return", function()
-		awful.spawn(terminal)
-	end, { description = "Open a Terminal", group = "launcher" }),
+	-- awful.key({ modkey }, "Return", function()
+	-- 	awful.spawn(terminal)
+	-- end, { description = "Open a Terminal", group = "launcher" }),
 	awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "Reload Awesome", group = "awesome" }),
 	awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "Quit Awesome", group = "awesome" }),
 
 	awful.key({ modkey }, "x", function()
 		awful.spawn("lxqt-leave --lockscreen")
 	end, { description = "Lock Screen", group = "awesome" }),
+	awful.key({ modkey }, "p", function()
+		awful.spawn("lxqt-config-monitor")
+	end, { description = "Monitor Settings", group = "awesome" }),
+	awful.key({ modkey }, "r", function()
+		menubar.show()
+	end, { description = "show the menubar", group = "awesome" }),
 
 	-- Prompt
 	-- awful.key({ modkey }, "r", function() awful.screen.focused().mypromptbox:run() end,
@@ -98,9 +104,6 @@ local globalkeys = gears.table.join(
 	--     end,
 	--     { description = "lua execute prompt", group = "awesome" }),
 	-- Menubar
-	awful.key({ modkey }, "p", function()
-		menubar.show()
-	end, { description = "show the menubar", group = "launcher" }),
 
 	-- XF86Keys
 	awful.key({}, "XF86AudioPlay", function()
@@ -134,9 +137,12 @@ local clientkeys = gears.table.join(
 		c.fullscreen = not c.fullscreen
 		c:raise()
 	end, { description = "toggle fullscreen", group = "client" }),
-	awful.key({ modkey, "Shift" }, "c", function(c)
+	awful.key({ modkey, "Shift" }, "x", function(c)
 		c:kill()
 	end, { description = "close", group = "client" }),
+	awful.key({ modkey, "Control" }, "s", function(c)
+		c.sticky = not c.sticky
+	end, { description = "toggle sticky", group = "client" }),
 	awful.key(
 		{ modkey, "Control" },
 		"space",
@@ -172,11 +178,11 @@ local clientkeys = gears.table.join(
 
 -- Bind top row to tags.
 for i, key in ipairs({
-	"q",
-	"w",
-	"e",
-	"r",
-	"t", --[[ "y", "u", "i", "o", "p" ]]
+	"t",
+	"b",
+	"c",
+	"o",
+	"y",
 }) do
 	globalkeys = gears.table.join(
 		globalkeys,

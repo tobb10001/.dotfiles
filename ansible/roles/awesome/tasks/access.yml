@@ -1,0 +1,31 @@
+- name: Configure device access for input, backlight, ...
+  block:
+
+    - name: Get user ID
+      ansible.builtin.set_fact:
+        real_user: "{{ lookup('env', 'USER') }}"
+
+    - name: Ensure group "uinput" exists
+      become: true
+      ansible.builtin.group:
+        name: uinput
+        state: present
+
+    - name: Add user to groups
+      become: true
+      ansible.builtin.user:
+        name: "{{ real_user }}"
+        append: true  # <-- this is REALLY important
+        groups:
+          - input
+          - uinput
+          - video
+
+    - name: Set udev rules for affected files
+      become: true
+      ansible.builtin.copy:
+        src: 99-kanata.rules
+        dest: /etc/udev/rules.d/99-kanata.rules
+        mode: "0644"
+        owner: root
+        group: root

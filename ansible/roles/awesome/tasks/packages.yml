@@ -1,10 +1,13 @@
-- name: Ensure necessary pacakges are installed
+- name: Ensure necessary packages are installed
   become: true
   ansible.builtin.package:
     name:
       - awesome
+      - blueman
       - i3lock
       - lxqt-config
       - lxqt-session
+      - network-manager-gnome
+      - playerctl
       - xss-lock
     state: present

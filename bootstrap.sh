@@ -19,4 +19,4 @@ fi
 
 cd ansible
 
-ansible-playbook --ask-become-pass playbook.yml
+ansible-playbook -v --ask-become-pass playbook.yml

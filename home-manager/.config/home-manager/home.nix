@@ -69,6 +69,7 @@ assert username != "";
     pkgs.imagemagick
     pkgs.just
     pkgs.jq
+    unstable.k9s
     pkgs.parallel-full
     pkgs.ripgrep
     pkgs.stow

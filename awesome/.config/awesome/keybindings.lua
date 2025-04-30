@@ -78,7 +78,6 @@ local globalkeys = gears.table.join(
 	-- end, { description = "Open a Terminal", group = "launcher" }),
 	awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "Reload Awesome", group = "awesome" }),
 	awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "Quit Awesome", group = "awesome" }),
-
 	awful.key({ modkey }, "x", function()
 		awful.spawn("lxqt-leave --lockscreen")
 	end, { description = "Lock Screen", group = "awesome" }),
@@ -152,7 +151,7 @@ local clientkeys = gears.table.join(
 	awful.key({ modkey, "Control" }, "Return", function(c)
 		c:swap(awful.client.getmaster())
 	end, { description = "move to master", group = "client" }),
-	awful.key({ modkey }, "o", function(c)
+	awful.key({ modkey, "Control" }, "m", function(c)
 		c:move_to_screen()
 	end, { description = "move to screen", group = "client" }),
 	-- awful.key({ modkey, }, "t", function(c) c.ontop = not c.ontop end,

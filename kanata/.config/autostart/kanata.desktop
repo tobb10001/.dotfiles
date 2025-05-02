@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=~/.nix-profile/bin/kanata
+Exec=$HOME/.nix-profile/bin/kanata --nodelay
 Name=Kanata
 Type=Application
 Version=1.0

@@ -9,26 +9,29 @@ return {
 		opts = {
 			transparent = true,
 			on_highlights = function(hl, c)
-				hl.LineNr = {
-					fg = "#ffffff",
-				}
-				hl.LineNrAbove = {
-					fg = "#cccccc",
-				}
-				hl.LineNrBelow = {
-					fg = "#cccccc",
-				}
 				hl.Comment = {
-					fg = "#aaaaaa",
-				}
-				hl.DiagnosticUnnecessary = {
-					fg = "#777777",
+					fg = "#AAAAAA",
 				}
 				hl.CopilotAnnotation = {
 					fg = "#DDDDDD",
 				}
 				hl.CopilotSuggestion = {
 					fg = "#CCCCCC",
+				}
+				hl.LineNr = {
+					fg = "#FFFFFF",
+				}
+				hl.LineNrAbove = {
+					fg = "#CCCCCC",
+				}
+				hl.LineNrBelow = {
+					fg = "#CCCCCC",
+				}
+				hl.DiagnosticUnnecessary = {
+					fg = "#777777",
+				}
+				hl.WinSeparator = {
+					fg = "#777777",
 				}
 			end,
 			dim_inactive = true,
@@ -57,8 +60,8 @@ return {
 		opts = {
 			options = {
 				icons_enabled = true,
-				component_separators = { left = '', right = '' },
-				section_separators = { left = '', right = '' },
+				component_separators = { left = "", right = "" },
+				section_separators = { left = "", right = "" },
 			},
 			sections = {
 				lualine_b = {
@@ -69,8 +72,8 @@ return {
 								return str:sub(1, 20) .. "…"
 							end
 							return str
-						end
-					}
+						end,
+					},
 				},
 				lualine_c = { { "filename", path = 1 }, "diagnostics" },
 				lualine_x = {
@@ -85,16 +88,20 @@ return {
 					},
 					"encoding",
 					"fileformat",
-					"filetype" },
+					"filetype",
+				},
 
 				lualine_y = { "tabs" },
-				lualine_z = { "progress", {
-					"location",
-					fmt = function(str)
-						-- Is this cheating?
-						return str .. "(" .. vim.api.nvim_get_current_buf() .. ")"
-					end
-				} },
+				lualine_z = {
+					"progress",
+					{
+						"location",
+						fmt = function(str)
+							-- Is this cheating?
+							return str .. "(" .. vim.api.nvim_get_current_buf() .. ")"
+						end,
+					},
+				},
 			},
 		},
 		event = "VeryLazy",
@@ -115,7 +122,7 @@ return {
 	},
 	{
 		"RRethy/vim-illuminate",
-		event = "VeryLazy"
+		event = "VeryLazy",
 	},
 	-- Fidget for LSP Progress
 	{
@@ -134,6 +141,6 @@ return {
 		"norcalli/nvim-colorizer.lua",
 		setup = function()
 			require("colorizer").setup()
-		end
+		end,
 	},
 }

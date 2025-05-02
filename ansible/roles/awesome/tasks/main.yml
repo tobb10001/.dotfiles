@@ -1,6 +1,14 @@
-- name: Install packages
-  ansible.builtin.include_tasks:
-    file: packages.yml
-- name: Configure access rights
-  ansible.builtin.include_tasks:
-    file: access.yml
+- name: Ensure necessary packages are installed
+  become: true
+  ansible.builtin.package:
+    name:
+      - awesome
+      - blueman
+      - i3lock
+      - lxqt-config
+      - lxqt-menu-data
+      - lxqt-session
+      - network-manager-gnome
+      - playerctl
+      - xss-lock
+    state: present

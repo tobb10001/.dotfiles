@@ -11,6 +11,7 @@ if status is-interactive
     set -gx XDG_DATA_HOME "$HOME/.local/share"
     set -gx XDG_STATE_HOME "$HOME/.local/state"
 
+    set -x EDITOR (which nvim)
     set -x RIPGREP_CONFIG_PATH $XDG_CONFIG_HOME/ripgrep/config
 
     if wsl
@@ -38,7 +39,7 @@ if status is-interactive
     if test -f $LOCAL_CONFIG
         source $LOCAL_CONFIG
     end
-    
+
     # Keybinds #########################################################################
 
     fish_default_key_bindings
@@ -49,7 +50,4 @@ if status is-interactive
     fzf --fish | source
     starship init fish | source
     zoxide init --cmd cd --hook prompt fish | source
-
-    # Be friends with home manager #####################################################
-    cat $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh | babelfish | source
 end

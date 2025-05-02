@@ -1,5 +1,6 @@
-wezterm/.config/wezterm/background
-*local*
 !\.local
-nvim/.config/nvim/plugin
+*local*
+/ansible/playbook.yml
 /zsh/.config/zsh/.zcompdump
+nvim/.config/nvim/plugin
+wezterm/.config/wezterm/background

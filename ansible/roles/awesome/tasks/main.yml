@@ -9,6 +9,8 @@
       - lxqt-menu-data
       - lxqt-session
       - network-manager-gnome
+      - pavucontrol
+      - pasystray
       - playerctl
       - xss-lock
     state: present

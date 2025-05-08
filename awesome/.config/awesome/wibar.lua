@@ -129,7 +129,7 @@ awful.screen.connect_for_each_screen(function(s)
 			awful.widget.keyboardlayout(),
 			deficient.brightness({}).widget,
 			wibox.widget.systray(),
-			wibox.widget.textclock(),
+			wibox.widget.textclock("%a, %Y-%m-%d %H:%M"),
 			s.mylayoutbox,
 		},
 	})

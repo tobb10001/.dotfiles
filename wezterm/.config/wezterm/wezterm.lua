@@ -55,44 +55,44 @@ config.inactive_pane_hsb = {
 local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
 
 -- Keybinds ------------------------------------------------------------------------
-config.leader = { key = "`", mods = "NONE" }
+-- config.leader = { key = "`", mods = "NONE" }
 config.keys = {
 	-- Send ` when pressing ` twice.
-	{ key = "`", mods = "LEADER",       action = act.SendKey({ key = "`" }) },
+	-- { key = "`", mods = "META", action = act.SendKey({ key = "`" }) },
 	-- Windows
-	-- { key = "w", mods = "LEADER", action = act.SpawnWindow },
-	{ key = "p", mods = "LEADER",       action = act.EmitEvent("toggle-background") },
+	-- { key = "w", mods = "META", action = act.SpawnWindow },
+	{ key = "p", mods = "META", action = act.EmitEvent("toggle-background") },
 	-- Tabs
-	{ key = "t", mods = "LEADER",       action = act.SpawnTab("CurrentPaneDomain") },
-	{ key = "]", mods = "LEADER",       action = act.ActivateTabRelative(1) },
-	{ key = "[", mods = "LEADER",       action = act.ActivateTabRelative(-1) },
-	{ key = "n", mods = "LEADER",       action = act.ShowTabNavigator },
-	{ key = "}", mods = "LEADER|SHIFT", action = act.MoveTabRelative(1) },
-	{ key = "{", mods = "LEADER|SHIFT", action = act.MoveTabRelative(-1) },
+	{ key = "t", mods = "META", action = act.SpawnTab("CurrentPaneDomain") },
+	{ key = "]", mods = "META", action = act.ActivateTabRelative(1) },
+	{ key = "[", mods = "META", action = act.ActivateTabRelative(-1) },
+	{ key = "n", mods = "META", action = act.ShowTabNavigator },
+	{ key = "}", mods = "META|SHIFT", action = act.MoveTabRelative(1) },
+	{ key = "{", mods = "META|SHIFT", action = act.MoveTabRelative(-1) },
 	-- Splits
 	-- They seem to be the wrong way round, but this matches the way in which vim's
 	-- :split and :vsplit work.
-	{ key = "v", mods = "LEADER",       action = act.SplitHorizontal },
-	{ key = "s", mods = "LEADER",       action = act.SplitVertical },
+	{ key = "v", mods = "META", action = act.SplitHorizontal },
+	{ key = "s", mods = "META", action = act.SplitVertical },
 	-- Panes
-	{ key = "h", mods = "LEADER",       action = act.ActivatePaneDirection("Left") },
-	{ key = "j", mods = "LEADER",       action = act.ActivatePaneDirection("Down") },
-	{ key = "k", mods = "LEADER",       action = act.ActivatePaneDirection("Up") },
-	{ key = "l", mods = "LEADER",       action = act.ActivatePaneDirection("Right") },
-	{ key = "z", mods = "LEADER",       action = act.TogglePaneZoomState },
-	{ key = "r", mods = "LEADER",       action = act.ActivateKeyTable({ name = "Resize", one_shot = false }) },
-	{ key = "o", mods = "LEADER",       action = act.RotatePanes("Clockwise") },
+	{ key = "h", mods = "META", action = act.ActivatePaneDirection("Left") },
+	{ key = "j", mods = "META", action = act.ActivatePaneDirection("Down") },
+	{ key = "k", mods = "META", action = act.ActivatePaneDirection("Up") },
+	{ key = "l", mods = "META", action = act.ActivatePaneDirection("Right") },
+	{ key = "z", mods = "META", action = act.TogglePaneZoomState },
+	{ key = "r", mods = "META", action = act.ActivateKeyTable({ name = "Resize", one_shot = false }) },
+	{ key = "o", mods = "META", action = act.RotatePanes("Clockwise") },
 	-- Workspaces
-	{ key = "y", mods = "LEADER",       action = act.SwitchToWorkspace({ name = "default" }) },
+	{ key = "y", mods = "META", action = act.SwitchToWorkspace({ name = "default" }) },
 	{
 		key = "u",
-		mods = "LEADER",
+		mods = "META",
 		action = act.SwitchToWorkspace({ name = "monitoring", spawn = { args = { "top" } } }),
 	},
-	{ key = "w", mods = "LEADER", action = workspace_switcher.switch_workspace() },
+	{ key = "w", mods = "META", action = workspace_switcher.switch_workspace() },
 	{
 		key = "c",
-		mods = "LEADER",
+		mods = "META",
 		action = act.PromptInputLine({
 			description = wezterm.format({
 				{ Attribute = { Intensity = "Bold" } },
@@ -115,28 +115,27 @@ config.keys = {
 		}),
 	},
 	-- Debugging
-	{ key = "d", mods = "LEADER", action = act.ShowDebugOverlay },
+	{ key = "d", mods = "META", action = act.ShowDebugOverlay },
 }
 
 for i = 1, 9 do
 	table.insert(config.keys, {
 		key = tostring(i),
-		mods = "LEADER",
-		action = act.ActivateTab(i - 1)
+		mods = "META",
+		action = act.ActivateTab(i - 1),
 	})
 end
 
 config.key_tables = {
 	Resize = {
-		{ key = "h",      mods = "NONE", action = act.AdjustPaneSize({ "Left", 5 }) },
-		{ key = "j",      mods = "NONE", action = act.AdjustPaneSize({ "Down", 5 }) },
-		{ key = "k",      mods = "NONE", action = act.AdjustPaneSize({ "Up", 5 }) },
-		{ key = "l",      mods = "NONE", action = act.AdjustPaneSize({ "Right", 5 }) },
+		{ key = "h", mods = "NONE", action = act.AdjustPaneSize({ "Left", 5 }) },
+		{ key = "j", mods = "NONE", action = act.AdjustPaneSize({ "Down", 5 }) },
+		{ key = "k", mods = "NONE", action = act.AdjustPaneSize({ "Up", 5 }) },
+		{ key = "l", mods = "NONE", action = act.AdjustPaneSize({ "Right", 5 }) },
 		{ key = "Escape", mods = "NONE", action = "PopKeyTable" },
-		{ key = "Enter",  mods = "NONE", action = "PopKeyTable" },
+		{ key = "Enter", mods = "NONE", action = "PopKeyTable" },
 	},
 }
-
 
 config.status_update_interval = 200
 wezterm.on("update-status", function(window, pane)

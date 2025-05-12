@@ -1,5 +1,7 @@
+# vim: ft=yaml.ansible
 - name: Configure localhost
   hosts: localhost
   roles:
     - awesome
+    - input
     - kanata

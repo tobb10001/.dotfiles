@@ -5,8 +5,6 @@ local wibox = require("wibox")
 
 local deficient = require("deficient")
 
-local mylauncher = require("menu")
-
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
 	awful.button({}, 1, function(t)
@@ -78,12 +76,10 @@ awful.screen.connect_for_each_screen(function(s)
 		"Y",
 	}, s, awful.layout.layouts[1])
 
-	-- Create a promptbox for each screen
-	s.mypromptbox = awful.widget.prompt()
 	-- Create an imagebox widget which will contain an icon indicating which layout we're using.
 	-- We need one layoutbox per screen.
-	s.mylayoutbox = awful.widget.layoutbox(s)
-	s.mylayoutbox:buttons(gears.table.join(
+	local layoutimg = awful.widget.layoutbox(s)
+	layoutimg:buttons(gears.table.join(
 		awful.button({}, 1, function()
 			awful.layout.inc(1)
 		end),
@@ -98,39 +94,51 @@ awful.screen.connect_for_each_screen(function(s)
 		end)
 	))
 	-- Create a taglist widget
-	s.mytaglist = awful.widget.taglist({
+	local taglist = awful.widget.taglist({
 		screen = s,
 		filter = awful.widget.taglist.filter.all,
 		buttons = taglist_buttons,
 	})
 
 	-- Create a tasklist widget
-	s.mytasklist = awful.widget.tasklist({
+	local tasklist = awful.widget.tasklist({
 		screen = s,
 		filter = awful.widget.tasklist.filter.currenttags,
 		buttons = tasklist_buttons,
 	})
 
 	-- Create the wibox
-	s.mywibox = awful.wibar({ position = "top", screen = s })
+	local topwibox = awful.wibar({ position = "top", screen = s })
+
+	local clock = wibox.widget.textclock("%a, %Y-%m-%d %H:%M:%S", 1)
+	-- local clockpopup = awful.popup({
+	-- 	widget = wibox.widget.textclock("%a, %Y-%m-%d %H:%M:%S", 1, "Asia/Kuala_Lumpur"),
+	-- 	placement = awful.placement.top_right,
+	-- 	visible = false,
+	-- 	honor_workarea = true,
+	-- })
+	-- clock:buttons(gears.table.join(
+	-- 	clock:buttons(),
+	-- 	awful.button({}, 1, nil, function()
+	-- 		clockpopup.visible = not clockpopup.visible
+	-- 	end)
+	-- ))
 
 	-- Add widgets to the wibox
-	s.mywibox:setup({
+	topwibox:setup({
 		layout = wibox.layout.align.horizontal,
 		{ -- Left widgets
 			layout = wibox.layout.fixed.horizontal,
-			mylauncher,
-			s.mytaglist,
-			s.mypromptbox,
+			taglist,
 		},
-		s.mytasklist, -- Middle widget
+		tasklist, -- Middle widget
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
 			awful.widget.keyboardlayout(),
 			deficient.brightness({}).widget,
 			wibox.widget.systray(),
-			wibox.widget.textclock("%a, %Y-%m-%d %H:%M"),
-			s.mylayoutbox,
+			clock,
+			layoutimg,
 		},
 	})
 end)

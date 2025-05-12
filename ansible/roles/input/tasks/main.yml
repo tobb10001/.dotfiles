@@ -1,0 +1,8 @@
+- name: Set natural scroll for all mice
+  become: true
+  ansible.builtin.copy:
+    src: 90-natural-scrolling.conf
+    dest: /etc/X11/xorg.conf.d/90-natural-scrolling.conf
+    mode: "0644"
+    owner: root
+    group: root

@@ -110,19 +110,24 @@ awful.screen.connect_for_each_screen(function(s)
 	-- Create the wibox
 	local topwibox = awful.wibar({ position = "top", screen = s })
 
-	local clock = wibox.widget.textclock("%a, %Y-%m-%d %H:%M:%S", 1)
-	-- local clockpopup = awful.popup({
-	-- 	widget = wibox.widget.textclock("%a, %Y-%m-%d %H:%M:%S", 1, "Asia/Kuala_Lumpur"),
-	-- 	placement = awful.placement.top_right,
-	-- 	visible = false,
-	-- 	honor_workarea = true,
-	-- })
-	-- clock:buttons(gears.table.join(
-	-- 	clock:buttons(),
-	-- 	awful.button({}, 1, nil, function()
-	-- 		clockpopup.visible = not clockpopup.visible
-	-- 	end)
-	-- ))
+	local clock = wibox.widget.textclock("%a, %Y-%m-%d %H:%M:%S (%V)", 1)
+	local clockpopup = awful.popup({
+		widget = wibox.widget.textclock("%a, %Y-%m-%d %H:%M:%S", 1, "Asia/Kuala_Lumpur"),
+		visible = false,
+		ontop = true,
+		placement = {},
+		parent = clock,
+	})
+	clock:buttons(gears.table.join(
+		clock:buttons(),
+		awful.button({}, 1, nil, function()
+			awful.placement.next_to(clockpopup, {
+				preferred_positions = { "bottom" },
+				preferred_anchors = { "middle" },
+			})
+			clockpopup.visible = not clockpopup.visible
+		end)
+	))
 
 	-- Add widgets to the wibox
 	topwibox:setup({

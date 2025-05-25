@@ -36,6 +36,8 @@
             # pkgs.texlab
             pkgs.yaml-language-server
 
+            pkgs.nodejs
+
             # CLI
             pkgs.bat
             pkgs.borgbackup

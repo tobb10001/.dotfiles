@@ -87,6 +87,12 @@ local globalkeys = gears.table.join(
 	awful.key({ modkey }, "r", function()
 		menubar.show()
 	end, { description = "show the menubar", group = "awesome" }),
+	awful.key({ modkey }, "ß", function()
+		awful.util.spawn("setxkbmap gb")
+	end, { description = "Set keymap to GB" }),
+	awful.key({ modkey }, "-", function()
+		awful.util.spawn("setxkbmap de")
+	end, { description = "Set keymap to GB" }),
 
 	-- Prompt
 	-- awful.key({ modkey }, "r", function() awful.screen.focused().mypromptbox:run() end,

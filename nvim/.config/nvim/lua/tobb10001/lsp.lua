@@ -19,9 +19,10 @@ local function server_setup()
 	-- JSON
 	lspconfig.jsonls.setup({})
 	-- LaTeX, Markdown, ...
-	lspconfig.ltex.setup({
-		autostart = false,
-	})
+	-- lspconfig.ltex.setup({
+	-- 	autostart = false,
+	-- })
+	lspconfig.ltex_plus.setup({})
 	lspconfig.texlab.setup({})
 	-- Lua
 	lspconfig.lua_ls.setup({})
@@ -40,10 +41,10 @@ local function server_setup()
 		settings = {
 			["rust-analyzer"] = {
 				cargo = {
-					features = "all"
-				}
-			}
-		}
+					features = "all",
+				},
+			},
+		},
 	})
 	-- Terraform
 	lspconfig.terraformls.setup({})
@@ -60,11 +61,10 @@ local function server_setup()
 		settings = {
 			yaml = {
 				schemas = {
-					["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/refs/heads/master/v1.32.1-standalone-strict/all.json"] =
-					"/**/.appstore/deployment.yml",
+					["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/refs/heads/master/v1.32.1-standalone-strict/all.json"] = "/**/.appstore/deployment.yml",
 				},
 			},
-		}
+		},
 	})
 end
 
@@ -100,7 +100,7 @@ function M.on_attach(client, _)
 
 	vim.lsp.inlay_hint.enable()
 
-	if client.name == "ltex" then
+	if client.name == "ltex" or client.name == "ltex_plus" then
 		require("ltex_extra").setup({})
 	end
 end

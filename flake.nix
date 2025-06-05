@@ -33,6 +33,7 @@
             pkgs.nodePackages.bash-language-server
             pkgs.nodePackages.prettier
             pkgs.stylua
+            pkgs.texlab
             # pkgs.texlab
             pkgs.yaml-language-server
 
@@ -62,6 +63,7 @@
             pkgs.stow
             pkgs.tldr
             pkgs.translate-shell
+            pkgs.typst
             pkgs.watchexec
             pkgs.yamllint
             pkgs.yq

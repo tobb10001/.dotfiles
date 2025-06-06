@@ -23,7 +23,7 @@ wezterm.on("toggle-background", function(window, _)
 end)
 
 -- General Options -----------------------------------------------------------------
-config.default_prog = { "fish" }
+config.default_prog = { "nu" }
 config.warn_about_missing_glyphs = false
 
 -- Appearence ----------------------------------------------------------------------
@@ -87,7 +87,7 @@ config.keys = {
 	{
 		key = "u",
 		mods = "META",
-		action = act.SwitchToWorkspace({ name = "monitoring", spawn = { args = { "top" } } }),
+		action = act.SwitchToWorkspace({ name = "monitoring", spawn = { args = { "btop" } } }),
 	},
 	{ key = "w", mods = "META", action = workspace_switcher.switch_workspace() },
 	{

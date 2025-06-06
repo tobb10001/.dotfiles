@@ -1,7 +1,7 @@
 {
   description = "My development tools";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
   inputs.unstablepkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
   outputs = { self, nixpkgs, unstablepkgs }: {
@@ -26,7 +26,7 @@
             pkgs.xclip
             # Language Servers
             # pkgs.clang-tools
-            pkgs.ltex-ls
+            # pkgs.ltex-ls
             pkgs.lua-language-server
             pkgs.nil
             pkgs.nixd
@@ -44,6 +44,7 @@
             pkgs.borgbackup
             pkgs.btop
             pkgs.delta
+            pkgs.carapace
             pkgs.exiftool
             pkgs.fd
             pkgs.fzf

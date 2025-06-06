@@ -216,8 +216,6 @@ $env.config = {
     }
 
     filesize: {
-        metric: false # true => KB, MB, GB (ISO standard), false => KiB, MiB, GiB (Windows standard)
-        format: "auto" # b, kb, kib, mb, mib, gb, gib, tb, tib, pb, pib, eb, eib, auto
     }
 
     cursor_shape: {
@@ -899,6 +897,7 @@ $env.config = {
 if (which grc | is-empty) {
     alias go = grc go
 }
+alias ls = eza
 alias lslsls = echo "Yeah, I don\'t know either..."
 alias emacs = emacs -nw
 alias xopen = xdg-open
@@ -907,5 +906,6 @@ alias uv = uv --native-tls
 alias view = nvim -R
 # alias watch = watch --color
 
+source ~/.cache/nu_extensions/carapace.nu
 use ~/.cache/nu_extensions/starship.nu
 source ~/.cache/nu_extensions/zoxide.nu

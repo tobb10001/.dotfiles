@@ -2,5 +2,7 @@
 *local*
 /ansible/playbook.yml
 /zsh/.config/zsh/.zcompdump
+# This file stores monitor configs... that doesn't need to be synced.
+lxqt/.config/lxqt/lxqt-config-monitor.conf
 nvim/.config/nvim/plugin
 wezterm/.config/wezterm/background

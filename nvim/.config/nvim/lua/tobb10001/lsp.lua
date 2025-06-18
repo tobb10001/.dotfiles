@@ -55,6 +55,8 @@ local function server_setup()
 	-- lspconfig.tsserver.setup({})
 	-- Vue
 	lspconfig.volar.setup({})
+	-- Web
+	lspconfig.emmet_ls.setup({})
 	-- Yaml
 	lspconfig.yamlls.setup({
 		filetypes = { "yaml", "yaml.gitlab-ci", "yaml.dockerfile", "yaml.github" },

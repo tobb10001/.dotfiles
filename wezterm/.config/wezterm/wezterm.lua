@@ -66,7 +66,7 @@ config.keys = {
 	{ key = "t", mods = "META", action = act.SpawnTab("CurrentPaneDomain") },
 	{ key = "]", mods = "META", action = act.ActivateTabRelative(1) },
 	{ key = "[", mods = "META", action = act.ActivateTabRelative(-1) },
-	{ key = "n", mods = "META", action = act.ShowTabNavigator },
+	-- { key = "n", mods = "META", action = act.ShowTabNavigator },
 	{ key = "}", mods = "META|SHIFT", action = act.MoveTabRelative(1) },
 	{ key = "{", mods = "META|SHIFT", action = act.MoveTabRelative(-1) },
 	-- Splits

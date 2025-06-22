@@ -1,7 +1,3 @@
-function current_buf_id()
-	return vim.api.nvim_get_current_buf()
-end
-
 return {
 	{
 		"folke/tokyonight.nvim",
@@ -77,6 +73,16 @@ return {
 				},
 				lualine_c = { { "filename", path = 1 }, "diagnostics" },
 				lualine_x = {
+					{
+						function()
+							local prose = require("nvim-prose")
+							if not prose.is_available() then
+								return
+							end
+							return prose.word_count()
+						end,
+					},
+					-- { require("nvim-prose").reading_time, cond = require("nvim-prose").is_available },
 					{
 						"diagnostics",
 						sources = { "nvim_workspace_diagnostic" },

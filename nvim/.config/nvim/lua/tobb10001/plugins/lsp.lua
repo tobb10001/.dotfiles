@@ -3,11 +3,6 @@ return {
 		"neovim/nvim-lspconfig",
 		config = require("tobb10001.lsp").lspconfig_config,
 		dependencies = {
-			{
-				"simrat39/symbols-outline.nvim",
-				config = true,
-				event = { "BufReadPost", "BufNewFile" },
-			},
 			"onsails/lspkind.nvim",
 		},
 		event = { "BufReadPost", "BufNewFile" },
@@ -23,9 +18,9 @@ return {
 		ft = "lua",
 		opts = {
 			library = {
-				{ path = "${3rd}/luv/library", words = { "vim%.uv" } }
-			}
-		}
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+			},
+		},
 	},
 	{
 		"barreiroleo/ltex_extra.nvim",

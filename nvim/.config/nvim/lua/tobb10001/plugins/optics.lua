@@ -79,6 +79,10 @@ return {
 							if not prose.is_available() then
 								return
 							end
+							local word_count = prose.word_count()
+							if not word_count then
+								return
+							end
 							return prose.word_count()
 						end,
 					},
@@ -111,12 +115,6 @@ return {
 			},
 		},
 		event = "VeryLazy",
-		cond = not vim.g.vscode,
-	},
-	{
-		"mawkler/modicator.nvim",
-		opts = {},
-		event = { "BufReadPost", "BufNewFile" },
 		cond = not vim.g.vscode,
 	},
 	{

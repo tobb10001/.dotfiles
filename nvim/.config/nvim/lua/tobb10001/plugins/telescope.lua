@@ -2,19 +2,9 @@ local function config()
 	pcall(require("telescope").load_extension, "fzf")
 
 	require("telescope").load_extension("luasnip")
-	-- require("telescope").load_extension("noice")
-	require("telescope").load_extension("rest")
 end
 
 local keys = {
-	{
-		"<leader>re", -- following the rest prefix
-		function()
-			return require("telescope").extensions.rest.select_env()
-		end,
-		mode = "n",
-		desc = "[R]est: Select .[e]nv file.",
-	},
 	{
 		"so",
 		function()

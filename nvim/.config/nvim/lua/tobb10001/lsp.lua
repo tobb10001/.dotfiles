@@ -3,41 +3,65 @@ local M = {}
 local function server_setup()
 	local lspconfig = require("lspconfig")
 	-- Ansible
-	lspconfig.ansiblels.setup({})
+	vim.lsp.enable("ansiblels")
 	-- Bash
-	lspconfig.bashls.setup({})
+	vim.lsp.enable("bashls")
 	-- C
-	lspconfig.clangd.setup({})
+	vim.lsp.enable("clangd")
 	-- Docker
-	-- lspconfig.dockerls.setup({})
+	-- vim.lsp.enable("dockerls")
 	-- GitHub Actions
-	lspconfig.gh_actions_ls.setup({})
+	vim.lsp.enable("gh_actions_ls")
 	-- Go
-	lspconfig.gopls.setup({})
+	vim.lsp.enable("gopls")
 	-- HTMX
-	-- lspconfig.htmx.setup({})
+	-- vim.lsp.enable("htmx")
 	-- JSON
-	lspconfig.jsonls.setup({})
+	vim.lsp.enable("jsonls")
 	-- LaTeX, Markdown, ...
 	-- lspconfig.ltex.setup({
 	-- 	autostart = false,
 	-- })
-	lspconfig.ltex_plus.setup({})
-	lspconfig.texlab.setup({})
+	vim.lsp.enable("ltex_plus")
+	vim.lsp.enable("texlab")
 	-- Lua
-	lspconfig.lua_ls.setup({})
+	vim.lsp.config("lua_ls", {
+		on_init = function(client)
+			if client.workspace_folders then
+				local path = client.workspace_folders[1].name
+				if
+					path ~= vim.env.HOME .. "/.dotfiles"
+					and (vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc"))
+				then
+					return
+				end
+			end
+			client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+				runtime = {
+					version = "LuaJIT",
+					path = { "lua/?.lua", "lua/?/init.lua" },
+				},
+				workspace = {
+					checkThirdParty = false,
+					library = { vim.env.VIMRUNTIME },
+				},
+			})
+		end,
+		settings = { Lua = {} },
+	})
+	vim.lsp.enable("lua_ls")
 	-- Nix
-	lspconfig.nil_ls.setup({})
-	lspconfig.nixd.setup({})
+	vim.lsp.enable("nil_ls")
+	vim.lsp.enable("nixd")
 	-- Python
-	lspconfig.basedpyright.setup({})
-	-- lspconfig.pylsp.setup({})
-	-- lspconfig.pyright.setup({})
-	lspconfig.ruff.setup({})
+	vim.lsp.enable("basedpyright")
+	-- vim.lsp.enable("pylsp")
+	-- vim.lsp.enable("pyright")
+	vim.lsp.enable("ruff")
 	-- R
-	lspconfig.r_language_server.setup({})
+	vim.lsp.enable("r_language_server")
 	-- Rust
-	lspconfig.rust_analyzer.setup({
+	vim.lsp.config("rust_analyzer", {
 		settings = {
 			["rust-analyzer"] = {
 				cargo = {
@@ -46,19 +70,20 @@ local function server_setup()
 			},
 		},
 	})
+	vim.lsp.enable("rust_analyzer")
 	-- Terraform
-	lspconfig.terraformls.setup({})
+	vim.lsp.enable("terraformls")
 	-- TOML
-	lspconfig.taplo.setup({})
+	vim.lsp.enable("taplo")
 	-- TypeScript, JavaScript
 	-- Handled by typescript-tools
-	-- lspconfig.tsserver.setup({})
+	-- vim.lsp.enable("tsserver")
 	-- Vue
-	lspconfig.volar.setup({})
+	vim.lsp.enable("vue_ls")
 	-- Web
-	lspconfig.emmet_ls.setup({})
+	vim.lsp.enable("emmet_ls")
 	-- Yaml
-	lspconfig.yamlls.setup({
+	vim.lsp.config("yamlls", {
 		filetypes = { "yaml", "yaml.gitlab-ci", "yaml.dockerfile", "yaml.github" },
 		settings = {
 			yaml = {
@@ -68,6 +93,7 @@ local function server_setup()
 			},
 		},
 	})
+	vim.lsp.enable("yamlls")
 end
 
 function M.capabilities()

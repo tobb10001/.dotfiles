@@ -139,9 +139,9 @@ awful.screen.connect_for_each_screen(function(s)
 		tasklist, -- Middle widget
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
+			wibox.widget.systray(),
 			awful.widget.keyboardlayout(),
 			deficient.brightness({}).widget,
-			wibox.widget.systray(),
 			clock,
 			layoutimg,
 		},

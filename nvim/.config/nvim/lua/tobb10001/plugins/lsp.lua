@@ -22,9 +22,8 @@ return {
 			},
 		},
 	},
-	{
-		"barreiroleo/ltex_extra.nvim",
-	},
+	{ "barreiroleo/ltex_extra.nvim" },
+	{ "artemave/workspace-diagnostics.nvim" },
 	-- {
 	-- 	'nvimdev/lspsaga.nvim',
 	-- 	opts = {

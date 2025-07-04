@@ -100,9 +100,17 @@ function M.capabilities()
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 	capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
+
+	capabilities.textDocument.foldingRange = {
+		dynamicRegistration = false,
+		lineFoldingOnly = true,
+	}
+
+	return capabilities
 end
 
-function M.on_attach(client, _)
+function M.on_attach(client, bufnr)
+	-- require("workspace-diagnosics").populate_workspace_diagnostics(client, bufnr)
 	local nmap = function(keys, func, desc)
 		if desc then
 			desc = "LSP: " .. desc

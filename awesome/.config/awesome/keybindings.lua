@@ -138,7 +138,7 @@ local globalkeys = gears.table.join(
 )
 
 local clientkeys = gears.table.join(
-	awful.key({ modkey }, "f", function(c)
+	awful.key({ modkey }, "z", function(c)
 		c.fullscreen = not c.fullscreen
 		c:raise()
 	end, { description = "toggle fullscreen", group = "client" }),
@@ -193,14 +193,18 @@ for i, key in ipairs({
 		globalkeys,
 		-- View tag only.
 		awful.key({ modkey }, key, function()
-			local screen = awful.screen.focused()
-			local tag = screen.tags[i]
-			if tag then
-				tag:view_only()
+			for s in screen do
+				local tag = s.tags[i]
+				if tag then
+					tag:view_only()
+				end
 			end
+			-- This is a hack:
+			client.focus = mouse.object_under_cursor()
 		end, { description = "view tag #" .. i, group = "tag" }),
 		-- Toggle tag display.
 		awful.key({ modkey, "Control" }, key, function()
+			-- TODO: Make this work for all screens.
 			local screen = awful.screen.focused()
 			local tag = screen.tags[i]
 			if tag then

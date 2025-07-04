@@ -1,7 +1,58 @@
+local pickers = require("telescope.pickers")
+local finders = require("telescope.finders")
+local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
+local conf = require("telescope.config").values
+
+local function pick_directory_with_oil(opts)
+	opts = opts or {}
+	local cwd = vim.fn.getcwd()
+
+	-- Use fd to find directories, respecting .gitignore
+	local handle = io.popen('fd --type d --hidden --exclude .git --color=never . "' .. cwd .. '"')
+	local dirs = {}
+	if handle then
+		for line in handle:lines() do
+			table.insert(dirs, vim.fn.fnamemodify(line, ":p"))
+		end
+		handle:close()
+	end
+	table.insert(dirs, 1, cwd) -- Optionally include cwd itself
+
+	-- Convert to relative paths for display
+	local rel_dirs = vim.tbl_map(function(dir)
+		return vim.fn.fnamemodify(dir, ":.")
+	end, dirs)
+
+	pickers
+		.new(opts, {
+			prompt_title = "Select Directory (Oil)",
+			finder = finders.new_table({
+				results = rel_dirs,
+			}),
+			sorter = conf.generic_sorter(opts),
+			attach_mappings = function(prompt_bufnr, _)
+				actions.select_default:replace(function()
+					actions.close(prompt_bufnr)
+					local selection = action_state.get_selected_entry()
+					local rel_dir = selection[1] or selection.value
+					local dir = vim.fn.fnamemodify(rel_dir, ":p")
+					require("oil").open(dir)
+				end)
+				return true
+			end,
+		})
+		:find()
+end
+
 local function config()
 	pcall(require("telescope").load_extension, "fzf")
 
 	require("telescope").load_extension("luasnip")
+
+	require("telescope").extensions.oil_dirs = {
+		oil_dirs = pick_directory_with_oil,
+	}
 end
 
 local keys = {
@@ -30,7 +81,7 @@ local keys = {
 		desc = "Fuzzily find in current buffer.",
 	},
 	{
-		"sd",
+		"se",
 		function()
 			return require("telescope.builtin").diagnostics()
 		end,
@@ -84,6 +135,14 @@ local keys = {
 		end,
 		mode = "n",
 		desc = "[S]earch LSP [W]orkspace Symbols",
+	},
+	{
+		"sd",
+		function()
+			require("telescope").extensions.oil_dirs.oil_dirs()
+		end,
+		mode = "n",
+		desc = "[S]earch [D]irectory (Oil)",
 	},
 }
 

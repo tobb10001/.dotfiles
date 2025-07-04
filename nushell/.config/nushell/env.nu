@@ -100,6 +100,9 @@ $env.PATH = ($env.PATH | uniq)
 # source ($nu.default-config-dir | path join 'custom.nu')
 
 $env.EDITOR = "nvim"
+# `sudoedit` cannot find the nvim binary installed via Nix for the user only...
+$env.SUDO_EDITOR = "vim"
+$env.RIPGREP_CONFIG_PATH = ($env.XDG_CONFIG_HOME | path join "ripgrep" "config")
 
 # Extensions
 

@@ -78,8 +78,8 @@ return {
 							["<leader>sa"] = "@parameter.inner",
 						},
 						swap_previous = {
-							["<leader>sA"] = "@parameter.inner"
-						}
+							["<leader>sA"] = "@parameter.inner",
+						},
 					},
 					move = {
 						enable = true,
@@ -116,6 +116,15 @@ return {
 				},
 			})
 		end,
+	},
+	{
+		"mawkler/jsx-element.nvim",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-treesitter/nvim-treesitter-textobjects",
+		},
+		ft = { "typescriptreact", "javascriptreact", "javascript" },
+		opts = {},
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-context",

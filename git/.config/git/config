@@ -7,6 +7,7 @@
 [alias]
 	amend = commit --amend --no-edit
 	broom = !git branch --merged | grep -Ev '(^\\*|main|master|dev)' | xargs --no-run-if-empty git branch -d
+	fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
 	git = !git
 	glmr = "!f() { git fetch origin merge-requests/$1/head:mr-$1; git switch mr-$1; }; f"
 	gone = !git branch -av | grep -F "[gone]" | awk -F' ' '{ print $1 }' | xargs --no-run-if-empty git branch -D
@@ -46,6 +47,8 @@
 	keepBackup = false
 [mergetool "vimdiff"]
 	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[rebase]
+	autosquash = true
 [push]
 	autoSetupRemote = true
 [fetch]

@@ -31,6 +31,12 @@ local function pick_directory_with_oil(opts)
 				results = rel_dirs,
 			}),
 			sorter = conf.generic_sorter(opts),
+			previewer = require("telescope.previewers").new_termopen_previewer({
+				get_command = function(entry)
+					local dir = vim.fn.fnamemodify(entry.value or entry[1], ":p")
+					return { "ls", "-la", dir }
+				end,
+			}),
 			attach_mappings = function(prompt_bufnr, _)
 				actions.select_default:replace(function()
 					actions.close(prompt_bufnr)
@@ -45,7 +51,7 @@ local function pick_directory_with_oil(opts)
 		:find()
 end
 
-local function config()
+local function config(_, opts)
 	pcall(require("telescope").load_extension, "fzf")
 
 	require("telescope").load_extension("luasnip")
@@ -53,6 +59,8 @@ local function config()
 	require("telescope").extensions.oil_dirs = {
 		oil_dirs = pick_directory_with_oil,
 	}
+
+	require("telescope").setup(opts)
 end
 
 local keys = {
@@ -105,12 +113,20 @@ local keys = {
 		desc = "[S]earch [F]iles",
 	},
 	{
-		"sg",
+		"sgb",
+		function()
+			require("telescope.builtin").git_branches()
+		end,
+		mode = "n",
+		desc = "[S]earch [G]it [B]ranches",
+	},
+	{
+		"sr",
 		function()
 			return require("telescope.builtin").live_grep({ additional_args = { "-." } })
 		end,
 		mode = "n",
-		desc = "[S]earch by [G]rep",
+		desc = "[S]earch by [R]ipgrep",
 	},
 	{
 		"sh",
@@ -119,6 +135,14 @@ local keys = {
 		end,
 		mode = "n",
 		desc = "[S]earch [H]help tags",
+	},
+	{
+		"sk",
+		function()
+			require("telescope.builtin").keymaps()
+		end,
+		mode = "n",
+		desc = "[S]earch [K]eymaps",
 	},
 	{
 		"ss",
@@ -150,6 +174,7 @@ return {
 	"nvim-telescope/telescope.nvim",
 	opts = {
 		defaults = {
+			layout_strategy = "vertical",
 			mappings = {
 				i = {
 					-- map actions.which_key to <C-h> (default: <C-/>)

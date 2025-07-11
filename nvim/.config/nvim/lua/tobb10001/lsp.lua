@@ -110,7 +110,7 @@ function M.capabilities()
 end
 
 function M.on_attach(client, bufnr)
-	-- require("workspace-diagnosics").populate_workspace_diagnostics(client, bufnr)
+	-- require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
 	local nmap = function(keys, func, desc)
 		if desc then
 			desc = "LSP: " .. desc

@@ -114,6 +114,11 @@ config.keys = {
 			end),
 		}),
 	},
+	{
+		key = "g",
+		mods = "META",
+		action = act.SpawnCommandInNewTab({ args = { "lazygit" } }),
+	},
 	-- Debugging
 	{ key = "d", mods = "META", action = act.ShowDebugOverlay },
 }

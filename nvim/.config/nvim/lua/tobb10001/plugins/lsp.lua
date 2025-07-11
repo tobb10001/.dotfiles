@@ -4,6 +4,7 @@ return {
 		config = require("tobb10001.lsp").lspconfig_config,
 		dependencies = {
 			"onsails/lspkind.nvim",
+			"artemave/workspace-diagnostics.nvim",
 		},
 		event = { "BufReadPost", "BufNewFile" },
 		opts = {
@@ -23,7 +24,6 @@ return {
 		},
 	},
 	{ "barreiroleo/ltex_extra.nvim" },
-	{ "artemave/workspace-diagnostics.nvim" },
 	-- {
 	-- 	'nvimdev/lspsaga.nvim',
 	-- 	opts = {

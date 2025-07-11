@@ -44,7 +44,7 @@
             pkgs.borgbackup
             pkgs.btop
             pkgs.delta
-            pkgs.carapace
+            unstable.carapace
             pkgs.exiftool
             pkgs.fd
             pkgs.fzf
@@ -59,6 +59,7 @@
             pkgs.just
             pkgs.jq
             pkgs.k9s
+            pkgs.lazygit
             pkgs.parallel-full
             pkgs.ripgrep
             pkgs.stow

@@ -44,11 +44,11 @@ return {
 		},
 		build = "make tiktoken", -- Only on MacOS or Linux
 		opts = {
-			window = {
-				layout = "float",
-				width = 0.8,
-				height = 0.8,
-			},
+			-- window = {
+			-- 	layout = "float",
+			-- 	width = 0.8,
+			-- 	height = 0.8,
+			-- },
 		},
 		-- See Commands section for default commands if you want to lazy load on them
 		event = "VeryLazy",
@@ -69,18 +69,11 @@ return {
 				desc = "[R]eset [C]opilotChat",
 			},
 			{
-				"<leader>ce",
+				"<leader>cp",
 				function()
-					require("CopilotChat").reset()
+					require("CopilotChat").select_prompt()
 				end,
-				desc = "[C]opilotChat[E]xplain",
-			},
-			{
-				"<leader>cf",
-				function()
-					require("CopilotChat").fix()
-				end,
-				desc = "[C]opilotChat [F]ix",
+				mode = { "n", "v" },
 			},
 		},
 		enabled = ENABLED,

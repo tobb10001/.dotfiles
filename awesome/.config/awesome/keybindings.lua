@@ -91,7 +91,7 @@ local globalkeys = gears.table.join(
 		awful.util.spawn("setxkbmap gb")
 	end, { description = "Set keymap to GB" }),
 	awful.key({ modkey }, "-", function()
-		awful.util.spawn("setxkbmap de")
+		awful.util.spawn("setxkbmap -layout de -variant nodeadkeys")
 	end, { description = "Set keymap to GB" }),
 
 	-- Prompt
@@ -200,7 +200,7 @@ for i, key in ipairs({
 				end
 			end
 			-- This is a hack:
-			client.focus = mouse.object_under_cursor()
+			client.focus = mouse.object_under_pointer()
 		end, { description = "view tag #" .. i, group = "tag" }),
 		-- Toggle tag display.
 		awful.key({ modkey, "Control" }, key, function()

@@ -121,6 +121,16 @@ local keys = {
 		desc = "[S]earch [G]it [B]ranches",
 	},
 	{
+		"sgm",
+		function()
+			require("telescope.builtin").git_files({
+				git_command = { "/usr/bin/env", "bash", "-c", "git status --short | awk '{print $2}'" },
+			})
+		end,
+		mode = "n",
+		desc = "[S]earch [G]it [M]odified files",
+	},
+	{
 		"sr",
 		function()
 			return require("telescope.builtin").live_grep({ additional_args = { "-." } })

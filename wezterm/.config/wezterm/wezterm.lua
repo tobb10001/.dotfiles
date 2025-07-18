@@ -23,7 +23,7 @@ wezterm.on("toggle-background", function(window, _)
 end)
 
 -- General Options -----------------------------------------------------------------
-config.default_prog = { "nu" }
+config.default_prog = { "fish" }
 config.warn_about_missing_glyphs = false
 
 -- Appearence ----------------------------------------------------------------------

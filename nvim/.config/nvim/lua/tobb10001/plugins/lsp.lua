@@ -1,16 +1,9 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
-		config = require("tobb10001.lsp").lspconfig_config,
 		dependencies = {
 			"onsails/lspkind.nvim",
 			"artemave/workspace-diagnostics.nvim",
-		},
-		event = { "BufReadPost", "BufNewFile" },
-		opts = {
-			inlay_hints = {
-				enabled = true,
-			},
 		},
 		cond = not vim.g.vscode,
 	},

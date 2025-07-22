@@ -26,6 +26,7 @@ require("lazy").setup("tobb10001.plugins", {
 })
 
 -- General configuration
+require("tobb10001.lsp")
 require("tobb10001.options")
 require("tobb10001.keymaps")
 

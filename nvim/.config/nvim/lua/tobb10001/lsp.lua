@@ -61,10 +61,11 @@ vim.lsp.enable("lua_ls")
 vim.lsp.enable("nil_ls")
 vim.lsp.enable("nixd")
 -- Python
-vim.lsp.enable("basedpyright")
+-- vim.lsp.enable("basedpyright")
 -- vim.lsp.enable("pylsp")
 -- vim.lsp.enable("pyright")
 vim.lsp.enable("ruff")
+vim.lsp.enable("ty")
 -- R
 vim.lsp.enable("r_language_server")
 -- Rust
@@ -90,16 +91,7 @@ vim.lsp.enable("vue_ls")
 -- Web
 vim.lsp.enable("emmet_ls")
 -- Yaml
-vim.lsp.config("yamlls", {
-	filetypes = { "yaml", "yaml.gitlab-ci", "yaml.dockerfile", "yaml.github" },
-	settings = {
-		yaml = {
-			schemas = {
-				["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/refs/heads/master/v1.32.1-standalone-strict/all.json"] = "/**/.appstore/deployment.yml",
-			},
-		},
-	},
-})
+vim.lsp.config("yamlls", { filetypes = { "yaml", "yaml.gitlab-ci", "yaml.dockerfile", "yaml.github" } })
 vim.lsp.enable("yamlls")
 
 vim.api.nvim_create_autocmd("LspAttach", {

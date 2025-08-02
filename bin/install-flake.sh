@@ -2,6 +2,8 @@
 
 set -euxo pipefail
 
+cd $(dirname $0)/..
+
 TMPDIR=/tmp/my-dev-env
 mkdir -p "$TMPDIR"
 # rsync -a --exclude='.git' . "$TMPDIR"

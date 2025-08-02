@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+cd "$(dirname "$0")/.."
+
 if command -v ansible-community > /dev/null; then
 	echo "ansible is installed"
 elif command -v apt > /dev/null; then

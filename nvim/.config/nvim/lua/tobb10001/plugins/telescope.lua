@@ -1,10 +1,9 @@
-local pickers = require("telescope.pickers")
-local finders = require("telescope.finders")
-local actions = require("telescope.actions")
-local action_state = require("telescope.actions.state")
-local conf = require("telescope.config").values
-
 local function pick_directory_with_oil(opts)
+	local pickers = require("telescope.pickers")
+	local finders = require("telescope.finders")
+	local actions = require("telescope.actions")
+	local action_state = require("telescope.actions.state")
+	local conf = require("telescope.config").values
 	opts = opts or {}
 	local cwd = vim.fn.getcwd()
 

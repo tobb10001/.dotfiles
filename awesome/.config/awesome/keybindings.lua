@@ -166,11 +166,11 @@ local clientkeys = gears.table.join(
 		-- The client currently has the input focus, so it cannot be
 		-- minimized, since minimized clients can't have the focus.
 		c.minimized = true
-	end, { description = "minimize", group = "client" })
-	-- awful.key({ modkey }, "m", function(c)
-	-- 	c.maximized = not c.maximized
-	-- 	c:raise()
-	-- end, { description = "(un)maximize", group = "client" }),
+	end, { description = "minimize", group = "client" }),
+	awful.key({ modkey }, "m", function(c)
+		c.maximized = not c.maximized
+		c:raise()
+	end, { description = "(un)maximize", group = "client" })
 	-- awful.key({ modkey, "Control" }, "m", function(c)
 	-- 	c.maximized_vertical = not c.maximized_vertical
 	-- 	c:raise()
@@ -193,14 +193,11 @@ for i, key in ipairs({
 		globalkeys,
 		-- View tag only.
 		awful.key({ modkey }, key, function()
-			for s in screen do
-				local tag = s.tags[i]
-				if tag then
-					tag:view_only()
-				end
+			local screen = awful.screen.focused()
+			local tag = screen.tags[i]
+			if tag then
+				tag:view_only()
 			end
-			-- This is a hack:
-			client.focus = mouse.object_under_pointer()
 		end, { description = "view tag #" .. i, group = "tag" }),
 		-- Toggle tag display.
 		awful.key({ modkey, "Control" }, key, function()

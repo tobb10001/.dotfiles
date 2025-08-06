@@ -1,6 +1,10 @@
 return {
 	"saghen/blink.cmp",
-	dependencies = { "rafamadriz/friendly-snippets" },
+	dependencies = {
+		"rafamadriz/friendly-snippets",
+		"allaman/emoji.nvim",
+		"saghen/blink.compat",
+	},
 
 	version = "*",
 	event = { "BufReadPost", "BufNewFile", "CmdlineEnter" },
@@ -45,12 +49,23 @@ return {
 		},
 
 		sources = {
-			default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+			default = { "lazydev", "lsp", "path", "snippets", "buffer", "emoji" },
 			providers = {
 				lazydev = {
 					name = "LazyDev",
 					module = "lazydev.integrations.blink",
 					score_offset = 100,
+				},
+				emoji = {
+					name = "emoji",
+					module = "blink.compat.source",
+					transform_items = function(ctx, items)
+						local kind = require("blink.cmp.types").CompletionItemKind.Text
+						for i = 1, #items do
+							items[i].kind = kind
+						end
+						return items
+					end,
 				},
 			},
 		},

@@ -69,6 +69,7 @@
             pkgs.watchexec
             pkgs.yamllint
             pkgs.yq
+            unstable.zola
 
             # Keyboard
             pkgs.kanata

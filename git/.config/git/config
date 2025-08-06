@@ -49,6 +49,7 @@
 	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 [rebase]
 	autosquash = true
+	autostash = true
 [push]
 	autoSetupRemote = true
 [fetch]

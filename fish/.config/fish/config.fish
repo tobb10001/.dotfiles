@@ -44,6 +44,9 @@ if status is-interactive
 
     fish_default_key_bindings
 
+    bind \e\cj history-search-forward
+    bind \e\ck history-search-backward
+
     # Init the stuff ###################################################################
 
     direnv hook fish | source

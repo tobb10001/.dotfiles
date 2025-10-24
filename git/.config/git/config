@@ -57,6 +57,8 @@
 
 [include]
 	path = ~/.config/git/config.local
+[includeIf "gitdir:~/git/study/**"]
+	path = ~/.config/git/ru.config
 
 [diff "jupyternotebook"]
 	command = git-nbdiffdriver diff

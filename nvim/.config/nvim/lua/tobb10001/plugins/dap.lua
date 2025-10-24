@@ -6,6 +6,10 @@ return {
 				"rcarriga/nvim-dap-ui",
 				dependencies = { "nvim-neotest/nvim-nio" },
 			},
+			{
+				"leoluz/nvim-dap-go",
+				config = true,
+			},
 		},
 		keys = {
 			{
@@ -102,5 +106,5 @@ return {
 		dependencies = { "mfussenegger/nvim-dap" },
 		ft = { "python" },
 		cond = not vim.g.vscode,
-	}
+	},
 }

@@ -3,7 +3,9 @@
 )
 
 (defsrc
-    s d f g h j k l)
+    s d f g h j k l
+       c       m
+)
 
 (defvar
     tap-time 150
@@ -19,8 +21,12 @@
     j (multi f24 (tap-hold $tap-time $hold-time j rctl))
     k (multi f24 (tap-hold $tap-time $hold-time k lalt))
     l (multi f24 (tap-hold $tap-time $hold-time l rmet))
+
+    c (multi f24 (tap-hold $tap-time $hold-time c ralt))
+    m (multi f24 (tap-hold $tap-time $hold-time m ralt))
 )
 
 (deflayer base
     @s @d @f @g @h @j @k @l
+         @c       @m
 )

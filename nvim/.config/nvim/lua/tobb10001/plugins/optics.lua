@@ -77,11 +77,11 @@ return {
 						function()
 							local prose = require("nvim-prose")
 							if not prose.is_available() then
-								return
+								return ""
 							end
 							local word_count = prose.word_count()
 							if not word_count then
-								return
+								return ""
 							end
 							return prose.word_count()
 						end,

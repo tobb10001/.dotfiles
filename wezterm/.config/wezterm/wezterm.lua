@@ -64,8 +64,8 @@ config.keys = {
 	{ key = "p", mods = "META", action = act.EmitEvent("toggle-background") },
 	-- Tabs
 	{ key = "t", mods = "META", action = act.SpawnTab("CurrentPaneDomain") },
-	{ key = "]", mods = "META", action = act.ActivateTabRelative(1) },
-	{ key = "[", mods = "META", action = act.ActivateTabRelative(-1) },
+	{ key = ".", mods = "META", action = act.ActivateTabRelative(1) },
+	{ key = ",", mods = "META", action = act.ActivateTabRelative(-1) },
 	-- { key = "n", mods = "META", action = act.ShowTabNavigator },
 	{ key = "}", mods = "META|SHIFT", action = act.MoveTabRelative(1) },
 	{ key = "{", mods = "META|SHIFT", action = act.MoveTabRelative(-1) },
@@ -146,6 +146,9 @@ config.status_update_interval = 200
 wezterm.on("update-status", function(window, pane)
 	-- Workspace name
 	local stat = window:active_workspace()
+	if string.match(stat, "^~/") then
+		stat = string.gsub(stat, "^~/.*/", "")
+	end
 	local stat_color = "#f7768e"
 	-- It's a little silly to have workspace name all the time
 	-- Utilize this to display LDR or current key table name

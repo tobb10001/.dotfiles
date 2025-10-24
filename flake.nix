@@ -27,6 +27,8 @@
             # Language Servers
             # pkgs.clang-tools
             # pkgs.ltex-ls
+            unstable.delve
+            unstable.gopls
             pkgs.lua-language-server
             pkgs.nil
             pkgs.nixd
@@ -34,6 +36,7 @@
             pkgs.nodePackages.prettier
             pkgs.stylua
             pkgs.texlab
+            pkgs.tinymist
             # pkgs.texlab
             pkgs.yaml-language-server
 
@@ -73,6 +76,9 @@
 
             # Keyboard
             pkgs.kanata
+
+            # Graphical
+            pkgs.zotero
           ];
         };
   };

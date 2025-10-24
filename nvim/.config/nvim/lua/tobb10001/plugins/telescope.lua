@@ -106,7 +106,12 @@ local keys = {
 	{
 		"sf",
 		function()
-			return require("telescope.builtin").git_files({ hidden = true })
+			local ok, _ = vim.loop.fs_stat(vim.loop.cwd() .. "/.git")
+			if ok then
+				return require("telescope.builtin").git_files({ hidden = true })
+			else
+				return require("telescope.builtin").find_files({ hidden = true })
+			end
 		end,
 		mode = "n",
 		desc = "[S]earch [F]iles",

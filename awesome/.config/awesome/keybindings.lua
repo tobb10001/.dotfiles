@@ -2,6 +2,7 @@ local awful = require("awful")
 local gears = require("gears")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
+local volumecfg = require("volume")
 
 local globalkeys = gears.table.join(
 	awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
@@ -88,11 +89,11 @@ local globalkeys = gears.table.join(
 		menubar.show()
 	end, { description = "show the menubar", group = "awesome" }),
 	awful.key({ modkey }, "ß", function()
-		awful.util.spawn("setxkbmap gb")
-	end, { description = "Set keymap to GB" }),
+		awful.util.spawn("setxkbmap -layout us -variant altgr-intl")
+	end, { description = "Set keymap to US" }),
 	awful.key({ modkey }, "-", function()
 		awful.util.spawn("setxkbmap -layout de -variant nodeadkeys")
-	end, { description = "Set keymap to GB" }),
+	end, { description = "Set keymap to DE" }),
 
 	-- Prompt
 	-- awful.key({ modkey }, "r", function() awful.screen.focused().mypromptbox:run() end,
@@ -121,13 +122,13 @@ local globalkeys = gears.table.join(
 		awful.util.spawn("playerctl prev")
 	end),
 	awful.key({}, "XF86AudioRaiseVolume", function()
-		awful.util.spawn("amixer -c 1 set Master 1dB+")
+		volumecfg:up()
 	end),
 	awful.key({}, "XF86AudioLowerVolume", function()
-		awful.util.spawn("amixer -c 1 set Master 1dB-")
+		volumecfg:down()
 	end),
 	awful.key({}, "XF86AudioMute", function()
-		awful.util.spawn("amixer -c 1 set Master toggle")
+		volumecfg:toggle()
 	end),
 	awful.key({}, "XF86MonBrightnessUp", function()
 		awful.util.spawn("lxqt-backlight_backend --inc")

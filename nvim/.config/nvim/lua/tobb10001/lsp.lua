@@ -29,7 +29,28 @@ vim.lsp.enable("jsonls")
 -- lspconfig.ltex.setup({
 -- 	autostart = false,
 -- })
-vim.lsp.enable("ltex_plus")
+vim.lsp.config("ltex_plus", {
+	filetypes = {
+		"bib",
+		"context",
+		"gitcommit",
+		"html",
+		"markdown",
+		"org",
+		"pandoc",
+		"plaintex",
+		"quarto",
+		"mail",
+		"mdx",
+		"rmd",
+		"rnoweb",
+		"rst",
+		"tex",
+		-- "text",
+		"typst",
+		"xhtml",
+	},
+})
 vim.lsp.enable("texlab")
 -- Lua
 vim.lsp.config("lua_ls", {
@@ -61,11 +82,11 @@ vim.lsp.enable("lua_ls")
 vim.lsp.enable("nil_ls")
 vim.lsp.enable("nixd")
 -- Python
--- vim.lsp.enable("basedpyright")
+vim.lsp.enable("basedpyright")
 -- vim.lsp.enable("pylsp")
 -- vim.lsp.enable("pyright")
 vim.lsp.enable("ruff")
-vim.lsp.enable("ty")
+-- vim.lsp.enable("ty")
 -- R
 vim.lsp.enable("r_language_server")
 -- Rust
@@ -87,6 +108,8 @@ vim.lsp.enable("taplo")
 -- Handled by typescript-tools
 -- vim.lsp.enable("tsserver")
 -- Vue
+-- Typst
+vim.lsp.enable("tinymist")
 vim.lsp.enable("vue_ls")
 -- Web
 vim.lsp.enable("emmet_ls")

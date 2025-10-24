@@ -11,9 +11,6 @@ vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 -- Escape to escape from terminals.
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
--- Faster escape from insert mode
-vim.keymap.set("i", "kj", "<Esc>")
-
 -- Type german letters
 vim.keymap.set("i", "aee", "ä")
 vim.keymap.set("i", "oee", "ö")
@@ -24,13 +21,17 @@ vim.keymap.set("i", "Uee", "Ü")
 vim.keymap.set("i", "sss", "ß")
 
 -- Diagnostic keymaps
-vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end,
-	{ desc = "Go to previous diagnostic message" })
-vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end, { desc = "Go to next diagnostic message" })
+vim.keymap.set("n", "[d", function()
+	vim.diagnostic.jump({ count = -1 })
+end, { desc = "Go to previous diagnostic message" })
+vim.keymap.set("n", "]d", function()
+	vim.diagnostic.jump({ count = 1 })
+end, { desc = "Go to next diagnostic message" })
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
-vim.keymap.set("n", "<leader>td", function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end,
-	{ desc = "[T]oggle [d]iagnostics" })
+vim.keymap.set("n", "<leader>td", function()
+	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end, { desc = "[T]oggle [d]iagnostics" })
 
 -- Quickfix list
 vim.keymap.set("n", "[q", function()
@@ -39,5 +40,9 @@ end, { desc = "Previos quickfix item." })
 vim.keymap.set("n", "]q", function()
 	vim.cmd(":cnext")
 end, { desc = "Next quickfix item." })
-vim.keymap.set("n", "<leader>qo", function() vim.cmd(":copen") end, { desc = "Open quickfix list" })
-vim.keymap.set("n", "<leader>qc", function() vim.cmd(":cclose") end, { desc = "Close quickfix list" })
+vim.keymap.set("n", "<leader>qo", function()
+	vim.cmd(":copen")
+end, { desc = "Open quickfix list" })
+vim.keymap.set("n", "<leader>qc", function()
+	vim.cmd(":cclose")
+end, { desc = "Close quickfix list" })

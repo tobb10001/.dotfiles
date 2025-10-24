@@ -7,21 +7,21 @@ return {
 	end,
 	keys = {
 		{
-			"<leader>a",
+			"<leader>ha",
 			function()
 				require("harpoon"):list():add()
 			end,
 			mode = "n",
-			desc = "[A]dd file to Harpoon",
+			desc = "[A]dd file to [H]arpoon",
 		},
 		{
-			"<leader>l",
+			"<leader>hl",
 			function()
 				local harpoon = require("harpoon")
 				harpoon.ui:toggle_quick_menu(harpoon:list())
 			end,
 			mode = "n",
-			desc = "[L]ist Harpoon files",
+			desc = "[L]ist [H]arpoon files",
 		},
 
 		{

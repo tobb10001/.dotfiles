@@ -23,14 +23,19 @@ end
 
 -- Open `help` in a vertical split
 -- autocmd FileType help wincmd L
-vim.api.nvim_create_autocmd("FileType", { pattern = "help", callback = function() vim.cmd.wincmd("H") end })
-
--- Configure diagnostics
-vim.diagnostic.config({
-	underline = true,
-	virtual_text = false,
-	virtual_lines = { current_line = true },
-	float = false,
-	signs = true,
-	severity_sort = true,
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "help",
+	callback = function()
+		vim.cmd.wincmd("H")
+	end,
 })
+
+vim.api.nvim_create_user_command("OpenPdf", function()
+	local filepath = vim.api.nvim_buf_get_name(0)
+
+	if filepath:match("%.typ$") then
+		local pdf_path = filepath:gsub("%.typ$", ".pdf")
+
+		vim.system({ "zathura", pdf_path })
+	end
+end, {})

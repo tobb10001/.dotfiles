@@ -90,16 +90,17 @@ vim.lsp.enable("ruff")
 -- R
 vim.lsp.enable("r_language_server")
 -- Rust
-vim.lsp.config("rust_analyzer", {
-	settings = {
-		["rust-analyzer"] = {
-			cargo = {
-				features = "all",
-			},
-		},
-	},
-})
-vim.lsp.enable("rust_analyzer")
+-- Handled by rustaceanvim
+-- vim.lsp.config("rust_analyzer", {
+-- 	settings = {
+-- 		["rust-analyzer"] = {
+-- 			cargo = {
+-- 				features = "all",
+-- 			},
+-- 		},
+-- 	},
+-- })
+-- vim.lsp.enable("rust_analyzer")
 -- Terraform
 vim.lsp.enable("terraformls")
 -- TOML
@@ -109,6 +110,16 @@ vim.lsp.enable("taplo")
 -- vim.lsp.enable("tsserver")
 -- Vue
 -- Typst
+vim.lsp.config("tinymist", {
+	settings = {
+		exportPdf = "onSave",
+		lint = {
+			enabled = true,
+			when = "onType",
+		},
+		formatterMode = "typstyle",
+	},
+})
 vim.lsp.enable("tinymist")
 vim.lsp.enable("vue_ls")
 -- Web

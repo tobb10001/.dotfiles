@@ -23,6 +23,7 @@
 
             # Neovim
             unstable.neovim
+            pkgs.luarocks
             pkgs.xclip
             # Language Servers
             # pkgs.clang-tools
@@ -39,6 +40,8 @@
             pkgs.tinymist
             # pkgs.texlab
             pkgs.yaml-language-server
+            # Debuggers
+            pkgs.lldb
 
             pkgs.nodejs
 

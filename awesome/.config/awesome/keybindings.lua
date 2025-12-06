@@ -74,9 +74,9 @@ local globalkeys = gears.table.join(
 	end, { description = "restore minimized", group = "client" }),
 
 	-- Non-layout controls
-	-- awful.key({ modkey }, "Return", function()
-	-- 	awful.spawn(terminal)
-	-- end, { description = "Open a Terminal", group = "launcher" }),
+	awful.key({ modkey }, "Return", function()
+		awful.spawn(terminal)
+	end, { description = "Open a Terminal", group = "launcher" }),
 	awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "Reload Awesome", group = "awesome" }),
 	awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "Quit Awesome", group = "awesome" }),
 	awful.key({ modkey }, "x", function()

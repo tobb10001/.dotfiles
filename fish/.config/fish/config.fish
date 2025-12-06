@@ -29,6 +29,7 @@ if status is-interactive
         alias go "grc go"
     end
     alias lslsls "echo Yeah, I don\'t know either..."
+    alias lvim "NVIM_APPNAME=lazyvim nvim"
     alias emacs "emacs -nw"
     alias open "xdg-open"
     alias pip "pip --require-virtualenv"

@@ -5,6 +5,7 @@
 (defsrc
     s d f g h j k l
        c       m
+          spc
 )
 
 (defvar
@@ -24,9 +25,11 @@
 
     c (multi f24 (tap-hold $tap-time $hold-time c ralt))
     m (multi f24 (tap-hold $tap-time $hold-time m ralt))
+    spc (multi f24 (tap-hold $tap-time $hold-time spc ralt))
 )
 
 (deflayer base
     @s @d @f @g @h @j @k @l
          @c       @m
+            @spc
 )

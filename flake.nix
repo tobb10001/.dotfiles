@@ -1,7 +1,7 @@
 {
   description = "My development tools";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
   inputs.unstablepkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
   outputs = { self, nixpkgs, unstablepkgs }: {
@@ -17,7 +17,6 @@
             pkgs.direnv
             pkgs.eza
             pkgs.fish
-            unstable.nushell
             pkgs.starship
             pkgs.zoxide
 
@@ -28,22 +27,18 @@
             # Language Servers
             # pkgs.clang-tools
             # pkgs.ltex-ls
-            unstable.delve
+            pkgs.ast-grep
             unstable.gopls
+            pkgs.harper
+            pkgs.haskell-language-server
             pkgs.lua-language-server
-            pkgs.nil
-            pkgs.nixd
-            pkgs.nodePackages.bash-language-server
-            pkgs.nodePackages.prettier
-            pkgs.stylua
-            pkgs.texlab
+            pkgs.mermaid-cli
+            pkgs.tectonic
             pkgs.tinymist
-            # pkgs.texlab
             pkgs.yaml-language-server
             # Debuggers
+            unstable.delve
             pkgs.lldb
-
-            pkgs.nodejs
 
             # CLI
             pkgs.bat
@@ -55,23 +50,21 @@
             pkgs.fd
             pkgs.fzf
             pkgs.gh
-            pkgs.glab
+            pkgs.ghc
             pkgs.git
             pkgs.git-lfs
             pkgs.go-task
             pkgs.graphviz
             pkgs.grc
             pkgs.imagemagick
-            pkgs.just
             pkgs.jq
-            pkgs.k9s
             pkgs.lazygit
             pkgs.parallel-full
             pkgs.ripgrep
             pkgs.stow
             pkgs.tldr
             pkgs.translate-shell
-            pkgs.typst
+            unstable.typst
             pkgs.watchexec
             pkgs.yamllint
             pkgs.yq

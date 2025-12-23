@@ -47,6 +47,7 @@
             pkgs.delta
             unstable.carapace
             pkgs.exiftool
+            pkgs.fastfetch
             pkgs.fd
             pkgs.fzf
             pkgs.gh

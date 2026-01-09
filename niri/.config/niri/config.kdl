@@ -16,7 +16,21 @@ input {
     warp-mouse-to-focus
 
     // Focus windows and outputs automatically when moving the mouse into them.
-    focus-follows-mouse
+    // focus-follows-mouse
+}
+
+cursor {
+  xcursor-theme "Future-cyan-cursors"
+  xcursor-size 40
+  // xcursor-theme "Banana-Blue"
+  // xcursor-size 48
+  // xcursor-theme "LyraB-cursors"
+  // xcursor-size 56
+  // xcursor-theme "Drop-Blue" // weird angle
+  // xcursor-size 40
+  // xcursor-theme "Orbian-Mint" // too green
+  // xcursor-theme "oxy-neon" // too small :(
+  // xcursor-size 56
 }
 
 layout {

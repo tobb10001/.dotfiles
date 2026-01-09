@@ -26,18 +26,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.luks.devices = {
-    crypthome = {
-      device = "/dev/disk/by-uuid/534e0f18-eb05-4384-9c62-b2a3249c1eae";
-    };
-  };
-
-  fileSystems."/home" = {
-    device = "/dev/mapper/crypthome";
-    fsType = "ext4";
-    options = [ "defaults" ];
-  };
-
   # Kanata
   boot.kernelModules = [ "uinput" ];
   hardware.uinput.enable = true;
@@ -64,7 +52,7 @@
   hardware.bluetooth.enable = true;
 
   # Set your time zone.
-  time.timeZone = "Europe/Berlin";
+  time.timeZone = "Iceland/Reykjavik";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";
@@ -116,9 +104,18 @@
       mermaid-cli
       tectonic
       tree-sitter
+
       # Language Support
+      # Nix
       nixfmt
       statix
+
+      # Rust
+      cargo
+      rust-analyzer
+      rustc
+
+      # Typst
       tinymist
 
       # CLI
@@ -128,6 +125,7 @@
       delta
       exiftool
       fd
+      file
       graphviz
       grc
       imagemagick
@@ -151,8 +149,11 @@
       kanata
       kdePackages.gwenview
       nextcloud-client
-      spotify
       zotero
+
+      # Games
+      lutris
+      wine-staging
     ];
   };
 
@@ -166,6 +167,7 @@
     fish
     git
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+    networkmanagerapplet
     swaylock
     unzip
     wezterm
@@ -177,12 +179,13 @@
   };
 
   programs.niri.enable = true;
+  services.displayManager.autoLogin.user = "tobi";
   services.displayManager.sddm = {
     enable = true;
     autoNumlock = true;
     enableHidpi = true;
+    wayland.enable = true;
   };
-  services.displayManager.sddm.wayland.enable = true;
 
   security.polkit.enable = true;
   hardware.graphics.enable = true;

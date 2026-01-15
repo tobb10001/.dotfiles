@@ -105,15 +105,27 @@
       tectonic
       tree-sitter
 
+      harper
+
       # Language Support
+      # Go
+      go
+      golangci-lint
+      gopls
+
+      # Markdown
+      markdownlint-cli2
+
       # Nix
       nixfmt
       statix
 
       # Rust
       cargo
+      cargo-insta
       rust-analyzer
       rustc
+      rustfmt
 
       # Typst
       tinymist
@@ -141,6 +153,7 @@
       usbutils
       unstable.zola
       yq
+      zip
 
       # Desktop
       # discord
@@ -149,6 +162,7 @@
       kanata
       kdePackages.gwenview
       nextcloud-client
+      obsidian
       zotero
 
       # Games
@@ -166,12 +180,22 @@
     clang
     fish
     git
-    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     networkmanagerapplet
-    swaylock
     unzip
     wezterm
     wget
+
+    # Desktop components
+    # Note: Niri is configured through program.niri
+    cava
+    cliphist
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+    libnotify
+    logiops
+    shikane
+    swaylock # Not in use, but better to have a fallback.
+    wdisplays
+    wlsunset
     xwayland-satellite
   ];
   environment.variables = {

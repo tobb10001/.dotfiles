@@ -108,7 +108,12 @@
       harper
 
       # Language Support
+      # Elixir
+      elixir
+      beamMinimal28Packages.elixir-ls
+
       # Go
+      gcc # Apparently needed for Go sometimes? ("net")
       go
       golangci-lint
       gopls
@@ -120,6 +125,12 @@
       nixfmt
       statix
 
+      # Python
+      python3
+      ruff
+      ty
+      uv
+
       # Rust
       cargo
       cargo-insta
@@ -129,6 +140,9 @@
 
       # Typst
       tinymist
+
+      # YAML
+      yaml-language-server
 
       # CLI
       bat
@@ -140,13 +154,16 @@
       file
       graphviz
       grc
+      gum
       imagemagick
+      jless
       jq
       lazygit
       parallel-full
       pciutils
       ripgrep
       stow
+      go-task
       tldr
       translate-shell
       unstable.typst
@@ -157,10 +174,12 @@
 
       # Desktop
       # discord
+      chromium
       flameshot
       fuzzel
       kanata
       kdePackages.gwenview
+      kdePackages.kdeconnect-kde
       nextcloud-client
       obsidian
       zotero
@@ -194,8 +213,11 @@
     logiops
     shikane
     swaylock # Not in use, but better to have a fallback.
+    uwsm
     wdisplays
+    wl-clipboard
     wlsunset
+    wshowkeys
     xwayland-satellite
   ];
   environment.variables = {
@@ -232,6 +254,9 @@
   services.blueman.enable = true;
   services.flatpak.enable = true;
   # flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+  services.fprintd.enable = true;
+  services.fprintd.tod.enable = true;
+  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix;
 
   programs.firefox.enable = true;
 

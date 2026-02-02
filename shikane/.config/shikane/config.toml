@@ -1,0 +1,57 @@
+[[profile]]
+name = "Laptop only"
+exec = ["notify-send --urgency low --app-name Shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""]
+
+  [[profile.output]]
+  enable = true
+  search = ["n=eDP-1"]
+  mode = "1920x1200@60.002Hz"
+  position = "0,0"
+  scale = 1.0
+  transform = "normal"
+  adaptive_sync = false
+
+[[profile]]
+name = "KKKK"
+exec = ["notify-send --urgency low --app-name Shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""]
+
+  [[profile.output]]
+  enable = true
+  search = ["n=DP-1"]
+  mode = "1920x1080@60Hz"
+  position = "1920,0"
+  scale = 1.0
+  transform = "normal"
+  adaptive_sync = false
+
+  [[profile.output]]
+  enable = true
+  search = ["n=eDP-1"]
+  mode = "1920x1200@60.002Hz"
+  position = "1920,1080"
+  scale = 1.0
+  transform = "normal"
+  adaptive_sync = false
+
+[[profile]]
+name = "Right of KKKK"
+exec = ["notify-send --urgency low --app-name Shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""]
+
+  [[profile.output]]
+  enable = true
+  search = ["n=eDP-1"]
+  mode = "1920x1200@60.002Hz"
+  position = "0,1080"
+  scale = 1.0
+  transform = "normal"
+  adaptive_sync = false
+
+  [[profile.output]]
+  enable = true
+  search = ["n=HDMI-A-1"]
+  mode = "1920x1080@60Hz"
+  position = "0,0"
+  scale = 1.0
+  transform = "normal"
+  adaptive_sync = false
+

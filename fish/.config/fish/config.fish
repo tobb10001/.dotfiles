@@ -16,22 +16,28 @@ if status is-interactive
 
     if wsl
         alias clip "clip.exe"
-    else
+    else if command -v xclip >/dev/null
         alias clip "xclip -selection clipboard"
+    else if command -v wl-copy >/dev/null
+        alias clip wl-copy
+    else
+        echo "Neither WSL, nor xclip nor wl-copy found. `clip` alias could not be created."
     end
     alias diff "diff -W (tput cols)"
-    if command -v eza > /dev/null;
+    if command -v eza >/dev/null
+
         alias ls "eza --icons"
     else
         alias ls "ls --color=auto"
     end
-    if command -v grc > /dev/null;
+    if command -v grc >/dev/null
+
         alias go "grc go"
     end
     alias lslsls "echo Yeah, I don\'t know either..."
     alias lvim "NVIM_APPNAME=lazyvim nvim"
     alias emacs "emacs -nw"
-    alias open "xdg-open"
+    alias open xdg-open
     alias pip "pip --require-virtualenv"
     alias view "nvim -R"
     alias watch "watch --color"

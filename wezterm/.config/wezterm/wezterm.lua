@@ -29,10 +29,9 @@ config.warn_about_missing_glyphs = false
 -- Appearance ----------------------------------------------------------------------
 -- Colors & Background
 config.window_background_image = nil
-config.color_scheme = "Tokyo Night"
-config.window_background_image_hsb = {
-	brightness = 0.1,
-}
+-- config.color_scheme = "Tokyo Night"
+config.color_scheme = "Noctalia"
+config.window_background_opacity = 0.8
 config.text_background_opacity = 1
 
 -- Font
@@ -56,8 +55,9 @@ local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/s
 -- Keybinds ------------------------------------------------------------------------
 -- config.leader = { key = "`", mods = "NONE" }
 config.keys = {
-	-- Send ` when pressing ` twice.
-	-- { key = "`", mods = "META", action = act.SendKey({ key = "`" }) },
+  -- Prompts
+  { key = "k", mods = "META|SHIFT", action = act.ScrollToPrompt(-1) },
+  { key = "j", mods = "META|SHIFT", action = act.ScrollToPrompt(1) },
 	-- Windows
 	-- { key = "w", mods = "META", action = act.SpawnWindow },
 	{ key = "p", mods = "META", action = act.EmitEvent("toggle-background") },
@@ -66,8 +66,8 @@ config.keys = {
 	{ key = ".", mods = "META", action = act.ActivateTabRelative(1) },
 	{ key = ",", mods = "META", action = act.ActivateTabRelative(-1) },
 	-- { key = "n", mods = "META", action = act.ShowTabNavigator },
-	{ key = "}", mods = "META|SHIFT", action = act.MoveTabRelative(1) },
-	{ key = "{", mods = "META|SHIFT", action = act.MoveTabRelative(-1) },
+	{ key = ">", mods = "META|SHIFT", action = act.MoveTabRelative(1) },
+	{ key = "<", mods = "META|SHIFT", action = act.MoveTabRelative(-1) },
 	-- Splits
 	-- They seem to be the wrong way round, but this matches the way in which vim's
 	-- :split and :vsplit work.

@@ -4,3 +4,5 @@
 
 vim.g.snacks_animate = false
 vim.opt.autowrite = false
+
+vim.g.lazyvim_python_lsp = "ty"

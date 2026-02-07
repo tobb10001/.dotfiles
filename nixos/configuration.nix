@@ -14,6 +14,9 @@
   imports = [
     # Include the results of the hardware scan.
     /etc/nixos/hardware-configuration.nix
+    ./desktop.nix
+    ./guis.nix
+    ./programming.nix
   ];
 
   # Nix Settings
@@ -22,20 +25,17 @@
     "flakes"
   ];
 
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
+
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # Kanata
-  boot.kernelModules = [ "uinput" ];
-  hardware.uinput.enable = true;
-  services.udev.extraRules = ''
-    KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"
-  '';
-  users.groups.uinput = { };
-
-  # Logitech
-  hardware.logitech.wireless.enable = true;
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+  };
 
   hardware.enableRedistributableFirmware = true;
   hardware.ipu6 = {
@@ -73,6 +73,7 @@
   };
 
   # Configure keymap in X11
+  # Dunno if this is used, because I use wayland, but let's just leave it...
   services.xserver.xkb = {
     layout = "us";
     variant = "altgr-intl";
@@ -91,109 +92,6 @@
       "input"
       "uinput"
     ];
-    packages = with pkgs; [
-      # Shell
-      direnv
-      eza
-      fzf
-      starship
-      zoxide
-
-      # Neovim
-      unstable.neovim
-      # Lazyvim Deps
-      luarocks
-      ast-grep
-      mermaid-cli
-      tectonic
-      tree-sitter
-
-      harper
-
-      # Language Support
-      # Elixir
-      elixir
-      beamMinimal28Packages.elixir-ls
-
-      # Go
-      gcc # Apparently needed for Go sometimes? ("net")
-      go
-      golangci-lint
-      gopls
-
-      # Markdown
-      markdownlint-cli2
-
-      # Nix
-      nixfmt
-      statix
-
-      # Python
-      python3
-      ruff
-      ty
-      uv
-
-      # Rust
-      cargo
-      cargo-insta
-      rust-analyzer
-      rustc
-      rustfmt
-
-      # Typst
-      tinymist
-
-      # YAML
-      yaml-language-server
-
-      # CLI
-      bat
-      borgbackup
-      btop
-      delta
-      exiftool
-      fd
-      file
-      graphviz
-      grc
-      gum
-      imagemagick
-      jless
-      jq
-      lazygit
-      parallel-full
-      pciutils
-      ripgrep
-      stow
-      go-task
-      tldr
-      translate-shell
-      unstable.typst
-      usbutils
-      unstable.zola
-      yq
-      zip
-
-      # Desktop
-      anki
-      chromium
-      # discord
-      flameshot
-      fuzzel
-      kanata
-      kdePackages.gwenview
-      kdePackages.kdeconnect-kde
-      nextcloud-client
-      obsidian
-      solaar
-      zathura
-      unstable.zotero
-
-      # Games
-      lutris
-      wine-staging
-    ];
   };
 
   # Allow unfree packages
@@ -205,71 +103,12 @@
     clang
     fish
     git
-    networkmanagerapplet
     unzip
-    wezterm
     wget
-
-    # Desktop components
-    # Note: Niri is configured through program.niri
-    cava
-    cliphist
-    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-    libnotify
-    logiops
-    # nirius
-    shikane
-    swaylock # Not in use, but better to have a fallback.
-    uwsm
-    wdisplays
-    wl-clipboard
-    wlsunset
-    wshowkeys
-    xwayland-satellite
   ];
   environment.variables = {
+    # TODO: home manager? this is not the right place...
     TERM = "wezterm";
-  };
-
-  programs.niri.enable = true;
-  services.displayManager.autoLogin.user = "tobi";
-  services.displayManager.sddm = {
-    enable = true;
-    autoNumlock = true;
-    enableHidpi = true;
-    wayland.enable = true;
-  };
-
-  security.polkit.enable = true;
-  hardware.graphics.enable = true;
-  services.xserver.videoDrivers = [ "modesetting" ];
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    pulse.enable = true;
-    wireplumber.enable = true;
-  };
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-wlr
-    ];
-  };
-  services.power-profiles-daemon.enable = true;
-  services.upower.enable = true;
-  services.blueman.enable = true;
-  services.flatpak.enable = true;
-  # flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-  services.fprintd.enable = true;
-  services.fprintd.tod.enable = true;
-  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix;
-
-  programs.firefox.enable = true;
-
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are

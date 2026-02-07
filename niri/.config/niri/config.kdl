@@ -172,7 +172,7 @@ binds {
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
     // Mod+Shift+Slash { show-hotkey-overlay; }
-    Mod+Shift+Slash { spawn "noctalia-shell" "ipc" "call" "plugin:keybind-cheatsheet" "toggle"; }
+    // Mod+Shift+Slash { spawn "noctalia-shell" "ipc" "call" "plugin:keybind-cheatsheet" "toggle"; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return { spawn "wezterm" "start" "--always-new-process"; }
@@ -394,8 +394,13 @@ binds {
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
 
-    Mod+B { spawn "niri-focus" "-launch=firefox" "firefox"; }
-    Mod+T { spawn "niri-focus" "-launch=wezterm start --always-new-process" "^org\\.wezfurlong\\.wezterm$"; }
+    Mod+B { spawn "/home/tobi/.cargo/bin/nirius" "focus-or-spawn" "--workspace-current" "--app-id=firefox" "firefox"; }
+    Mod+T { spawn "/home/tobi/.cargo/bin/nirius" "focus-or-spawn" "--workspace-current" "--app-id=^org.\\wezfurlong\\.wezterm$" "--" "wezterm" "start" "--always-new-process"; }
+    Mod+Z { spawn "/home/tobi/.cargo/bin/nirius" "move-to-current-workspace-or-spawn" "--include-current-workspace" "--focus" "--app-id=Zotero" "zotero"; }
+}
+
+hotkey-overlay {
+  skip-at-startup;
 }
 
 switch-events {
@@ -409,4 +414,5 @@ debug {
 spawn-at-startup "noctalia-shell"
 spawn-at-startup "kanata"
 spawn-at-startup "shikane"
+spawn-at-startup "/home/tobi/.cargo/bin/niriusd"
 include "./noctalia.kdl"

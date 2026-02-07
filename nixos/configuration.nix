@@ -34,6 +34,9 @@
   '';
   users.groups.uinput = { };
 
+  # Logitech
+  hardware.logitech.wireless.enable = true;
+
   hardware.enableRedistributableFirmware = true;
   hardware.ipu6 = {
     enable = true;
@@ -173,8 +176,9 @@
       zip
 
       # Desktop
-      # discord
+      anki
       chromium
+      # discord
       flameshot
       fuzzel
       kanata
@@ -182,7 +186,9 @@
       kdePackages.kdeconnect-kde
       nextcloud-client
       obsidian
-      zotero
+      solaar
+      zathura
+      unstable.zotero
 
       # Games
       lutris
@@ -211,6 +217,7 @@
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     libnotify
     logiops
+    # nirius
     shikane
     swaylock # Not in use, but better to have a fallback.
     uwsm

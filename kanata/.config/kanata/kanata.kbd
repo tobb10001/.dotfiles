@@ -3,6 +3,7 @@
 )
 
 (defsrc
+   w
     s d f g h j k l
        c       m
           spc
@@ -14,6 +15,7 @@
 )
 
 (defalias
+    w (multi f24 (tap-hold $tap-time $hold-time w (layer-while-held arrows)))
     s (multi f24 (tap-hold $tap-time $hold-time s lmet))
     d (multi f24 (tap-hold $tap-time $hold-time d lalt))
     f (multi f24 (tap-hold $tap-time $hold-time f lctl))
@@ -29,7 +31,15 @@
 )
 
 (deflayer base
+  @w
     @s @d @f @g @h @j @k @l
          @c       @m
             @spc
+)
+
+(deflayer arrows
+  _
+   _ _ _ _ left down up right
+      _             _
+            _
 )

@@ -1,0 +1,59 @@
+window-rule {
+  match app-id=r#"^org\.wezfurlong\.wezterm$"#
+
+  // Work around WezTerm's initial configure bug
+  // by setting an empty default-column-width.
+  default-column-width {}
+}
+
+window-rule {
+  // Applications that have their own transparency implemented.
+  match app-id=r#"^org\.wezfurlong\.wezterm$"#
+  // Or that I don't like the transparency on.
+  match app-id="^Zotero$"
+
+  opacity 1.0
+}
+
+// Example: block out two password managers from screen capture.
+// (This example rule is commented out with a "/-" in front.)
+window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+    match title="Bitwarden"
+
+    block-out-from "screen-capture"
+
+    // Use this instead if you want them visible on third-party screenshot tools.
+    // block-out-from "screencast"
+}
+
+// Windows that should float.
+// Just let them float...
+window-rule {
+  /-match title="^Bitwarden$" // Isn't set until after the window already opened. :(
+  match app-id="^$" title="^$" // WhatsApp's new shitty notification (wtf?)
+  open-floating true
+}
+
+// ... or give them extra properties
+window-rule {
+  match app-id="firefox" title="Picture-in-Picture"
+  open-floating true
+  default-column-width { fixed 800; }
+  default-window-height { fixed 450; }
+  opacity 1.0
+}
+
+window-rule {
+  match app-id="Zotero" title="Citation Dialog"
+  open-floating true
+
+  default-column-width { fixed 400; }
+  default-window-height { fixed 800; }
+}
+
+layer-rule {
+    match namespace="^noctalia-overview*"
+    place-within-backdrop true
+}

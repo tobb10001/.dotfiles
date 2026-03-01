@@ -7,10 +7,12 @@ return {
           ["harper-ls"] = {
             linters = {
               SentenceCapitalization = false,
-              LongSentences = false
-            }
-          }
-        }
+              LongSentences = false,
+              AvoidCurses = false,
+            },
+            dialect = "British",
+          },
+        },
       },
       tinymist = {
         keys = {

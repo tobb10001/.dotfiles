@@ -26,19 +26,16 @@ if status is-interactive
     end
     alias diff "diff -W (tput cols)"
     if command -v eza >/dev/null
-
         alias ls "eza --icons"
     else
         alias ls "ls --color=auto"
     end
     if command -v grc >/dev/null
-
         alias go "grc go"
     end
     alias lslsls "echo Yeah, I don\'t know either..."
-    alias lvim "NVIM_APPNAME=lazyvim nvim"
+    alias pandoc "pandoc --defaults ~/.config/pandoc/pandoc.yaml"
     alias emacs "emacs -nw"
-    alias open xdg-open
     alias pip "pip --require-virtualenv"
     alias view "nvim -R"
     alias watch "watch --color"

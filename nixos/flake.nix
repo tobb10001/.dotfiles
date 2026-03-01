@@ -2,7 +2,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     unstablepkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "unstablepkgs";
@@ -11,6 +10,7 @@
   outputs =
     inputs@{
       self,
+      home-manager,
       nixpkgs,
       unstablepkgs,
       ...

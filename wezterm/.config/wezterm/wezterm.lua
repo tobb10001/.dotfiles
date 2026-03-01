@@ -31,7 +31,7 @@ config.warn_about_missing_glyphs = false
 config.window_background_image = nil
 -- config.color_scheme = "Tokyo Night"
 config.color_scheme = "Noctalia"
-config.window_background_opacity = 0.8
+config.window_background_opacity = 0.7
 config.text_background_opacity = 1
 
 -- Font
@@ -55,9 +55,9 @@ local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/s
 -- Keybinds ------------------------------------------------------------------------
 -- config.leader = { key = "`", mods = "NONE" }
 config.keys = {
-  -- Prompts
-  { key = "k", mods = "META|SHIFT", action = act.ScrollToPrompt(-1) },
-  { key = "j", mods = "META|SHIFT", action = act.ScrollToPrompt(1) },
+	-- Prompts
+	{ key = "k", mods = "META|SHIFT", action = act.ScrollToPrompt(-1) },
+	{ key = "j", mods = "META|SHIFT", action = act.ScrollToPrompt(1) },
 	-- Windows
 	-- { key = "w", mods = "META", action = act.SpawnWindow },
 	{ key = "p", mods = "META", action = act.EmitEvent("toggle-background") },

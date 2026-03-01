@@ -32,6 +32,7 @@
     luarocks
     ast-grep
     mermaid-cli
+    sqlite # Zotcite
     tectonic
     tree-sitter
 
@@ -46,7 +47,14 @@
     gcc # Apparently needed for Go sometimes? ("net")
     go
     golangci-lint
+    gofumpt
     gopls
+
+    # Latex
+    texlab
+
+    # Lua
+    stylua
 
     # Markdown
     markdownlint-cli2
@@ -91,6 +99,7 @@
     jq
     lazygit
     parallel-full
+    pandoc
     pciutils
     ripgrep
     stow
@@ -100,6 +109,7 @@
     unstable.typst
     usbutils
     unstable.zola
+    watchexec
     yq
     zip
   ];

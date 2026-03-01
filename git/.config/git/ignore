@@ -17,3 +17,4 @@ justfile
 ltex.*.txt
 pyrightconfig.json
 shell.nix
+.direnv

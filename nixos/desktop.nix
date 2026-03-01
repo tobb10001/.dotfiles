@@ -5,18 +5,21 @@
   inputs,
   ...
 }:
+let
+  bananaCursor = import ./banana-cursor-dreams.nix { inherit pkgs; };
+in
 {
   # Desktop
   programs.niri.enable = true;
 
   # Display Manager
   services.displayManager = {
-    autoLogin.user = "tobi";
     sddm = {
       enable = true;
       autoNumlock = true;
       enableHidpi = true;
       wayland.enable = true;
+      theme = "catppuccin-mocha-mauve";
     };
   };
 
@@ -26,6 +29,7 @@
     enable = true;
     wlr.enable = true;
     extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
       xdg-desktop-portal-wlr
     ];
   };
@@ -56,20 +60,33 @@
 
   # Packages
   environment.systemPackages = with pkgs; [
+    bananaCursor
     cava
+    (catppuccin-sddm.override {
+      flavor = "mocha";
+      accent = "mauve";
+    })
     cliphist
+    drawio
     flameshot
     fuzzel
+    grim
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     kanata # TODO: move this to services.kanata
     libnotify
     logiops
+    mimeo
+    nautilus
     networkmanagerapplet
     nextcloud-client
     # nirius
+    pdfannots2json # Obsidian Zotero Integration
     shikane
+    slurp
     solaar
+    swappy
     swaylock # Not in use, but better to have a fallback.
+    tesseract # Obsidian Zotero Integration
     uwsm
     wdisplays
     wl-clipboard

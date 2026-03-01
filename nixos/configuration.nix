@@ -3,10 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 {
-  config,
   pkgs,
-  inputs,
-  unstable,
   ...
 }:
 
@@ -17,6 +14,7 @@
     ./desktop.nix
     ./guis.nix
     ./programming.nix
+    ./printing.nix
   ];
 
   # Nix Settings
@@ -36,6 +34,7 @@
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
+  boot.initrd.systemd.enable = true;
 
   hardware.enableRedistributableFirmware = true;
   hardware.ipu6 = {
@@ -50,8 +49,19 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+  networking.timeServers = [
+    "2.is.pool.ntp.org"
+    "2.europe.pool.ntp.org"
+    "0.europe.pool.ntp.org"
+  ];
+
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    plugins = with pkgs; [
+      networkmanager-openconnect
+    ];
+  };
   hardware.bluetooth.enable = true;
 
   # Set your time zone.

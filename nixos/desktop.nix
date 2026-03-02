@@ -61,13 +61,11 @@ in
   # Packages
   environment.systemPackages = with pkgs; [
     bananaCursor
-    cava
     (catppuccin-sddm.override {
       flavor = "mocha";
       accent = "mauve";
     })
     cliphist
-    drawio
     flameshot
     fuzzel
     grim
@@ -76,7 +74,6 @@ in
     libnotify
     logiops
     mimeo
-    nautilus
     networkmanagerapplet
     nextcloud-client
     # nirius
@@ -86,12 +83,13 @@ in
     solaar
     swappy
     swaylock # Not in use, but better to have a fallback.
+    tcl
+    tclPackages.tk
     tesseract # Obsidian Zotero Integration
     uwsm
     wdisplays
     wl-clipboard
     wlsunset
-    wshowkeys
     xwayland-satellite
   ];
 }

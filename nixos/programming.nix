@@ -77,6 +77,9 @@
     rustc
     rustfmt
 
+    # TCL
+    tclint
+
     # Typst
     tinymist
 

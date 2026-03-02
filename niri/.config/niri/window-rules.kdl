@@ -32,7 +32,7 @@ window-rule {
 // Just let them float...
 window-rule {
   /-match title="^Bitwarden$" // Isn't set until after the window already opened. :(
-  match app-id="^$" title="^$" // WhatsApp's new shitty notification (wtf?)
+  match title=r#"\.tcl$"#
   open-floating true
 }
 

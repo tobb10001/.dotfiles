@@ -136,9 +136,17 @@ binds {
     Mod+Return { spawn "wezterm" "start" "--always-new-process"; }
     // Mod+D { spawn "fuzzel"; }
     Mod+D { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
-    Mod+P { spawn "wdisplays"; }
     Mod+V { spawn "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
     Super+X { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+
+    Mod+B { spawn "/home/tobi/.cargo/bin/nirius" "focus-or-spawn" "--focused-workspace" "--app-id=firefox" "firefox"; }
+    Mod+C { spawn "/home/tobi/.cargo/bin/nirius" "focus-or-spawn" "--focused-workspace" "--app-id=chrome-reykjavik.instructure.com__-Default" "--" "canvas"; }
+    Mod+E { spawn "nautilus"; }
+    Mod+O { spawn "/home/tobi/.cargo/bin/nirius" "focus-or-spawn" "--focused-workspace" "--app-id=^obsidian$" "obsidian"; }
+    Mod+T { spawn "/home/tobi/.cargo/bin/nirius" "focus-or-spawn" "--focused-workspace" "--app-id=^org.\\wezfurlong\\.wezterm$" "--" "wezterm" "start" "--always-new-process"; }
+    Mod+Shift+T { spawn "/home/tobi/.cargo/bin/nirius" "focus" "--active-workspace" "--app-id=^org.\\wezfurlong\\.wezterm$"; }
+    Mod+Z { spawn "/home/tobi/.cargo/bin/nirius" "move-to-current-workspace-or-spawn" "--include-current-workspace" "--focus" "--app-id=Zotero" "zotero"; }
+    Super+Alt+L allow-when-locked=true { spawn "swaylock"; }
 
     // You can also use a shell:
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
@@ -353,13 +361,6 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
-
-    Mod+B { spawn "/home/tobi/.cargo/bin/nirius" "focus-or-spawn" "--focused-workspace" "--app-id=firefox" "firefox"; }
-    Mod+C { spawn "/home/tobi/.cargo/bin/nirius" "focus-or-spawn" "--focused-workspace" "--app-id=chrome-reykjavik.instructure.com__-Default" "--" "omarchy-launch-webapp" "https://reykjavik.instructure.com"; }
-    Mod+O { spawn "/home/tobi/.cargo/bin/nirius" "focus-or-spawn" "--focused-workspace" "--app-id=^obsidian$" "obsidian"; }
-    Mod+T { spawn "/home/tobi/.cargo/bin/nirius" "focus-or-spawn" "--focused-workspace" "--app-id=^org.\\wezfurlong\\.wezterm$" "--" "wezterm" "start" "--always-new-process"; }
-    Mod+Shift+T { spawn "/home/tobi/.cargo/bin/nirius" "focus" "--active-workspace" "--app-id=^org.\\wezfurlong\\.wezterm$"; }
-    Mod+Z { spawn "/home/tobi/.cargo/bin/nirius" "move-to-current-workspace-or-spawn" "--include-current-workspace" "--focus" "--app-id=Zotero" "zotero"; }
 }
 
 hotkey-overlay {

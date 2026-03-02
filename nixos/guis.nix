@@ -23,7 +23,9 @@
   environment.systemPackages = with pkgs; [
     anki
     chromium
+    drawio
     kdePackages.gwenview
+    nautilus
     obsidian
     wezterm
     zathura

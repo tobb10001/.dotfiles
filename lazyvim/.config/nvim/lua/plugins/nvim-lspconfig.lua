@@ -14,6 +14,7 @@ return {
           },
         },
       },
+      tclsp = {},
       tinymist = {
         keys = {
           {

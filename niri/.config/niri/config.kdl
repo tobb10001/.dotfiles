@@ -134,13 +134,12 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return { spawn "wezterm" "start" "--always-new-process"; }
-    // Mod+D { spawn "fuzzel"; }
-    Mod+D { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+    Mod+D { spawn "fuzzel"; }
     Mod+V { spawn "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
     Super+X { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
 
     Mod+B { spawn "/home/tobi/.cargo/bin/nirius" "focus-or-spawn" "--focused-workspace" "--app-id=firefox" "firefox"; }
-    Mod+C { spawn "/home/tobi/.cargo/bin/nirius" "focus-or-spawn" "--focused-workspace" "--app-id=chrome-reykjavik.instructure.com__-Default" "--" "canvas"; }
+    Mod+C { spawn "/home/tobi/.cargo/bin/nirius" "focus-or-spawn" "--focused-workspace" "--app-id=chrome-reykjavik.instructure.com" "--" "canvas"; }
     Mod+E { spawn "nautilus"; }
     Mod+O { spawn "/home/tobi/.cargo/bin/nirius" "focus-or-spawn" "--focused-workspace" "--app-id=^obsidian$" "obsidian"; }
     Mod+T { spawn "/home/tobi/.cargo/bin/nirius" "focus-or-spawn" "--focused-workspace" "--app-id=^org.\\wezfurlong\\.wezterm$" "--" "wezterm" "start" "--always-new-process"; }
@@ -315,6 +314,7 @@ binds {
 
     Mod+Comma  { consume-window-into-column; }
     Mod+Period { expel-window-from-column; }
+    Mod+W { toggle-column-tabbed-display; }
 
     // There are also commands that consume or expel a single window to the side.
     // Mod+BracketLeft  { consume-or-expel-window-left; }

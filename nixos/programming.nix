@@ -37,6 +37,7 @@
     tree-sitter
 
     harper
+    ltex-ls-plus # Because harper doesn't support LaTeX??
 
     # Language Support
     # Elixir

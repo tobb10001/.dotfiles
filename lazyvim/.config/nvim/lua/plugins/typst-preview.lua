@@ -5,4 +5,5 @@ return {
       tinymist = "tinymist",
     },
   },
+  ft = "typst",
 }

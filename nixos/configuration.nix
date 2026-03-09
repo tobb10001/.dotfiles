@@ -62,6 +62,7 @@
       networkmanager-openconnect
     ];
   };
+  programs.nm-applet.enable = false;
   hardware.bluetooth.enable = true;
 
   # Set your time zone.

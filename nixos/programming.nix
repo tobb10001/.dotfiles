@@ -56,6 +56,7 @@
 
     # Lua
     stylua
+    lua-language-server
 
     # Markdown
     markdownlint-cli2

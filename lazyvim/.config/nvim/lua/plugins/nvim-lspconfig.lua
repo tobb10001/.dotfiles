@@ -8,6 +8,13 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
+        gopls = {
+          settings = {
+            gopls = {
+              staticcheck = false,
+            },
+          },
+        },
         harper_ls = {
           settings = {
             ["harper-ls"] = {
@@ -19,6 +26,7 @@ return {
               dialect = "British",
             },
           },
+          filetypes = { "asciidoc", "gitcommit", "markdown", "typst" },
         },
         ltex_plus = {
           on_attach = function(client, bufnr)

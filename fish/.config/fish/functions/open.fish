@@ -1,4 +1,4 @@
 function open
     echo Running (mimeo --command $argv)
-    mimeo --quiet $argv
+    setsid mimeo --quiet $argv
 end

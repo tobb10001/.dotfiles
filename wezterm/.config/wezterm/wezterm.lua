@@ -12,12 +12,14 @@ end
 HOME = os.getenv("HOME")
 BACKGROUND_IMAGE = HOME .. "/.config/background"
 
+OPACITY = 0.7
+
 wezterm.on("toggle-background", function(window, _)
 	local overrides = window:get_config_overrides() or {}
-	if overrides.window_background_image then
-		overrides.window_background_image = nil
+	if overrides.window_background_opacity == 1 or overrides.window_background_opacity == nil then
+		overrides.window_background_opacity = OPACITY
 	else
-		overrides.window_background_image = BACKGROUND_IMAGE
+		overrides.window_background_opacity = 1
 	end
 	window:set_config_overrides(overrides)
 end)
@@ -31,11 +33,13 @@ config.warn_about_missing_glyphs = false
 config.window_background_image = nil
 -- config.color_scheme = "Tokyo Night"
 config.color_scheme = "Noctalia"
-config.window_background_opacity = 0.7
+config.window_background_opacity = OPACITY
 config.text_background_opacity = 1
 
 -- Font
 config.font_size = 11
+config.line_height = 1.2
+config.cell_width = 0.9
 
 -- Tab Bar
 config.hide_tab_bar_if_only_one_tab = false
@@ -50,7 +54,7 @@ config.inactive_pane_hsb = {
 
 -- Plugins -------------------------------------------------------------------------
 
-local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
+-- local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
 
 -- Keybinds ------------------------------------------------------------------------
 -- config.leader = { key = "`", mods = "NONE" }
@@ -88,7 +92,7 @@ config.keys = {
 		mods = "META",
 		action = act.SwitchToWorkspace({ name = "monitoring", spawn = { args = { "btop" } } }),
 	},
-	{ key = "w", mods = "META", action = workspace_switcher.switch_workspace() },
+	-- { key = "w", mods = "META", action = workspace_switcher.switch_workspace() },
 	{
 		key = "c",
 		mods = "META",

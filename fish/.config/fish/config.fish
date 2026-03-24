@@ -37,6 +37,7 @@ if status is-interactive
     alias pandoc "pandoc --defaults ~/.config/pandoc/pandoc.yaml"
     alias emacs "emacs -nw"
     alias pip "pip --require-virtualenv"
+    alias spawn "niri msg action spawn --"
     alias view "nvim -R"
     alias watch "watch --color"
 

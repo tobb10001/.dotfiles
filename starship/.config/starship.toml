@@ -1,5 +1,8 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+[c]
+disabled = true
+
 [direnv]
 disabled = false
 
@@ -35,6 +38,9 @@ deleted_style = "bold red"
 format ="([+$added]($added_style) )([-$deleted]($deleted_style) )"
 disabled = false
 
+[golang]
+disabled = true
+
 [memory_usage]
 disabled = false
 
@@ -44,6 +50,9 @@ impure_msg = "🪨"
 pure_msg = "💎"
 symbol = "❄️ "
 
+[python]
+detect_extensions = []
+
 [shell]
 disabled = false
 fish_indicator = '󰈺 '
@@ -51,3 +60,6 @@ fish_indicator = '󰈺 '
 [status]
 disabled = false
 format = '[$symbol $status]($style) '
+
+[typst]
+disabled = true

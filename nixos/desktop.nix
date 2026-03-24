@@ -57,6 +57,8 @@ in
   };
   services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
+  services.gnome.evolution-data-server.enable = true;
+  programs.evolution.enable = true;
 
   # Packages
   environment.systemPackages = with pkgs; [
@@ -66,10 +68,14 @@ in
       accent = "mauve";
     })
     cliphist
+    evince
+    evolution
     flameshot
     fuzzel
     grim
-    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+    (inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
+      calendarSupport = true;
+    })
     kanata # TODO: move this to services.kanata
     libnotify
     logiops
@@ -77,7 +83,9 @@ in
     networkmanagerapplet
     nextcloud-client
     # nirius
+    kdePackages.okular
     pdfannots2json # Obsidian Zotero Integration
+    pdfpc
     shikane
     slurp
     solaar
@@ -88,6 +96,7 @@ in
     tesseract # Obsidian Zotero Integration
     uwsm
     wdisplays
+    wireshark
     wl-clipboard
     wlsunset
     xwayland-satellite

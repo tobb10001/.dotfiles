@@ -3,6 +3,7 @@
 {
   pkgs,
   inputs,
+  unstable,
   ...
 }:
 let
@@ -82,7 +83,7 @@ in
     mimeo
     networkmanagerapplet
     nextcloud-client
-    # nirius
+    unstable.nirius
     kdePackages.okular
     pdfannots2json # Obsidian Zotero Integration
     pdfpc

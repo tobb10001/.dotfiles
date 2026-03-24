@@ -138,13 +138,13 @@ binds {
     Mod+V { spawn "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
     Super+X { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
 
-    Mod+B { spawn "/home/tobi/.cargo/bin/nirius" "focus-or-spawn" "--focused-workspace" "--app-id=firefox" "firefox"; }
-    Mod+C { spawn "/home/tobi/.cargo/bin/nirius" "focus-or-spawn" "--focused-workspace" "--app-id=chrome-reykjavik.instructure.com" "--" "canvas"; }
+    Mod+B { spawn "nirius" "focus-or-spawn" "--focused-workspace" "--app-id=firefox" "firefox"; }
+    Mod+C { spawn "nirius" "focus-or-spawn" "--focused-workspace" "--app-id=chrome-reykjavik.instructure.com" "--" "canvas"; }
     Mod+E { spawn "nautilus"; }
-    Mod+N { spawn "/home/tobi/.cargo/bin/nirius" "focus-or-spawn" "--focused-workspace" "--app-id=^obsidian$" "obsidian"; }
-    Mod+T { spawn "/home/tobi/.cargo/bin/nirius" "focus-or-spawn" "--focused-workspace" "--app-id=^org.\\wezfurlong\\.wezterm$" "--" "wezterm" "start" "--always-new-process"; }
-    Mod+Shift+T { spawn "/home/tobi/.cargo/bin/nirius" "focus" "--active-workspace" "--app-id=^org.\\wezfurlong\\.wezterm$"; }
-    Mod+Z { spawn "/home/tobi/.cargo/bin/nirius" "move-to-current-workspace-or-spawn" "--include-current-workspace" "--focus" "--app-id=Zotero" "zotero"; }
+    Mod+N { spawn "nirius" "focus-or-spawn" "--focused-workspace" "--app-id=^obsidian$" "obsidian"; }
+    Mod+T { spawn "nirius" "focus-or-spawn" "--focused-workspace" "--app-id=^org.\\wezfurlong\\.wezterm$" "--" "wezterm" "start" "--always-new-process"; }
+    Mod+Shift+T { spawn "nirius" "focus" "--active-workspace" "--app-id=^org.\\wezfurlong\\.wezterm$"; }
+    Mod+Z { spawn "nirius" "move-to-current-workspace-or-spawn" "--include-current-workspace" "--focus" "--app-id=Zotero" "zotero"; }
     Super+Alt+L allow-when-locked=true { spawn "swaylock"; }
 
     // You can also use a shell:
@@ -378,5 +378,5 @@ debug {
 spawn-at-startup "noctalia-shell"
 spawn-at-startup "kanata"
 spawn-at-startup "shikane"
-spawn-at-startup "/home/tobi/.cargo/bin/niriusd"
+spawn-at-startup "niriusd"
 include "./noctalia.kdl"

@@ -61,6 +61,17 @@ in
   services.gnome.evolution-data-server.enable = true;
   programs.evolution.enable = true;
 
+  services.syncthing = {
+    enable = true;
+    group = "users";
+    user = "tobi";
+    dataDir = "/home/tobi/";
+    configDir = "/home/tobi/.config/syncthing";
+  };
+
+  # Other programs that are NixOS modules.
+  programs.wireshark.enable = true;
+
   # Packages
   environment.systemPackages = with pkgs; [
     bananaCursor
@@ -84,6 +95,7 @@ in
     networkmanagerapplet
     nextcloud-client
     unstable.nirius
+    obs-studio
     kdePackages.okular
     pdfannots2json # Obsidian Zotero Integration
     pdfpc
@@ -96,6 +108,7 @@ in
     tclPackages.tk
     tesseract # Obsidian Zotero Integration
     uwsm
+    vlc
     wdisplays
     wireshark
     wl-clipboard

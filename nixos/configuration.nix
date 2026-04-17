@@ -88,6 +88,7 @@
   services.xserver.xkb = {
     layout = "us";
     variant = "altgr-intl";
+    options = "caps:swapescape";
   };
 
   # Configure console keymap
@@ -98,10 +99,11 @@
     isNormalUser = true;
     description = "Tobi";
     extraGroups = [
-      "networkmanager"
-      "wheel"
       "input"
+      "networkmanager"
       "uinput"
+      "wheel"
+      "wireshark"
     ];
   };
 

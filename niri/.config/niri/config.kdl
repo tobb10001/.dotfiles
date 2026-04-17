@@ -145,7 +145,7 @@ binds {
     Mod+T { spawn "nirius" "focus-or-spawn" "--focused-workspace" "--app-id=^org.\\wezfurlong\\.wezterm$" "--" "wezterm" "start" "--always-new-process"; }
     Mod+Shift+T { spawn "nirius" "focus" "--active-workspace" "--app-id=^org.\\wezfurlong\\.wezterm$"; }
     Mod+Z { spawn "nirius" "move-to-current-workspace-or-spawn" "--include-current-workspace" "--focus" "--app-id=Zotero" "zotero"; }
-    Super+Alt+L allow-when-locked=true { spawn "swaylock"; }
+    Super+Alt+L allow-when-locked=true { spawn-sh "pkill quickshell; swaylock"; }
 
     // You can also use a shell:
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }

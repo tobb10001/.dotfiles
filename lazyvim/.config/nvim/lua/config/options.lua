@@ -12,3 +12,4 @@ vim.g.lazyvim_python_lsp = "ty"
 
 vim.g.vimtex_fold_enabled = true
 vim.g.vimtex_view_method = "zathura"
+vim.g.vimtex_quickfix_open_on_warning = false

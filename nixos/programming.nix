@@ -11,14 +11,22 @@
     defaultEditor = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    # Shell
-    direnv
-    eza
-    fzf
-    starship
-    zoxide
+  virtualisation = {
+    containers.enable = true;
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  };
 
+  users.users.tobi = {
+    extraGroups = [
+      "podman"
+    ];
+  };
+
+  environment.systemPackages = with pkgs; [
     # Shell
     direnv
     eza
@@ -88,11 +96,15 @@
     # YAML
     yaml-language-server
 
+    # Speech
+    praat
+
     # CLI
     bat
     borgbackup
     btop
     delta
+    distrobox
     exiftool
     fd
     file
@@ -103,9 +115,11 @@
     jless
     jq
     lazygit
+    libqalculate
     parallel-full
     pandoc
     pciutils
+    progress
     ripgrep
     stow
     go-task

@@ -33,6 +33,7 @@ window-rule {
 window-rule {
   /-match title="^Bitwarden$" // Isn't set until after the window already opened. :(
   match title=r#"\.tcl$"#
+  match title=r#"Praat Info"#
   open-floating true
 }
 

@@ -80,6 +80,7 @@ in
       accent = "mauve";
     })
     cliphist
+    easyeffects
     evince
     evolution
     flameshot
@@ -100,6 +101,7 @@ in
     pdfannots2json # Obsidian Zotero Integration
     pdfpc
     shikane
+    signal-desktop
     slurp
     solaar
     swappy

@@ -26,6 +26,26 @@
     ];
   };
 
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      acl
+      attr
+      bzip2
+      curl
+      libsodium
+      libssh
+      libxml2
+      openssl
+      stdenv.cc.cc
+      systemd
+      util-linux
+      xz
+      zlib
+      zstd
+    ];
+  };
+
   environment.systemPackages = with pkgs; [
     # Shell
     direnv
@@ -37,8 +57,9 @@
     # Neovim
     unstable.neovim
     # Lazyvim Deps
-    luarocks
     ast-grep
+    ghostscript
+    luarocks
     mermaid-cli
     sqlite # Zotcite
     tectonic
@@ -63,8 +84,9 @@
     texlab
 
     # Lua
-    stylua
+    lua5_1
     lua-language-server
+    stylua
 
     # Markdown
     markdownlint-cli2
@@ -75,7 +97,10 @@
     statix
 
     # Python
-    python3
+    (pkgs.writeShellScriptBin "python" ''
+      export LD_BINARY_PATH=$NIX_LD_LIBRARY_PATH
+      exec ${pkgs.python3}/bin/python "$@"
+    '')
     ruff
     ty
     uv

@@ -24,6 +24,7 @@
     anki
     chromium
     drawio
+    ghostty
     kdePackages.gwenview
     nautilus
     obsidian

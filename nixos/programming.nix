@@ -145,11 +145,12 @@
     lazygit
     libqalculate
     moreutils
-    parallel-full
+    # parallel-full
     pandoc
     pciutils
     progress
     ripgrep
+    socat
     stow
     go-task
     tldr

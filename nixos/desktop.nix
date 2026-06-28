@@ -86,9 +86,7 @@ in
     flameshot
     fuzzel
     grim
-    (inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
-      calendarSupport = true;
-    })
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     kanata # TODO: move this to services.kanata
     libnotify
     logiops

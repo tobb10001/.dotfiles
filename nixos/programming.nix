@@ -54,6 +54,8 @@
     starship
     zoxide
 
+    podman-compose
+
     # Neovim
     unstable.neovim
     # Lazyvim Deps
@@ -86,6 +88,7 @@
     # Lua
     lua5_1
     lua-language-server
+    selene
     stylua
 
     # Markdown
@@ -141,6 +144,7 @@
     jq
     lazygit
     libqalculate
+    moreutils
     parallel-full
     pandoc
     pciutils

@@ -122,7 +122,7 @@
     tinymist
 
     # YAML
-    yaml-language-server
+    # yaml-language-server
 
     # Speech
     praat

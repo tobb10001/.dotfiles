@@ -130,15 +130,14 @@ binds {
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
     // Mod+Shift+Slash { show-hotkey-overlay; }
-    // Mod+Shift+Slash { spawn "noctalia-shell" "ipc" "call" "plugin:keybind-cheatsheet" "toggle"; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return { spawn "wezterm" "start" "--always-new-process"; }
     Mod+D { spawn "fuzzel"; }
-    Mod+V { spawn "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
-    Super+X { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+    // Mod+V { spawn "noctalia" "ipc" "call" "launcher" "clipboard"; }
+    Super+X { spawn "noctalia" "msg" "session" "lock"; }
 
-    Mod+B { spawn "nirius" "focus-or-spawn" "--focused-workspace" "--app-id=firefox" "firefox"; }
+    Mod+B { spawn "nirius" "focus-or-spawn" "--focused-workspace" "--app-id=zen" "zen"; }
     Mod+C { spawn "nirius" "focus-or-spawn" "--focused-workspace" "--app-id=chrome-reykjavik.instructure.com" "--" "canvas"; }
     Mod+E { spawn "nautilus"; }
     Mod+N { spawn "nirius" "focus-or-spawn" "--focused-workspace" "--app-id=^obsidian$" "obsidian"; }
@@ -153,11 +152,11 @@ binds {
     // Example volume keys mappings for PipeWire & WirePlumber.
     // XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
     // XF86AudioLowerVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
-    XF86AudioRaiseVolume repeat=false  allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "increase"; }
-    XF86AudioLowerVolume repeat=false  allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "decrease"; }
-    XF86AudioMute repeat=false         allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
-    XF86MonBrightnessUp repeat=false   allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "increase"; }
-    XF86MonBrightnessDown repeat=false allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
+    XF86AudioRaiseVolume repeat=false  allow-when-locked=true { spawn "noctalia" "msg" "volume-up"; }
+    XF86AudioLowerVolume repeat=false  allow-when-locked=true { spawn "noctalia" "msg" "volume-down"; }
+    XF86AudioMute repeat=false         allow-when-locked=true { spawn "noctalia" "msg" "volume-mute"; }
+    XF86MonBrightnessUp repeat=false   allow-when-locked=true { spawn "noctalia" "msg" "brightness-up"; }
+    XF86MonBrightnessDown repeat=false allow-when-locked=true { spawn "noctalia" "msg" "brightness-down"; }
 
     Mod+Q { close-window; }
 
@@ -368,14 +367,14 @@ hotkey-overlay {
 }
 
 switch-events {
-  lid-close { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "lockAndSuspend"; }
+  lid-close { spawn "noctalia" "msg" "session" "lock-and-suspend"; }
 }
 
 debug {
     honor-xdg-activation-with-invalid-serial
 }
 
-spawn-at-startup "noctalia-shell"
+spawn-at-startup "noctalia"
 spawn-at-startup "kanata"
 spawn-at-startup "shikane"
 spawn-at-startup "niriusd"

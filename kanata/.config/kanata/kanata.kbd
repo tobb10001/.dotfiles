@@ -15,19 +15,19 @@
 )
 
 (defalias
-    w (multi f24 (tap-hold $tap-time $hold-time w (layer-while-held arrows)))
-    s (multi f24 (tap-hold $tap-time $hold-time s lmet))
-    d (multi f24 (tap-hold $tap-time $hold-time d lalt))
-    f (multi f24 (tap-hold $tap-time $hold-time f lctl))
-	g (multi f24 (tap-hold $tap-time $hold-time g lsft))
-	h (multi f24 (tap-hold $tap-time $hold-time h rsft))
-    j (multi f24 (tap-hold $tap-time $hold-time j rctl))
-    k (multi f24 (tap-hold $tap-time $hold-time k lalt))
-    l (multi f24 (tap-hold $tap-time $hold-time l rmet))
-
-    c (multi f24 (tap-hold $tap-time $hold-time c ralt))
-    m (multi f24 (tap-hold $tap-time $hold-time m ralt))
-    spc (multi f24 (tap-hold $tap-time $hold-time spc ralt))
+     w (tap-hold $tap-time $hold-time w (layer-while-held arrows)) 
+     s (tap-hold $tap-time $hold-time s lmet)                      
+     d (tap-hold $tap-time $hold-time d lalt)                      
+     f (tap-hold $tap-time $hold-time f lctl)                      
+ 	g (tap-hold $tap-time $hold-time g lsft)                         
+ 	h (tap-hold $tap-time $hold-time h rsft)                         
+     j (tap-hold $tap-time $hold-time j rctl)                      
+     k (tap-hold $tap-time $hold-time k lalt)                      
+     l (tap-hold $tap-time $hold-time l rmet)                      
+                                                                               
+     c (tap-hold $tap-time $hold-time c ralt)                      
+     m (tap-hold $tap-time $hold-time m ralt)                      
+     spc (tap-hold $tap-time $hold-time spc ralt)                  
 )
 
 (deflayer base

@@ -32,7 +32,7 @@ split = "#585b70"
 visual_bell = "#45475a"
 
 [colors.indexed]
-16 = "#f5bde6"
+16 = "#fab387"
 17 = "#f5e0dc"
 
 [colors.tab_bar]
@@ -40,7 +40,7 @@ background = "#1e1e2e"
 inactive_tab_edge = "#585b70"
 
 [colors.tab_bar.active_tab]
-bg_color = "#b4befe"
+bg_color = "#cba6f7"
 fg_color = "#11111b"
 intensity = "Normal"
 italic = false

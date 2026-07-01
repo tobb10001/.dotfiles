@@ -10,6 +10,7 @@ window-rule {
   // Applications that have their own transparency implemented.
   match app-id=r#"^org\.wezfurlong\.wezterm$"#
   match app-id=r#"^com.mitchellh.ghostty$"#
+  match app-id=r#"^zen$"#
   // Or that I don't like the transparency on.
   match app-id="^Zotero$"
 

@@ -21,15 +21,15 @@
   };
 
   environment.systemPackages = with pkgs; [
-    anki
+    # anki
     chromium
-    drawio
-    ghostty
-    kdePackages.gwenview
-    nautilus
-    obsidian
+    # drawio
+    # ghostty
+    # kdePackages.gwenview
+    # nautilus
+    # obsidian
     wezterm
-    zathura
+    # zathura
     unstable.zotero
   ];
 }

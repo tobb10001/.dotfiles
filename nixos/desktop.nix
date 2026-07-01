@@ -25,14 +25,28 @@ in
   };
 
   # Fingerprint Reader
-  services.fprintd.enable = true;
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-wlr
-    ];
+  services.fprintd.enable = false;
+  xdg = {
+    portal = {
+      enable = true;
+      wlr.enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gnome
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-wlr
+      ];
+    };
+    mime = {
+      enable = true;
+      defaultApplications = {
+        "application/pdf" = "org.pwmt.zathura.desktop";
+        "text/html" = "zen.desktop";
+        "x-scheme-handler/http" = "zen.desktop";
+        "x-scheme-handler/https" = "zen.desktop";
+        "x-scheme-handler/about" = "zen.desktop";
+        "x-scheme-handler/unknown" = "zen.desktop";
+      };
+    };
   };
 
   # Kanata
@@ -80,39 +94,42 @@ in
       accent = "mauve";
     })
     cliphist
-    easyeffects
-    evince
-    evolution
+    # easyeffects
+    # evince
+    # evolution
     flameshot
     fuzzel
+    gnome-network-displays
     grim
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     kanata # TODO: move this to services.kanata
     libnotify
     logiops
     mimeo
+    miraclecast
     networkmanagerapplet
     nextcloud-client
     unstable.nirius
-    obs-studio
-    kdePackages.okular
+    # obs-studio
+    # kdePackages.okular
     pdfannots2json # Obsidian Zotero Integration
     pdfpc
     shikane
     signal-desktop
     slurp
-    solaar
+    # solaar
     swappy
     swaylock # Not in use, but better to have a fallback.
-    tcl
-    tclPackages.tk
-    tesseract # Obsidian Zotero Integration
+    # tcl
+    # tclPackages.tk
+    # tesseract # Obsidian Zotero Integration
     uwsm
     vlc
     wdisplays
-    wireshark
+    # wireshark
     wl-clipboard
     wlsunset
     xwayland-satellite
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

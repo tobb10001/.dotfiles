@@ -350,7 +350,7 @@ binds {
     // Print { screenshot; }
     // Mod+Shift+S { spawn-sh "grim -g \"$(slurp)\" - | wl-copy"; }
     // Mod+S { spawn-sh "wl-paste | swappy -f -"; }
-    Print { spawn "flameshot" "gui"; }
+    Print { spawn-sh "grim -g \"$(slurp)\" - | satty  -f -"; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 

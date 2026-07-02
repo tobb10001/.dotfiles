@@ -73,7 +73,6 @@ in
   services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
   services.gnome.evolution-data-server.enable = true;
-  programs.evolution.enable = true;
 
   services.syncthing = {
     enable = true;
@@ -96,17 +95,13 @@ in
     cliphist
     # easyeffects
     # evince
-    # evolution
-    flameshot
     fuzzel
-    gnome-network-displays
     grim
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     kanata # TODO: move this to services.kanata
     libnotify
     logiops
     mimeo
-    miraclecast
     networkmanagerapplet
     nextcloud-client
     unstable.nirius
@@ -114,11 +109,11 @@ in
     # kdePackages.okular
     pdfannots2json # Obsidian Zotero Integration
     pdfpc
+    satty
     shikane
     signal-desktop
     slurp
     # solaar
-    swappy
     swaylock # Not in use, but better to have a fallback.
     # tcl
     # tclPackages.tk

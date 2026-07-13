@@ -51,6 +51,7 @@
     direnv
     eza
     fzf
+    nushell
     starship
     zoxide
 
@@ -72,8 +73,8 @@
 
     # Language Support
     # Elixir
-    elixir
-    beamMinimal28Packages.elixir-ls
+    # elixir
+    # beamMinimal28Packages.elixir-ls
 
     # Go
     gcc # Apparently needed for Go sometimes? ("net")
@@ -125,7 +126,7 @@
     # yaml-language-server
 
     # Speech
-    praat
+    # praat
 
     # CLI
     bat
@@ -145,7 +146,7 @@
     lazygit
     libqalculate
     moreutils
-    # parallel-full
+    parallel-full
     pandoc
     pciutils
     progress

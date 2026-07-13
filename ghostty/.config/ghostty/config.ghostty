@@ -1,0 +1,45 @@
+# Optics
+background-opacity = 0.7
+theme = Catppuccin Mocha
+
+# Init
+command = fish
+
+# Behaviour
+# notify-on-command-finished = unfocused
+# nofify-on-command-finish-action = no-bell,notify
+
+# Keybinds
+
+## Tabs
+keybind = alt+t=new_tab
+keybind = alt+.=next_tab
+keybind = alt+,=previous_tab
+keybind = alt+w=close_tab:this
+
+## Splits
+
+### Create
+keybind = alt+v=new_split:right
+keybind = alt+s=new_split:down
+
+### Resize
+keybind = alt+shift+h=resize_split:left,10
+keybind = alt+shift+j=resize_split:down,10
+keybind = alt+shift+k=resize_split:up,10
+keybind = alt+shift+l=resize_split:right,10
+
+### Navigate
+keybind = alt+[=goto_split:previous
+keybind = alt+]=goto_split:next
+keybind = alt+h=goto_split:left
+keybind = alt+j=goto_split:down
+keybind = alt+k=goto_split:up
+keybind = alt+l=goto_split:right
+
+### Zoom
+keybind = alt+enter=toggle_split_zoom
+
+## Prompts
+keybind = alt+shift+k=jump_to_prompt:-1
+keybind = alt+shift+j=jump_to_prompt:1

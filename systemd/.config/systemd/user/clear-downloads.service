@@ -1,0 +1,5 @@
+[Unit]
+Description=Delete old downloads
+
+[Service]
+ExecStart=/run/current-system/sw/bin/find %h/Downloads -mtime +30 -delete

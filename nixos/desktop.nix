@@ -84,6 +84,17 @@ in
 
   # Other programs that are NixOS modules.
   programs.wireshark.enable = true;
+  services.actual.enable = true;
+
+  # Automount my harddrive
+  fileSystems."/mnt/toshiba" = {
+    device = "/dev/disk/by-uuid/f17b9895-0c69-4610-81da-a21ee2e97631";
+    fsType = "ext4";
+    options = [
+      "noauto"
+      "users"
+    ];
+  };
 
   # Packages
   environment.systemPackages = with pkgs; [
@@ -93,27 +104,30 @@ in
       accent = "mauve";
     })
     cliphist
-    # easyeffects
-    # evince
+    easyeffects
+    evince
+    ffmpegthumbnailer
+    kdePackages.filelight
     fuzzel
     grim
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     kanata # TODO: move this to services.kanata
     libnotify
+    libsecret
     logiops
     mimeo
     networkmanagerapplet
     nextcloud-client
     unstable.nirius
-    # obs-studio
-    # kdePackages.okular
+    obs-studio
+    kdePackages.okular
     pdfannots2json # Obsidian Zotero Integration
     pdfpc
     satty
     shikane
     signal-desktop
     slurp
-    # solaar
+    solaar
     swaylock # Not in use, but better to have a fallback.
     # tcl
     # tclPackages.tk
@@ -121,7 +135,7 @@ in
     uwsm
     vlc
     wdisplays
-    # wireshark
+    wireshark
     wl-clipboard
     wlsunset
     xwayland-satellite

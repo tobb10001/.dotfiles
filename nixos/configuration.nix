@@ -14,6 +14,7 @@
     ./desktop.nix
     ./guis.nix
     ./programming.nix
+    ./proton-vpn.nix
     ./printing.nix
   ];
 

@@ -1,0 +1,7 @@
+#!/usr/bin/env nu
+
+mount /mnt/toshiba
+
+let backup_name = "/mnt/toshiba/borg::" + (date now | format date %Y-%m-%d-%H-%M)
+
+BORG_PASSCOMMAND="secret-tool lookup borg-repository toshiba" borg create --stats --progress $backup_name /home/tobi/Nextcloud

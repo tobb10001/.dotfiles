@@ -1,0 +1,12 @@
+[Unit]
+Description=Nidius Daemon
+PartOf=niri.service
+After=niri.service
+Requires=niri.service
+
+[Service]
+ExecStart=/run/current-system/sw/bin/niriusd
+Restart=on-failure
+
+[Install]
+WantedBy=niri.service

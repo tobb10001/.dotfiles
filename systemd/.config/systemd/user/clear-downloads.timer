@@ -1,0 +1,6 @@
+[Timer]
+OnCalendar=weekly
+Unit=clear-downloads.service
+
+[Install]
+WantedBy=timers.target

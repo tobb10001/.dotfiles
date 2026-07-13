@@ -1,0 +1,11 @@
+[Unit]
+Description=Kanata
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+ExecStart=/run/current-system/sw/bin/kanata --nodelay
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

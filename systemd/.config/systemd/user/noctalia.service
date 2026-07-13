@@ -1,0 +1,11 @@
+[Unit]
+Description=Noctalia Shell
+PartOf=graphical-sessoin.target
+After=graphical-session.target
+
+[Service]
+ExecStart=/run/current-system/sw/bin/noctalia
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

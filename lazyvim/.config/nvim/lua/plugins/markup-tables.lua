@@ -1,4 +1,5 @@
 return {
-  dir = "~/git/oss/markup-tables.nvim",
+  "tobb10001/markup-tables.nvim",
   config = true,
+  dev = true,
 }

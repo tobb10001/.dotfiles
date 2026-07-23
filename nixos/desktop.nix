@@ -99,6 +99,7 @@ in
   # Packages
   environment.systemPackages = with pkgs; [
     bananaCursor
+    unstable.bitwarden-cli
     (catppuccin-sddm.override {
       flavor = "mocha";
       accent = "mauve";
@@ -120,6 +121,7 @@ in
     nextcloud-client
     unstable.nirius
     obs-studio
+    poppler-utils
     kdePackages.okular
     pdfannots2json # Obsidian Zotero Integration
     pdfpc

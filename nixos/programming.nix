@@ -119,6 +119,9 @@
     # TCL
     tclint
 
+    # TOML
+    taplo
+
     # Typst
     tinymist
 
@@ -132,6 +135,7 @@
     bat
     borgbackup
     btop
+    codex
     delta
     distrobox
     exiftool

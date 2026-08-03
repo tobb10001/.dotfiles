@@ -155,6 +155,7 @@
     pciutils
     progress
     ripgrep
+    sc-im
     socat
     stow
     go-task

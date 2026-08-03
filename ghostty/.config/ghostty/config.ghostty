@@ -8,6 +8,7 @@ command = nu
 # Behaviour
 # notify-on-command-finished = unfocused
 # nofify-on-command-finish-action = no-bell,notify
+shell-integration-features = ssh-env,ssh-terminfo
 
 # Keybinds
 

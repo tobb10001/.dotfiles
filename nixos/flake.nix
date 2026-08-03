@@ -4,8 +4,7 @@
     unstablepkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell?tag=v4.7.7";
-      inputs.nixpkgs.follows = "unstablepkgs";
+      url = "github:noctalia-dev/noctalia-shell?ref=cachix";
     };
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";

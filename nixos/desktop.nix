@@ -82,6 +82,8 @@ in
     configDir = "/home/tobi/.config/syncthing";
   };
 
+  services.tailscale.enable = true;
+
   # Other programs that are NixOS modules.
   programs.wireshark.enable = true;
   services.actual.enable = true;

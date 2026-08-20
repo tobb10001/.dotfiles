@@ -24,6 +24,7 @@
     anki
     chromium
     drawio
+    ente-auth
     ghostty
     kdePackages.gwenview
     nautilus

@@ -15,13 +15,18 @@
     containers.enable = true;
     podman = {
       enable = true;
-      dockerCompat = true;
+      dockerCompat = false;
       defaultNetwork.settings.dns_enabled = true;
+    };
+    docker = {
+      enable = true;
+      package = unstable.docker;
     };
   };
 
   users.users.tobi = {
     extraGroups = [
+      "docker"
       "podman"
     ];
   };
@@ -55,6 +60,7 @@
     starship
     zoxide
 
+    docker-client
     podman-compose
 
     # Neovim
@@ -126,7 +132,10 @@
     tinymist
 
     # YAML
-    # yaml-language-server
+    yaml-language-server
+
+    # Cyber-physical Systems
+    unstable.rpi-imager
 
     # Speech
     # praat
@@ -137,6 +146,7 @@
     btop
     codex
     delta
+    dig
     distrobox
     exiftool
     fd
@@ -144,12 +154,14 @@
     graphviz
     grc
     gum
+    ipcalc
     imagemagick
     jless
     jq
     lazygit
     libqalculate
     moreutils
+    openssl
     parallel-full
     pandoc
     pciutils
@@ -160,6 +172,7 @@
     stow
     go-task
     tldr
+    traceroute
     translate-shell
     unstable.typst
     usbutils

@@ -70,7 +70,15 @@ in
     pulse.enable = true;
     wireplumber.enable = true;
   };
-  services.power-profiles-daemon.enable = true;
+  services.tlp = {
+    enable = true;
+    settings = {
+      TLP_PROFILE_AC = "SAV";
+      TLP_PROFILE_BAT = "SAV";
+      TLP_PROFILE_DEFAULT = "SAV";
+    };
+    pd.enable = true;
+  };
   services.upower.enable = true;
   services.gnome.evolution-data-server.enable = true;
 

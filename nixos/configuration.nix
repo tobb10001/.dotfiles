@@ -16,6 +16,7 @@
     ./programming.nix
     ./proton-vpn.nix
     ./printing.nix
+    ./study/optimization_methods.nix
   ];
 
   # Nix Settings

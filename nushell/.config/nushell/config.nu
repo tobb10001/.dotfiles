@@ -8,6 +8,8 @@ $env.XDG_CONFIG_HOME = $env.HOME | path join ".config"
 $env.XDG_DATA_HOME = $env.HOME | path join ".local/share"
 $env.XDG_STATE_HOME = $env.HOME | path join ".local/state"
 
+$env.GRB_LICENSE_FILE = $env.HOME | path join ".config" "gurobi" "gurobi.lic"
+
 alias clip = wl-copy
 alias diff = diff -W (tput cols)
 

@@ -13,9 +13,20 @@
     /etc/nixos/hardware-configuration.nix
     ./desktop.nix
     ./guis.nix
-    ./programming.nix
     ./proton-vpn.nix
     ./printing.nix
+    ./components/blog.nix
+    ./components/neovim.nix
+    ./components/shell.nix
+    ./components/virtualisation.nix
+    ./languages/golang.nix
+    ./languages/lua.nix
+    ./languages/markup.nix
+    ./languages/nix.nix
+    ./languages/prose.nix
+    ./languages/python.nix
+    ./languages/rust.nix
+    ./study/cyberphysical_systems.nix
     ./study/optimization_methods.nix
   ];
 

@@ -73,6 +73,7 @@ in
   services.tlp = {
     enable = true;
     settings = {
+      # FIXME those don't work. Tried everything.
       TLP_PROFILE_AC = "SAV";
       TLP_PROFILE_BAT = "SAV";
       TLP_PROFILE_DEFAULT = "SAV";

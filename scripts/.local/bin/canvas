@@ -1,0 +1,47 @@
+#!/usr/bin/env python
+
+import os
+import subprocess
+import sys
+
+courses = {
+    "CPSY - Cyberphysical Systems - Raunkerfi": 10494,
+    "FOML - Fundamentals of Machine Learning": 10502,
+    "OPTI - Optimization Methods - Bestunaraðferðir": 10574,
+    "PROB - Applied Probability": 10575,
+    "ROB-IOT - Robotics and IoT Common": 6589,
+}
+
+fuzzel = subprocess.run(
+    ["fuzzel", "-d", f"--lines={len(courses) + 1}"],
+    input="\n".join(["HOME"] + list(courses.keys())),
+    text=True,
+    capture_output=True,
+)
+
+if fuzzel.returncode != 0:
+    # User exited fuzzel with `esc`
+    raise SystemExit(0)
+
+choice = fuzzel.stdout.strip("\n")
+
+try:
+    url = (
+        f"https://reykjavik.instructure.com/courses/{courses[choice]}"
+        if choice != "HOME"
+        else "https://reykjavik.instructure.com"
+    )
+except KeyError as ke:
+    subprocess.run(
+        [
+            "notify-send",
+            "--app-name",
+            "Canvas Launch Script",
+            "--urgency",
+            "low",
+            f"That's not a course... {repr(ke.args[0])}",
+        ]
+    )
+    sys.exit(1)
+
+os.execlp("omarchy-launch-webapp", "omarchy-launch-webapp", url)

@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+usage_exit() {
+  echo "$0 <target-url> <jrpc-method> [jrpc-params] [extra-curl-args]"
+  exit 1
+}
+target="$1"
+shift
+method="$1"
+shift
+if [[ -z $target ]] || [[ -z $method ]]; then
+  usage_exit
+fi
+if [[ $# -gt 0 ]]; then
+  params="$1"
+  shift
+else
+  params='{}'
+fi
+if [[ $# -gt 0 ]]; then
+  extra_curl_args=("$@")
+else
+  extra_curl_args=()
+fi
+jrpc_id=$(hexdump -vn16 -e'4/4 "%08X" 1 "\n"' /dev/urandom)
+echo "target: ${target}"
+echo "method: ${method}"
+echo "params: ${params}"
+echo "id: ${jrpc_id}"
+body='{"jsonrpc":"2.0","id":"'"${jrpc_id}"'","method":"'"${method}"'","params":'"${params}"'}'
+set -ex
+curl --insecure -H 'Content-Type: application/json' --unix-socket "${target}" http://foo -d "${body}" "${extra_curl_args[@]}"

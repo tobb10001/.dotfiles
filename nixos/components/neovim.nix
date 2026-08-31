@@ -8,7 +8,7 @@
     defaultEditor = true;
     # package = unstable.neovim;
     withNodeJs = false;
-    withPython3 = false;
+    withPython3 = true;
     withRuby = false;
   };
 

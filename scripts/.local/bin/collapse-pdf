@@ -1,0 +1,59 @@
+#!/usr/bin/env -S uv run --script
+# vim: ft=python
+
+# /// script
+# dependencies = [
+#   "pypdf"
+# ]
+# ///
+
+import os
+import itertools
+import argparse
+import pypdf
+
+
+def process_file(file: str):
+    reader = pypdf.PdfReader(file)
+
+    keep: list[int] = []
+
+    for (i, li), (_, lj) in itertools.pairwise(enumerate(reader.page_labels)):
+        if li != lj:
+            keep.append(i)
+
+    keep.append(len(reader.pages) - 1)
+
+    writer = pypdf.PdfWriter()
+    if reader.metadata:
+        writer.add_metadata(reader.metadata)
+
+    for index in keep:
+        writer.add_page(reader.pages[index])
+
+    base, _, ext = file.rpartition(".")
+    new_filename = base + "_collapsed" + "." + ext
+
+    writer.write(
+        new_filename,
+    )
+
+    print(f"Successfully wrote {new_filename}.")
+
+
+def main() -> int:
+
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("files", nargs="+", help="Files to process.")
+
+    args = parser.parse_args()
+
+    for file in args.files:
+        process_file(os.path.abspath(file))
+
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

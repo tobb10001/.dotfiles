@@ -137,13 +137,13 @@ binds {
     // Mod+V { spawn "noctalia" "ipc" "call" "launcher" "clipboard"; }
     Super+X { spawn "noctalia" "msg" "session" "lock"; }
 
-    Mod+B { spawn "nirius" "focus-or-spawn" "--focused-workspace" "--app-id=zen" "--" "zen" "--blank-window"; }
+    Mod+B { spawn "nirius" "focus-or-spawn" "--focused-workspace" "--app-id=zen" "--" "zen"; }
     Mod+C { spawn "nirius" "focus-or-spawn" "--focused-workspace" "--app-id=chrome-reykjavik.instructure.com" "--" "canvas"; }
     Mod+E { spawn "nautilus"; }
     Mod+N { spawn "nirius" "focus-or-spawn" "--focused-workspace" "--app-id=^obsidian$" "obsidian"; }
     Mod+T { spawn "nirius" "focus-or-spawn" "--focused-workspace" "--app-id=^com\\.mitchellh\\.ghostty$" "--" "ghostty"; }
     Mod+Z { spawn "nirius" "move-to-current-workspace-or-spawn" "--include-current-workspace" "--focus" "--app-id=Zotero" "zotero"; }
-    Super+Alt+L allow-when-locked=true { spawn-sh "pkill quickshell; swaylock"; }
+    Super+Alt+L allow-when-locked=true { spawn-sh "systemctl --user kill noctalia; swaylock"; }
 
     // You can also use a shell:
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
@@ -156,6 +156,11 @@ binds {
     XF86AudioMute repeat=false         allow-when-locked=true { spawn "noctalia" "msg" "volume-mute"; }
     XF86MonBrightnessUp repeat=false   allow-when-locked=true { spawn "noctalia" "msg" "brightness-up"; }
     XF86MonBrightnessDown repeat=false allow-when-locked=true { spawn "noctalia" "msg" "brightness-down"; }
+
+    // Media
+    Mod+Alt+Space { spawn "noctalia" "msg" "media" "toggle"; }
+    Mod+Alt+P { spawn "noctalia" "msg" "media" "previous"; }
+    Mod+Alt+N { spawn "noctalia" "msg" "media" "next"; }
 
     Mod+Q { close-window; }
 

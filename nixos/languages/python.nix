@@ -1,5 +1,6 @@
 {
   pkgs,
+  unstable,
   ...
 }:
 {
@@ -23,7 +24,7 @@
     ];
   };
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with unstable; [
     (pkgs.writeShellScriptBin "python" ''
       export LD_BINARY_PATH=$NIX_LD_LIBRARY_PATH
       exec ${pkgs.python3}/bin/python "$@"

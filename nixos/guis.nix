@@ -7,7 +7,6 @@
   ...
 }:
 {
-  programs.firefox.enable = true;
   services.blueman.enable = true;
 
   # Flatpak
@@ -29,8 +28,8 @@
     kdePackages.gwenview
     nautilus
     obsidian
+    spotify
     wezterm
     zathura
-    unstable.zotero
   ];
 }

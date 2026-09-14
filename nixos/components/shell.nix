@@ -1,5 +1,6 @@
 {
   pkgs,
+  unstable,
   ...
 }:
 {
@@ -11,7 +12,7 @@
     # Packages that integrate with the shell or shell tools directly.
     delta
     direnv
-    fzf
+    unstable.fzf
     grc # configured for go test
     gum # in some scripts
     starship
@@ -29,6 +30,7 @@
     jq
     lazygit
     libqalculate
+    gnumake
     moreutils # contains sponge
     parallel-full
     progress
@@ -39,6 +41,7 @@
     tldr
     translate-shell
     watchexec
+    xmlstarlet
     yq
 
     # General Tools

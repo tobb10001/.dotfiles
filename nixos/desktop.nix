@@ -144,7 +144,6 @@ in
     swaylock # Not in use, but better to have a fallback.
     # tcl
     # tclPackages.tk
-    # tesseract # Obsidian Zotero Integration
     uwsm
     vlc
     wdisplays

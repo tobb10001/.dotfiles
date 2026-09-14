@@ -28,6 +28,7 @@
     ./languages/rust.nix
     ./study/cyberphysical_systems.nix
     ./study/optimization_methods.nix
+    ./study/zotero.nix
   ];
 
   # Nix Settings
@@ -111,17 +112,16 @@
     LC_MEASUREMENT = "de_DE.UTF-8";
     LC_MONETARY = "de_DE.UTF-8";
     LC_NAME = "de_DE.UTF-8";
-    LC_NUMERIC = "de_DE.UTF-8";
+    LC_NUMERIC = "en_GB.UTF-8";
     LC_PAPER = "de_DE.UTF-8";
     LC_TELEPHONE = "de_DE.UTF-8";
     LC_TIME = "en_GB.UTF-8";
   };
 
   # Configure keymap in X11
-  # Dunno if this is used, because I use wayland, but let's just leave it...
   services.xserver.xkb = {
-    layout = "us";
-    variant = "altgr-intl";
+    layout = "eu";
+    # variant = "altgr-intl";
     options = "caps:swapescape";
   };
 

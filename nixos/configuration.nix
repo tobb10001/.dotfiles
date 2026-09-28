@@ -4,6 +4,8 @@
 
 {
   pkgs,
+  config,
+  lib,
   ...
 }:
 
@@ -19,6 +21,7 @@
     ./components/neovim.nix
     ./components/shell.nix
     ./components/virtualisation.nix
+    ./components/torrent.nix
     ./languages/golang.nix
     ./languages/lua.nix
     ./languages/markup.nix
@@ -27,6 +30,7 @@
     ./languages/python.nix
     ./languages/rust.nix
     ./study/cyberphysical_systems.nix
+    ./study/geogebra.nix
     ./study/optimization_methods.nix
     ./study/zotero.nix
   ];
@@ -43,6 +47,9 @@
         "nix-command"
         "flakes"
       ];
+      max-jobs = "auto";
+      cores = 0;
+
       extra-substituters = [ "https://noctalia.cachix.org" ];
       extra-trusted-public-keys = [
         "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
@@ -157,6 +164,14 @@
     # TODO: home manager? this is not the right place...
     TERM = "wezterm";
   };
+
+  environment.etc."current-system-packages".text =
+    let
+      packages = builtins.map (p: "${p.name}") config.environment.systemPackages;
+      sortedUnique = builtins.sort builtins.lessThan (lib.unique packages);
+      formatted = builtins.concatStringsSep "\n" sortedUnique;
+    in
+    formatted;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

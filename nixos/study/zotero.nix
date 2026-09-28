@@ -1,12 +1,12 @@
 {
   pkgs,
-  unstable,
+  nixpkgs-zotero,
   ...
 }:
 {
   environment.systemPackages = with pkgs; [
     poppler-utils
     tesseract # OCR
-    unstable.zotero
+    nixpkgs-zotero.zotero
   ];
 }

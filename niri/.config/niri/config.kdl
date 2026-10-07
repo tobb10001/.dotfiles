@@ -151,11 +151,15 @@ binds {
     // Example volume keys mappings for PipeWire & WirePlumber.
     // XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
     // XF86AudioLowerVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
-    XF86AudioRaiseVolume repeat=false  allow-when-locked=true { spawn "noctalia" "msg" "volume-up"; }
-    XF86AudioLowerVolume repeat=false  allow-when-locked=true { spawn "noctalia" "msg" "volume-down"; }
-    XF86AudioMute repeat=false         allow-when-locked=true { spawn "noctalia" "msg" "volume-mute"; }
-    XF86MonBrightnessUp repeat=false   allow-when-locked=true { spawn "noctalia" "msg" "brightness-up"; }
-    XF86MonBrightnessDown repeat=false allow-when-locked=true { spawn "noctalia" "msg" "brightness-down"; }
+    XF86AudioPlay         repeat=false allow-when-locked=true { spawn "noctalia" "msg" "media" "play";      }
+    XF86AudioPause        repeat=false allow-when-locked=true { spawn "noctalia" "msg" "media" "pause";     } 
+    XF86AudioNext         repeat=false allow-when-locked=true { spawn "noctalia" "msg" "media" "next";      } 
+    XF86AudioPrev         repeat=false allow-when-locked=true { spawn "noctalia" "msg" "media" "previous";  } 
+    XF86AudioRaiseVolume  repeat=false allow-when-locked=true { spawn "noctalia" "msg" "volume-up";         }
+    XF86AudioLowerVolume  repeat=false allow-when-locked=true { spawn "noctalia" "msg" "volume-down";       }
+    XF86AudioMute         repeat=false allow-when-locked=true { spawn "noctalia" "msg" "volume-mute";       }
+    XF86MonBrightnessUp   repeat=false allow-when-locked=true { spawn "noctalia" "msg" "brightness-up";     }
+    XF86MonBrightnessDown repeat=false allow-when-locked=true { spawn "noctalia" "msg" "brightness-down";   }
 
     // Media
     Mod+Alt+Space { spawn "noctalia" "msg" "media" "toggle"; }

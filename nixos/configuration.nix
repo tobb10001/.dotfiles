@@ -106,6 +106,7 @@
   };
   programs.nm-applet.enable = false;
   hardware.bluetooth.enable = true;
+  hardware.pulseaudio.enable = true;
 
   # Set your time zone.
   time.timeZone = "Iceland/Reykjavik";

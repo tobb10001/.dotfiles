@@ -40,7 +40,7 @@
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 28d";
+      options = "--delete-older-than 14d";
     };
     settings = {
       experimental-features = [
@@ -106,7 +106,6 @@
   };
   programs.nm-applet.enable = false;
   hardware.bluetooth.enable = true;
-  hardware.pulseaudio.enable = true;
 
   # Set your time zone.
   time.timeZone = "Iceland/Reykjavik";

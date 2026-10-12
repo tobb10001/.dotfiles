@@ -4,6 +4,8 @@ theme = Catppuccin Mocha
 
 # Init
 command = nu
+working-directory = home
+window-inherit-working-directory = false
 
 # Behaviour
 # notify-on-command-finished = unfocused

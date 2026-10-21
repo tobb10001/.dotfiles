@@ -4,6 +4,8 @@
   ...
 }:
 {
+  programs.direnv.enable = true;
+
   environment.systemPackages = with pkgs; [
     # Shells
     nushell
@@ -11,7 +13,6 @@
     # Direct Dependencies
     # Packages that integrate with the shell or shell tools directly.
     delta
-    direnv
     unstable.fzf
     grc # configured for go test
     gum # in some scripts
@@ -49,6 +50,7 @@
     # to do things there, although their domain isn't bound to the shell.
     borgbackup
     btop
+    codex
     dig
     exiftool
     ipcalc

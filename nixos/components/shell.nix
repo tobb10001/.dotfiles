@@ -60,6 +60,7 @@
     sc-im
     traceroute
     usbutils
+    yt-dlp
     zip
   ];
 }

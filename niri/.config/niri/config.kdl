@@ -162,9 +162,9 @@ binds {
     XF86MonBrightnessDown repeat=false allow-when-locked=true { spawn "noctalia" "msg" "brightness-down";   }
 
     // Media
-    Mod+Alt+Space { spawn "noctalia" "msg" "media" "toggle"; }
-    Mod+Alt+P { spawn "noctalia" "msg" "media" "previous"; }
-    Mod+Alt+N { spawn "noctalia" "msg" "media" "next"; }
+    Mod+Alt+Space allow-when-locked=true { spawn "noctalia" "msg" "media" "toggle"; }
+    Mod+Alt+P     allow-when-locked=true { spawn "noctalia" "msg" "media" "previous"; }
+    Mod+Alt+N     allow-when-locked=true { spawn "noctalia" "msg" "media" "next"; }
 
     Mod+Q { close-window; }
 
